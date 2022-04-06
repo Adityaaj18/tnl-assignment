@@ -22,7 +22,7 @@ const Header = ({ menuIconClick }) => {
 
                <h4 style={{ marginBottom: '0px', marginTop: '10px' }}>Home</h4>
             </div>
-            <div style={{ display: 'flex' }}>
+            <div className="subnav" style={{ display: 'flex' }}>
                <div style={{ borderRight: '1px solid #f2f2f2' }}>
                   <img
                      src={require('../img/profile.png')}

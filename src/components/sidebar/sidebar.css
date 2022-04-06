@@ -207,12 +207,24 @@
   .dots-wrapper{
     padding: 20px 20px 40px 20px;
   }
-  
+  .modal-dialog{
+    margin: 10px;
+    max-width:100vw;
+  }
+
+  .you-might-like{
+    flex-direction: column;
+    margin-bottom: 10px;
+  } 
+
+ #header .pro-sidebar.collapsed{
+  /* height: 100%; */
+
+ }
+ 
+ .subnav{
+   justify-content:center !important;
+ }
 }
 
 
-  @media only screen and (max-width: 720px) {
-    html {
-      overflow: hidden;
-    }
-  }

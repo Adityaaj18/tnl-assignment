@@ -191,7 +191,10 @@ const Main = () => {
             </div>
          </div>
          <div className="cards">
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div
+               className="you-might-like"
+               style={{ display: 'flex', justifyContent: 'space-between' }}
+            >
                <div style={{ marginBottom: '28px' }}>
                   <span
                      style={{
@@ -242,7 +245,7 @@ const Main = () => {
                      </div>
                   </div>
                   <div className="col-lg-4">
-                     <div className="card-banner" onClick={handleShow1}>
+                     <div className="card-banner">
                         <div className="streampala">
                            <div className="streampala-wrapper">
                               <div style={{ textAlign: 'left' }}>
