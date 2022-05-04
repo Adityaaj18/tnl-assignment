@@ -21,3 +21,54 @@
   color:#fff;;
   border-style: none;border-radius: 6px;
 }
+
+/* profile */
+
+.profile-header{
+  display: flex;
+  justify-content:space-between;
+  background:#962E40;
+  color: #fff;
+  font-weight: 600;
+  margin-top:60px;
+  padding: 20px;
+}
+
+.profile-card-wrapper{
+height: 535px;
+}
+
+#edit-profile{
+  width: 100px;
+  height:40px;
+  font-size:14px;
+  border-radius:8px;
+  background-color: #fff;
+  border:none;
+  font-weight: 600;
+  color: #962E40;
+  margin-top:10px;
+}
+
+@media screen and (max-width: 500px){
+  .profile-header{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .profile-card-wrapper {
+    width: 80%;
+    padding: 0px;
+   
+  }
+
+  .profile-section{
+    margin-left: 80px;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .profile-section{
+    margin-left: 80px;
+  }
+}

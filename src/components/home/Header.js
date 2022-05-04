@@ -1,10 +1,13 @@
 import React from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
-
+import { useParams } from 'react-router-dom'
 const Header = ({ menuIconClick }) => {
    // const handleClick = () => {
    //    console.log(menuCollapse)
    // }
+
+   // const name = useParams()
+   // console.log(name)
    return (
       <div>
          <nav className="navbar navbar-light  justify-content-between">
@@ -25,7 +28,7 @@ const Header = ({ menuIconClick }) => {
             <div className="subnav" style={{ display: 'flex' }}>
                <div style={{ borderRight: '1px solid #f2f2f2' }}>
                   <img
-                     src={require('../img/profile.png')}
+                     src={require('../../img/profile.png')}
                      alt=""
                      style={{
                         width: '48px',
@@ -63,7 +66,7 @@ const Header = ({ menuIconClick }) => {
                </div>
                <div style={{ borderRight: '1px solid #f2f2f2' }}>
                   <img
-                     src={require('../img/settings.png')}
+                     src={require('../../img/settings.png')}
                      alt=""
                      style={{
                         margin: '10px 15px 0px 15px'
@@ -72,7 +75,7 @@ const Header = ({ menuIconClick }) => {
                </div>
                <div>
                   <img
-                     src={require('../img/down.png')}
+                     src={require('../../img/down.png')}
                      alt=""
                      style={{
                         margin: '20px 15px 0px 15px'

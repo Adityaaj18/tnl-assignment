@@ -17,11 +17,13 @@ import {
 import { MdInsertChartOutlined } from 'react-icons/md'
 import { CgNotes } from 'react-icons/cg'
 import { FaUsersCog } from 'react-icons/fa'
-
+import { Link } from 'react-router-dom'
 import 'react-pro-sidebar/dist/css/styles.css'
 import './sidebar.css'
+import { useNavigate } from 'react-router-dom'
 
 const Sidebar = ({ menuCollapse }) => {
+   const navigate = useNavigate()
    return (
       <>
          <div id="header">
@@ -33,9 +35,11 @@ const Sidebar = ({ menuCollapse }) => {
                         icon={
                            <AiOutlineHome className="sidebar-icon  active-menu" />
                         }
+                        onClick={() => navigate('/')}
                      >
                         Home
                      </MenuItem>
+
                      <MenuItem
                         icon={
                            <MdInsertChartOutlined className="sidebar-icon" />
@@ -46,9 +50,14 @@ const Sidebar = ({ menuCollapse }) => {
                      <MenuItem icon={<CgNotes className="sidebar-icon" />}>
                         My Campaigns
                      </MenuItem>
-                     <MenuItem icon={<FaUsersCog className="sidebar-icon" />}>
-                        Profile
-                     </MenuItem>
+                     <Link to="/profile">
+                        <MenuItem
+                           icon={<FaUsersCog className="sidebar-icon" />}
+                        >
+                           Profile
+                        </MenuItem>
+                     </Link>
+
                      <MenuItem
                         icon={<AiOutlineSetting className="sidebar-icon" />}
                      >

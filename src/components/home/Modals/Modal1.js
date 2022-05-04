@@ -60,8 +60,8 @@ const Modal1 = ({ show, handleClose, setShow1 }) => {
                         Platforms
                      </p>
                      <div style={{ display: 'flex', gap: '10px' }}>
-                        <img src={require('../../img/yt-logo.png')} alt="" />
-                        <img src={require('../../img/yt-logo.png')} alt="" />
+                        <img src={require('../../../img/yt-logo.png')} alt="" />
+                        <img src={require('../../../img/yt-logo.png')} alt="" />
                      </div>
                      <p style={{ fontSize: '16px', fontWeight: '700' }}>
                         Sponsership Left:{' '}

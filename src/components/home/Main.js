@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Modal1 from './Modals/Modal1'
 import Modal2 from './Modals/Modal2'
@@ -219,30 +220,35 @@ const Main = () => {
             <div className="cards-container ">
                <div className="row g-4" style={{ marginBottom: '50px' }}>
                   <div className="col-lg-8">
-                     <div className="card-banner" onClick={handleShow}>
-                        <div className="streampala">
-                           <div className="streampala-wrapper">
-                              <div style={{ textAlign: 'left' }}>
-                                 <span style={{ fontSize: '24px' }}>
-                                    Streampala
-                                 </span>
-                                 <p style={{ fontSize: '12px' }}>
-                                    Ut enim ad minim veniam, quis nostrud
-                                    exerctation ullameo rlbaoee lorem ipsum
-                                    dolore magna aliqu lorem ipsum dolor{' '}
-                                    <span style={{ fontWeight: '700' }}>
-                                       Learn more
+                     <Link to="/register">
+                        <div className="card-banner">
+                           <div className="streampala">
+                              <div className="streampala-wrapper">
+                                 <div style={{ textAlign: 'left' }}>
+                                    <span style={{ fontSize: '24px' }}>
+                                       Streampala
                                     </span>
-                                 </p>
+                                    <p style={{ fontSize: '12px' }}>
+                                       Ut enim ad minim veniam, quis nostrud
+                                       exerctation ullameo rlbaoee lorem ipsum
+                                       dolore magna aliqu lorem ipsum dolor{' '}
+                                       <span style={{ fontWeight: '700' }}>
+                                          Learn more
+                                       </span>
+                                    </p>
+                                 </div>
+                                 <span
+                                    style={{
+                                       fontSize: '36px',
+                                       fontWeight: '700'
+                                    }}
+                                 >
+                                    ₹20
+                                 </span>
                               </div>
-                              <span
-                                 style={{ fontSize: '36px', fontWeight: '700' }}
-                              >
-                                 ₹20
-                              </span>
                            </div>
                         </div>
-                     </div>
+                     </Link>
                   </div>
                   <div className="col-lg-4">
                      <div className="card-banner">

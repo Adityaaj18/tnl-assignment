@@ -1,8 +1,12 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
-import Header from './components/Header'
-import Sidebar from './components/sidebar/Sidebar'
-import Main from './components/Main'
+import Header from './components/home/Header'
+import Sidebar from './components/home/sidebar/Sidebar'
+import Main from './components/home/Main'
+import Home from './components/Home'
+import Register from './components/Register'
+import Profile from './components/Profile'
 
 function App() {
    const [menuCollapse, setMenuCollapse] = useState(true)
@@ -13,9 +17,13 @@ function App() {
 
    return (
       <div className="App">
-         <Header menuIconClick={menuIconClick} />
-         <Sidebar menuCollapse={menuCollapse} />
-         <Main />
+         <Router>
+            <Routes>
+               <Route path="/" element={<Home />} />
+               <Route path="/register" element={<Register />} />
+               <Route path="/profile" element={<Profile />} />
+            </Routes>
+         </Router>
       </div>
    )
 }
