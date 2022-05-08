@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
+import Modaal from './Modaal'
 
-import { AiFillCloseCircle } from 'react-icons/ai'
-const Register = ({ show, handleClose, setShow1 }) => {
+const Register = () => {
    const [check1, setCheck1] = useState(false)
    const [check2, setCheck2] = useState(false)
    const [check3, setCheck3] = useState(false)
    const [isDisabled, setIsDisabled] = useState(true)
 
-   const handleClose1 = () => setShow1(false)
-   const handleShow1 = () => setShow1(true)
+   const [show, setShow] = useState(false)
+   const handleClose = () => setShow(false)
+   const handleShow = () => setShow(true)
 
-   const handleChange1 = () => {
-      setCheck1(!check1)
-   }
-   const handleChange2 = () => {
-      setCheck2(!check2)
-   }
-   const handleChange3 = () => {
-      setCheck3(!check3)
-   }
+   // const handleChange1 = () => {
+   //    setCheck1(!check1)
+   // }
+   // const handleChange2 = () => {
+   //    setCheck2(!check2)
+   // }
+   // const handleChange3 = () => {
+   //    setCheck3(!check3)
+   // }
    return (
       <div>
          <div className="modal-head card-banner">
@@ -59,8 +60,8 @@ const Register = ({ show, handleClose, setShow1 }) => {
                      </span>
                   </p>
                </div>
-               <div className="col-lg-6">
-                  <div>
+               <div className="col-lg-6 ">
+                  <div style={{ padding: '20px' }}>
                      <div
                         style={{
                            display: 'flex',
@@ -70,50 +71,71 @@ const Register = ({ show, handleClose, setShow1 }) => {
                         <span style={{ fontWeight: '700', fontSize: '20px' }}>
                            Lorem Ipsum
                         </span>
-                        {(check1 && check2 && check3) === true ? (
-                           <button
-                              className="start"
-                              onClick={() => {
-                                 handleClose()
-                                 setShow1(true)
-                              }}
-                           >
-                              Start Campaign
-                           </button>
-                        ) : (
-                           <button className="disabled">Start Campaign</button>
-                        )}
+
+                        <button
+                           className="start"
+                           onClick={() => {
+                              setShow(true)
+                           }}
+                        >
+                           Start Campaign
+                        </button>
                      </div>
+                     <div
+                        className="scroll-area"
+                        style={{ paddingTop: '30px' }}
+                     >
+                        <ul>
+                           <li>
+                              {' '}
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, § sed do eiusmod tempor
+                           </li>
 
-                     <p>
-                        <input
-                           type="checkbox"
-                           onChange={handleChange1}
-                           style={{ height: '24px', width: '24px' }}
-                        />
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod tempor
-                     </p>
-
-                     <p>
-                        <input
-                           type="checkbox"
-                           onChange={handleChange2}
-                           style={{ height: '24px', width: '24px' }}
-                        />
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod tempor
-                     </p>
-                     <p>
-                        <input
-                           type="checkbox"
-                           onChange={handleChange3}
-                           style={{ height: '24px', width: '24px' }}
-                        />
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod tempor
-                     </p>
+                           <li>
+                              {' '}
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, § sed do eiusmod tempor
+                           </li>
+                           <li>
+                              {' '}
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, § sed do eiusmod tempor
+                           </li>
+                        </ul>
+                        <div>
+                           <span
+                              style={{ fontWeight: '700', fontSize: '20px' }}
+                           >
+                              Lorem Ipsum
+                           </span>
+                           <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, § sed do eiusmod temporLorem ipsum dolor sit
+                              amet, consectetur adipiscing elit, § sed do
+                              eiusmod temporLorem ipsum dolor sit amet,
+                              consectetur adipiscing elit, § sed do eiusmod
+                              temporLorem ipsum dolor sit amet, consectetur
+                              adipiscing elit, § sed do eiusmod tempor
+                           </p>
+                           <br />
+                           <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, § sed do eiusmod temporLorem ipsum dolor sit
+                              amet, consectetur adipiscing elit, § sed do
+                              eiusmod temporLorem ipsum dolor sit amet,
+                              consectetur adipiscing elit, § sed do eiusmod
+                              temporLorem ipsum dolor sit amet, consectetur
+                              adipiscing elit, § sed do eiusmod tempor
+                           </p>
+                        </div>
+                     </div>
                   </div>
+                  <Modaal
+                     handleClose={handleClose}
+                     handleShow={handleShow}
+                     show={show}
+                  />
                </div>
             </div>
          </div>

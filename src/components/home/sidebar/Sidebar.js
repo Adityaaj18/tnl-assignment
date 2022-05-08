@@ -5,10 +5,9 @@ import React, { useState } from 'react'
 import { ProSidebar, Menu, MenuItem, SidebarContent } from 'react-pro-sidebar'
 
 //import icons from react icons
-import { FaList, FaRegHeart } from 'react-icons/fa'
+
 import { FiLogOut } from 'react-icons/fi'
-import { RiPencilLine } from 'react-icons/ri'
-import { BiCog } from 'react-icons/bi'
+
 import {
    AiOutlineHome,
    AiOutlineSetting,
@@ -17,10 +16,9 @@ import {
 import { MdInsertChartOutlined } from 'react-icons/md'
 import { CgNotes } from 'react-icons/cg'
 import { FaUsersCog } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
 import 'react-pro-sidebar/dist/css/styles.css'
 import './sidebar.css'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const Sidebar = ({ menuCollapse }) => {
    const navigate = useNavigate()
@@ -31,32 +29,46 @@ const Sidebar = ({ menuCollapse }) => {
                <SidebarContent>
                   <Menu>
                      <MenuItem
-                        active={true}
-                        icon={
-                           <AiOutlineHome className="sidebar-icon  active-menu" />
-                        }
-                        onClick={() => navigate('/')}
+                        className="menu-item"
+                        icon={<AiOutlineHome className="sidebar-icon " />}
+                        onClick={() => {
+                           navigate('/')
+                        }}
                      >
                         Home
                      </MenuItem>
 
                      <MenuItem
+                        className="menu-item"
                         icon={
                            <MdInsertChartOutlined className="sidebar-icon" />
                         }
+                        onClick={() => {
+                           navigate('/analytics')
+                        }}
                      >
                         Analytics
                      </MenuItem>
-                     <MenuItem icon={<CgNotes className="sidebar-icon" />}>
+
+                     <MenuItem
+                        className="menu-item"
+                        icon={<CgNotes className="sidebar-icon" />}
+                        onClick={() => {
+                           navigate('/campaigns')
+                        }}
+                     >
                         My Campaigns
                      </MenuItem>
-                     <Link to="/profile">
-                        <MenuItem
-                           icon={<FaUsersCog className="sidebar-icon" />}
-                        >
-                           Profile
-                        </MenuItem>
-                     </Link>
+
+                     <MenuItem
+                        className="menu-item"
+                        icon={<FaUsersCog className="sidebar-icon" />}
+                        onClick={() => {
+                           navigate('/profile')
+                        }}
+                     >
+                        Profile
+                     </MenuItem>
 
                      <MenuItem
                         icon={<AiOutlineSetting className="sidebar-icon" />}

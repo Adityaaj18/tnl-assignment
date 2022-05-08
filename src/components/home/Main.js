@@ -19,7 +19,7 @@ const Main = () => {
          className=""
          style={{
             textAlign: 'center',
-            marginTop: '40px',
+            marginTop: '80px',
             marginBottom: '28px',
             marginLeft: '80px',
             padding: '0px 25px'
@@ -220,7 +220,7 @@ const Main = () => {
             <div className="cards-container ">
                <div className="row g-4" style={{ marginBottom: '50px' }}>
                   <div className="col-lg-8">
-                     <Link to="/register">
+                     <Link to="/register" className="link">
                         <div className="card-banner">
                            <div className="streampala">
                               <div className="streampala-wrapper">

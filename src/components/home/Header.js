@@ -8,6 +8,9 @@ const Header = ({ menuIconClick }) => {
 
    // const name = useParams()
    // console.log(name)
+   const path = window.location.pathname
+   const pathName = path.slice(1)
+
    return (
       <div>
          <nav className="navbar navbar-light  justify-content-between">
@@ -23,7 +26,11 @@ const Header = ({ menuIconClick }) => {
                   />
                </div>
 
-               <h4 style={{ marginBottom: '0px', marginTop: '10px' }}>Home</h4>
+               <h4 style={{ marginBottom: '0px', marginTop: '10px' }}>
+                  {path == '/'
+                     ? 'Home'
+                     : pathName.charAt(0).toUpperCase() + pathName.slice(1)}
+               </h4>
             </div>
             <div className="subnav" style={{ display: 'flex' }}>
                <div style={{ borderRight: '1px solid #f2f2f2' }}>

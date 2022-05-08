@@ -1,6 +1,9 @@
 .navbar{
   background:#962E40;
   color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .modal-body{
@@ -22,7 +25,36 @@
   border-style: none;border-radius: 6px;
 }
 
+.scroll-area{
+  overflow-y: scroll;
+  max-height: 20rem;
+  
+}
+
+.scroll-area::-webkit-scrollbar{
+  width: 9px;
+  
+}
+
+.scroll-area::-webkit-scrollbar-thumb{
+  background-color: lightgray;
+}
+
+.campaign-wallet{
+  padding:20px;
+}
+
 /* profile */
+
+.profile-buttons{
+  display: flex;
+  gap: 10px;
+}
+
+.active .menu-item{
+  background-color: #962E40;
+}
+
 
 .profile-header{
   display: flex;
@@ -30,12 +62,25 @@
   background:#962E40;
   color: #fff;
   font-weight: 600;
-  margin-top:60px;
+  margin-top:50px;
   padding: 20px;
 }
 
 .profile-card-wrapper{
 height: 535px;
+margin-bottom: 150px;
+}
+
+#cancel{
+  width: 100px;
+  height:40px;
+  font-size:14px;
+  border-radius:8px;
+  background-color: #962E40;
+  border: 1px solid #fff;
+  font-weight: 600;
+  color: #fff;
+  margin-top:10px;
 }
 
 #edit-profile{
@@ -48,6 +93,21 @@ height: 535px;
   font-weight: 600;
   color: #962E40;
   margin-top:10px;
+}
+
+.profile-data{
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 75px;
+}
+
+.data-row{
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.link{
+  text-decoration: none;
 }
 
 @media screen and (max-width: 500px){
