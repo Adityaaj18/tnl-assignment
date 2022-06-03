@@ -1,19 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import Modal1 from './Modals/Modal1'
 import Modal2 from './Modals/Modal2'
+
+const baseURL = 'http://127.0.0.1:8000/api/users/'
 
 const Main = () => {
    const [show, setShow] = useState(false)
    const handleClose = () => setShow(false)
    const handleShow = () => setShow(true)
 
+   const [user, setUser] = useState()
+
    console.log(show)
 
    const [show1, setShow1] = useState(false)
    const handleClose1 = () => setShow1(false)
    const handleShow1 = () => setShow1(true)
+
+   const data = {
+      username: "test@gmail.com", password: 12345
+   }
+
+   useEffect(() => {
+      // axios.get('http://127.0.0.1:8000/api/users').then(response => setUser(response.data))
+      // console.log(user);
+      axios.post('http://127.0.0.1:8000/auth-token', data)
+      .then(response => {console.log(response)})
+      .catch(err => {console.log(err)})
+   },[])
+
    return (
       <div
          className=""
