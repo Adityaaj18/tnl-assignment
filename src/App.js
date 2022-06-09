@@ -10,6 +10,7 @@ import Profile from './components/Profile'
 import Campaigns from './components/Campaigns'
 import Analytics from './components/Analytics'
 import CampaignData from './components/CampaignData'
+import Main2 from './components/Main2'
 
 function App() {
    const [menuCollapse, setMenuCollapse] = useState(true)
@@ -25,8 +26,9 @@ function App() {
                <Route path="/" element={<Home />} />
                <Route path="/register" element={<Register />} />
                <Route path="/profile" element={<Profile />} />
-               <Route path="/campaigns" element={<CampaignData />} />
+               <Route path="/campaigns" element={<Campaigns />} />
                <Route path="/analytics" element={<Analytics />} />
+               <Route path="/main2" element={<Main2 />} />
             </Routes>
          </Router>
       </div>

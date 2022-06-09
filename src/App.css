@@ -43,6 +43,13 @@
 .campaign-wallet{
   padding:20px;
 }
+.campaign-box{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 
 /* profile */
 
