@@ -21,16 +21,22 @@ const Main = () => {
    const handleShow1 = () => setShow1(true)
 
    const data = {
-      username: "test@gmail.com", password: 12345
+      username: 'test@gmail.com',
+      password: 12345
    }
 
    useEffect(() => {
       // axios.get('http://127.0.0.1:8000/api/users').then(response => setUser(response.data))
       // console.log(user);
-      axios.post('http://127.0.0.1:8000/auth-token', data)
-      .then(response => {console.log(response)})
-      .catch(err => {console.log(err)})
-   },[])
+      axios
+         .post('http://127.0.0.1:8000/auth-token', data)
+         .then((response) => {
+            console.log(response)
+         })
+         .catch((err) => {
+            console.log(err)
+         })
+   }, [])
 
    return (
       <div
@@ -93,7 +99,14 @@ const Main = () => {
                            </div>
                         </div>
                         <div style={{ padding: '10px 20px 10px 10px' }}>
-                           <a className="view-more">View More</a>
+                           <a
+                              onClick={() => {
+                                 console.log('new')
+                              }}
+                              className="view-more"
+                           >
+                              View More
+                           </a>
                         </div>
                      </div>
                      <div className="dots-wrapper">

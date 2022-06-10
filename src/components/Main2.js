@@ -40,7 +40,7 @@ const Main2 = () => {
                </div>
                <div className="">
                   <AiOutlineCalendar style={{ fontSize: '30px' }} />
-                  Calender
+                  All Time
                </div>
             </div>
             <div className="row gx-4 gy-4">
