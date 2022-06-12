@@ -32,7 +32,7 @@ const Sidebar = ({ menuCollapse }) => {
                         className="menu-item"
                         icon={<AiOutlineHome className="sidebar-icon " />}
                         onClick={() => {
-                           navigate('/')
+                           navigate('/home')
                         }}
                      >
                         Home

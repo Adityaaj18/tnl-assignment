@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
+import { useUserAuth } from '../../UserAuthContext'
 import Modal1 from './Modals/Modal1'
 import Modal2 from './Modals/Modal2'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const baseURL = 'http://127.0.0.1:8000/api/users/'
 
-const Main = () => {
+const Main = ({ token }) => {
+   const navigate = useNavigate()
    const [show, setShow] = useState(false)
    const handleClose = () => setShow(false)
    const handleShow = () => setShow(true)
 
-   const [user, setUser] = useState()
+   const [users, setUsers] = useState()
+
+   const { user, logOut } = useUserAuth()
 
    console.log(show)
 
@@ -24,17 +28,26 @@ const Main = () => {
       username: 'test@gmail.com',
       password: 12345
    }
+   const AuthStr = 'Bearer '.concat(token)
+
+   const handleLogout = async () => {
+      try {
+         await logOut()
+      } catch (err) {
+         console.log(err.message)
+      }
+   }
 
    useEffect(() => {
-      // axios.get('http://127.0.0.1:8000/api/users').then(response => setUser(response.data))
-      // console.log(user);
       axios
-         .post('http://127.0.0.1:8000/auth-token', data)
-         .then((response) => {
-            console.log(response)
+         .get('http://127.0.0.1:8000/api/users', {
+            headers: {
+               Authorization: `Token ${token}`
+            }
          })
-         .catch((err) => {
-            console.log(err)
+         .then((res) => {
+            setUsers(res.data)
+            console.log(res.data.map((user) => user.email))
          })
    }, [])
 
@@ -43,19 +56,34 @@ const Main = () => {
          className=""
          style={{
             textAlign: 'center',
-            marginTop: '80px',
+            marginTop: '120px',
             marginBottom: '28px',
             marginLeft: '80px',
             padding: '0px 25px'
          }}
       >
-         <h1 style={{ marginBottom: '13px', fontWeight: '700' }}>
+         <h1
+            style={{
+               marginBottom: '13px',
+               fontWeight: '700',
+               fontSize: '32px'
+            }}
+         >
             Welcome Back! Lets's catch up to speed!
          </h1>
+
          <p
-            style={{ color: '#828282', fontSize: '24px', marginBottom: '32px' }}
+            style={{ color: '#828282', fontSize: '20px', marginBottom: '32px' }}
          >
             Tip: Did you know the support team is online 24/7 to help you out?
+         </p>
+         <button onClick={handleLogout}>logout</button>
+         <p
+            onClick={() => {
+               navigate('/analytics2')
+            }}
+         >
+            analytics2
          </p>
 
          <div className="">
