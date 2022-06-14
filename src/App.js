@@ -14,8 +14,6 @@ import CampaignData from './components/CampaignData'
 import Main2 from './components/Main2'
 import CampaignSetup from './components/CampaignSetup'
 import Login from './components/Login'
-import { UserAuthContextProvider } from './UserAuthContext'
-import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
    const [menuCollapse, setMenuCollapse] = useState(true)
@@ -27,75 +25,17 @@ function App() {
    return (
       <div className="App">
          <Router>
-            <UserAuthContextProvider>
-               <Routes>
-                  <Route path="/" element={<Login />} />
-                  <Route
-                     path="/home"
-                     element={
-                        <ProtectedRoute>
-                           <Home />
-                        </ProtectedRoute>
-                     }
-                  />
-                  <Route
-                     path="/register"
-                     element={
-                        <ProtectedRoute>
-                           <Register />
-                        </ProtectedRoute>
-                     }
-                  />
-                  <Route
-                     path="/profile"
-                     element={
-                        <ProtectedRoute>
-                           <Profile />
-                        </ProtectedRoute>
-                     }
-                  />
-                  <Route
-                     path="/campaigns"
-                     element={
-                        <ProtectedRoute>
-                           <Campaigns />
-                        </ProtectedRoute>
-                     }
-                  />
-                  <Route
-                     path="/analytics"
-                     element={
-                        <ProtectedRoute>
-                           <Analytics />
-                        </ProtectedRoute>
-                     }
-                  />
-                  <Route
-                     path="/main2"
-                     element={
-                        <ProtectedRoute>
-                           <Main2 />
-                        </ProtectedRoute>
-                     }
-                  />
-                  <Route
-                     path="/setup"
-                     element={
-                        <ProtectedRoute>
-                           <CampaignSetup />
-                        </ProtectedRoute>
-                     }
-                  />
-                  <Route
-                     path="/analytics2"
-                     element={
-                        <ProtectedRoute>
-                           <Analytics2 />
-                        </ProtectedRoute>
-                     }
-                  />
-               </Routes>
-            </UserAuthContextProvider>
+            <Routes>
+               <Route path="/" element={<Login />} />
+               <Route path="/home" element={<Home />} />
+               <Route path="/register" element={<Register />} />
+               <Route path="/profile" element={<Profile />} />
+               <Route path="/campaigns" element={<Campaigns />} />
+               <Route path="/analytics" element={<Analytics />} />
+               <Route path="/main2" element={<Main2 />} />
+               <Route path="/setup" element={<CampaignSetup />} />
+               <Route path="/analytics2" element={<Analytics2 />} />
+            </Routes>
          </Router>
       </div>
    )

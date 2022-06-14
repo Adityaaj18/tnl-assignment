@@ -71,18 +71,23 @@ const Sidebar = ({ menuCollapse }) => {
                      </MenuItem>
 
                      <MenuItem
+                        className="menu-item"
                         icon={<AiOutlineSetting className="sidebar-icon" />}
                      >
                         Settings
                      </MenuItem>
                      <MenuItem
+                        className="menu-item"
                         icon={
                            <AiOutlineQuestionCircle className="sidebar-icon" />
                         }
                      >
                         Help & Support
                      </MenuItem>
-                     <MenuItem icon={<FiLogOut className="sidebar-icon" />}>
+                     <MenuItem
+                        className="menu-item"
+                        icon={<FiLogOut className="sidebar-icon" />}
+                     >
                         Log Out
                      </MenuItem>
                   </Menu>

@@ -1,52 +1,42 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Form, Alert } from 'react-bootstrap'
-import { Button } from 'react-bootstrap'
-import GoogleButton from 'react-google-button'
-import { useUserAuth } from '../UserAuthContext'
+import GoogleLogin from 'react-google-login'
+import { NavLink, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = () => {
-   const [email, setEmail] = useState('')
-   const [password, setPassword] = useState('')
-   const [error, setError] = useState('')
-   const { logIn, googleSignIn } = useUserAuth()
-   const navigate = useNavigate()
+   const [accessToken, setAccessToken] = useState()
 
-   //    const handleSubmit = async (e) => {
-   //       e.preventDefault()
-   //       setError('')
-   //       try {
-   //          await logIn(email, password)
-   //          navigate('/home')
-   //       } catch (err) {
-   //          setError(err.message)
-   //       }
-   //    }
-
-   const handleGoogleSignIn = async (e) => {
-      e.preventDefault()
-      try {
-         await googleSignIn()
-         navigate('/home')
-      } catch (err) {
-         setError(err.message)
-      }
+   function googleResponse(response) {
+      console.log(response)
+      console.log(response.accessToken)
+      googleLogin(response.accessToken)
    }
 
-   return (
-      <>
-         <div className="p-4 box">
-            {error && <Alert variant="danger">{error}</Alert>}
+   const navigation = () => {
+      // if (accessToken == undefined) {
+      //    console.log('error in login')
+      // } else {
+      //    navigate('/home')
+      // }
+   }
 
-            <div className="">
-               <GoogleButton
-                  className="g-btn container"
-                  type="dark"
-                  onClick={handleGoogleSignIn}
-               />
-            </div>
-         </div>
-      </>
+   async function googleLogin(accesstoken) {
+      let res = await axios.post('http://127.0.0.1:8000/api/auth/google/', {
+         access_token: accesstoken
+      })
+      console.log(res)
+      return res.status
+   }
+   const navigate = useNavigate()
+   return (
+      <div className="container">
+         <GoogleLogin
+            clientId="536967528346-mosfo4emhi91tm0mq8mo4b86hq2jojf4.apps.googleusercontent.com"
+            buttonText="LOGIN WITH GOOGLE"
+            onSuccess={googleResponse}
+            onFailure={googleResponse}
+         />
+      </div>
    )
 }
 

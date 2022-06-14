@@ -51,10 +51,13 @@
   
   #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
     color: #000;
-    margin: 10px 0px;
+    
     font-weight: bold;
   }
 
+  
+
+#header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item
 
 
   #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
@@ -102,7 +105,7 @@
 }
 
 .campaign-wallet-card{
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   /* margin:10px; */
   border-radius:10px;
   padding-top:15px;
@@ -161,7 +164,7 @@
 }
 
 .dots-wrapper{
-  padding: 20px 20px 40px 40px;
+  padding: 20px 20px 20px 40px;
 }
 
 .cards{
@@ -189,6 +192,11 @@
   background-repeat: no-repeat;
   /* border-radius:6px; */
   min-height:550px; 
+  color: #fff;
+}
+
+.menu-item:hover{
+  background-color: #962E40;
   color: #fff;
 }
 

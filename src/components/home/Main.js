@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { useUserAuth } from '../../UserAuthContext'
+
 import Modal1 from './Modals/Modal1'
 import Modal2 from './Modals/Modal2'
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -16,38 +16,30 @@ const Main = ({ token }) => {
 
    const [users, setUsers] = useState()
 
-   const { user, logOut } = useUserAuth()
-
    console.log(show)
 
    const [show1, setShow1] = useState(false)
    const handleClose1 = () => setShow1(false)
    const handleShow1 = () => setShow1(true)
 
-   const data = {
-      username: 'test@gmail.com',
-      password: 12345
-   }
-   const AuthStr = 'Bearer '.concat(token)
+   // const data = {
+   //    username: 'test@gmail.com',
+   //    password: 12345
+   // }
 
-   const handleLogout = async () => {
-      try {
-         await logOut()
-      } catch (err) {
-         console.log(err.message)
-      }
-   }
+   const baseURL = process.env.REACT_APP_URL
 
    useEffect(() => {
       axios
-         .get('http://127.0.0.1:8000/api/users', {
+         .get(baseURL, {
             headers: {
-               Authorization: `Token ${token}`
+               // Authorization: `Token ${token}`
+               Authorization: `Token ${process.env.REACT_APP_TOKEN}`
             }
          })
          .then((res) => {
             setUsers(res.data)
-            console.log(res.data.map((user) => user.email))
+            console.log(res.data)
          })
    }, [])
 
@@ -64,26 +56,37 @@ const Main = ({ token }) => {
       >
          <h1
             style={{
-               marginBottom: '13px',
-               fontWeight: '700',
+               marginBottom: '5px',
+               fontWeight: '800',
                fontSize: '32px'
             }}
          >
             Welcome Back! Lets's catch up to speed!
          </h1>
+         <p>{process.env.REACT_APP_PASSWORD}</p>
+         <div
+            style={{
+               display: 'flex',
+               justifyContent: 'center',
+               marginBottom: '5px'
+            }}
+         >
+            <div
+               style={{
+                  // borderBottom: '5px solid #962E40',
+                  // borderRadius: '20px',
+                  paddingTop: '4px',
+                  width: '150px',
+                  backgroundColor: '#962E40',
+                  borderRadius: '20px'
+               }}
+            ></div>
+         </div>
 
          <p
             style={{ color: '#828282', fontSize: '20px', marginBottom: '32px' }}
          >
             Tip: Did you know the support team is online 24/7 to help you out?
-         </p>
-         <button onClick={handleLogout}>logout</button>
-         <p
-            onClick={() => {
-               navigate('/analytics2')
-            }}
-         >
-            analytics2
          </p>
 
          <div className="">
