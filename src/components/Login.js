@@ -31,10 +31,12 @@ const Login = () => {
    return (
       <div className="container">
          <GoogleLogin
-            clientId="536967528346-mosfo4emhi91tm0mq8mo4b86hq2jojf4.apps.googleusercontent.com"
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             buttonText="LOGIN WITH GOOGLE"
+            scope="openid profile email https://www.googleapis.com/auth/user.birthday.read https://www.googleapis.com/auth/user.gender.read https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.upload"
             onSuccess={googleResponse}
             onFailure={googleResponse}
+            cookiePolicy={"single_host_origin"}
          />
       </div>
    )
