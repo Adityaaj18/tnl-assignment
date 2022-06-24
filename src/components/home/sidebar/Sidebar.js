@@ -30,7 +30,7 @@ const Sidebar = ({ menuCollapse }) => {
                   <Menu>
                      <MenuItem
                         className="menu-item"
-                        icon={<AiOutlineHome className="sidebar-icon " />}
+                        icon={<AiOutlineHome className="sidebar-icon active" />}
                         onClick={() => {
                            navigate('/home')
                         }}

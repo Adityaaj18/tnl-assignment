@@ -5,6 +5,8 @@ import axios from 'axios'
 import Modal1 from './Modals/Modal1'
 import Modal2 from './Modals/Modal2'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { GrGamepad } from 'react-icons/gr'
+import { IoGameControllerOutline, IoWalletOutline } from 'react-icons/io5'
 
 const baseURL = 'http://127.0.0.1:8000/api/users/'
 
@@ -15,6 +17,7 @@ const Main = ({ token }) => {
    const handleShow = () => setShow(true)
 
    const [users, setUsers] = useState()
+   const [campaigns, setCampaigns] = useState([])
 
    console.log(show)
 
@@ -39,6 +42,20 @@ const Main = ({ token }) => {
          })
          .then((res) => {
             setUsers(res.data)
+            // console.log(res.data)
+         })
+   }, [])
+
+   useEffect(() => {
+      axios
+         .get('http://127.0.0.1:8000/api/campaigns/', {
+            headers: {
+               // Authorization: `Token ${token}`
+               Authorization: `Token ${process.env.REACT_APP_TOKEN}`
+            }
+         })
+         .then((res) => {
+            setCampaigns(res.data)
             console.log(res.data)
          })
    }, [])
@@ -47,50 +64,39 @@ const Main = ({ token }) => {
       <div
          className=""
          style={{
-            textAlign: 'center',
-            marginTop: '120px',
-            marginBottom: '28px',
-            marginLeft: '80px',
-            padding: '0px 25px'
+            marginLeft: '60px',
+            padding: '35px 25px',
+            background: '#f2e9fa',
+            marginTop: '68px',
+            borderTopLeftRadius: '50px'
          }}
       >
-         <h1
-            style={{
-               marginBottom: '5px',
-               fontWeight: '800',
-               fontSize: '32px'
-            }}
-         >
-            Welcome Back! Lets's catch up to speed!
-         </h1>
-         <p>{process.env.REACT_APP_PASSWORD}</p>
-         <div
-            style={{
-               display: 'flex',
-               justifyContent: 'center',
-               marginBottom: '5px'
-            }}
-         >
-            <div
+         <div className="welcome">
+            <h1
                style={{
-                  // borderBottom: '5px solid #962E40',
-                  // borderRadius: '20px',
-                  paddingTop: '4px',
-                  width: '150px',
-                  backgroundColor: '#962E40',
-                  borderRadius: '20px'
+                  marginBottom: '5px',
+                  fontWeight: '600',
+                  fontSize: '24px',
+                  color: '#962E40'
                }}
-            ></div>
+            >
+               Welcome Back! Lets's catch up to speed!
+            </h1>
+
+            <p
+               style={{
+                  fontSize: '16px',
+
+                  color: '#9B51E0'
+               }}
+            >
+               Tip: Did you know the support team is online 24/7 to help you
+               out?
+            </p>
          </div>
 
-         <p
-            style={{ color: '#828282', fontSize: '20px', marginBottom: '32px' }}
-         >
-            Tip: Did you know the support team is online 24/7 to help you out?
-         </p>
-
-         <div className="">
-            <div className="campaign-wallet row g-4 ">
+         <div className="" style={{ marginTop: '60px' }}>
+            <div className="campaign-wallet row gx-4 gy-5">
                <div className="col-lg-6 ">
                   <div className="campaign-wallet-card  ">
                      <div
@@ -100,35 +106,25 @@ const Main = ({ token }) => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <div style={{ display: 'flex' }}>
-                           <div
+                        <div
+                           style={{
+                              padding: ' 5px 10px'
+                           }}
+                        >
+                           <IoGameControllerOutline
+                              className="icon"
+                              style={{ backgroundColor: '#56CCF2' }}
+                           />
+                           <h4
                               style={{
-                                 width: '28px',
-                                 height: '34px',
-                                 backgroundColor: '#56ccf2'
-                              }}
-                           ></div>
-                           <div
-                              style={{
-                                 padding: ' 5px 10px'
+                                 fontWeight: '700',
+                                 padding: '10px 0px 0px 35px'
                               }}
                            >
-                              <h4
-                                 style={{
-                                    fontWeight: '700',
-                                    padding: ' 0px 10px'
-                                 }}
-                              >
-                                 Campaigns
-                              </h4>
-                              <div
-                                 style={{
-                                    borderBottom: '3px solid #56ccf2',
-                                    borderRadius: '10px'
-                                 }}
-                              ></div>
-                           </div>
+                              Campaigns
+                           </h4>
                         </div>
+
                         <div style={{ padding: '10px 20px 10px 10px' }}>
                            <a
                               onClick={() => {
@@ -159,7 +155,9 @@ const Main = ({ token }) => {
                               ></div>
                               <span>Available</span>
                            </div>
-                           <span style={{ fontWeight: '700' }}>110</span>
+                           <span style={{ fontWeight: '700' }}>
+                              {campaigns.length}
+                           </span>
                         </div>
                         <div className="dots">
                            <div style={{ display: 'flex', gap: '7px' }}>
@@ -175,7 +173,7 @@ const Main = ({ token }) => {
                   </div>
                </div>
 
-               <div className=" col-lg-6">
+               <div className="col-lg-6">
                   <div className="campaign-wallet-card  ">
                      <div
                         className="campaign-wallet-card-wrapper"
@@ -184,34 +182,23 @@ const Main = ({ token }) => {
                            justifyContent: 'space-between'
                         }}
                      >
-                        <div style={{ display: 'flex' }}>
-                           <div
+                        <div
+                           style={{
+                              padding: ' 5px 10px'
+                           }}
+                        >
+                           <IoWalletOutline
+                              className="icon"
+                              style={{ backgroundColor: '#9B51E0' }}
+                           />
+                           <h4
                               style={{
-                                 width: '28px',
-                                 height: '34px',
-                                 backgroundColor: '#9B51E0'
-                              }}
-                           ></div>
-                           <div
-                              style={{
-                                 padding: ' 5px 10px'
+                                 fontWeight: '700',
+                                 padding: '10px 0px 0px 35px'
                               }}
                            >
-                              <h4
-                                 style={{
-                                    fontWeight: '700',
-                                    padding: ' 0px 10px'
-                                 }}
-                              >
-                                 Wallets
-                              </h4>
-                              <div
-                                 style={{
-                                    borderBottom: '3px solid #9B51E0',
-                                    borderRadius: '10px'
-                                 }}
-                              ></div>
-                           </div>
+                              Wallets
+                           </h4>
                         </div>
                         <div style={{ padding: '10px 20px 10px 10px' }}>
                            <a className="view-more">View More</a>
@@ -281,62 +268,66 @@ const Main = ({ token }) => {
             </div>
             <div className="cards-container ">
                <div className="row g-4" style={{ marginBottom: '50px' }}>
-                  <div className="col-lg-8">
-                     <Link to="/register" className="link">
-                        <div className="card-banner">
-                           <div className="streampala">
-                              <div className="streampala-wrapper">
-                                 <div style={{ textAlign: 'left' }}>
-                                    <span style={{ fontSize: '24px' }}>
-                                       Streampala
-                                    </span>
-                                    <p style={{ fontSize: '12px' }}>
-                                       Ut enim ad minim veniam, quis nostrud
-                                       exerctation ullameo rlbaoee lorem ipsum
-                                       dolore magna aliqu lorem ipsum dolor{' '}
-                                       <span style={{ fontWeight: '700' }}>
-                                          Learn more
+                  {campaigns.map((campaign) => (
+                     <div key={campaign.id} className="col-lg-6">
+                        <Link to="/register" className="link">
+                           <div className="card-banner">
+                              <div className="streampala">
+                                 <div className="streampala-wrapper">
+                                    <div style={{ textAlign: 'left' }}>
+                                       <span style={{ fontSize: '24px' }}>
+                                          {campaign.name}
                                        </span>
-                                    </p>
-                                 </div>
-                                 <span
-                                    style={{
-                                       fontSize: '36px',
-                                       fontWeight: '700'
-                                    }}
-                                 >
-                                    ₹20
-                                 </span>
-                              </div>
-                           </div>
-                        </div>
-                     </Link>
-                  </div>
-                  <div className="col-lg-4">
-                     <div className="card-banner">
-                        <div className="streampala">
-                           <div className="streampala-wrapper">
-                              <div style={{ textAlign: 'left' }}>
-                                 <span style={{ fontSize: '18px' }}>
-                                    Streampala
-                                 </span>
-                                 <p style={{ fontSize: '12px' }}>
-                                    Ut enim ad minim veniam, quis nostrud
-                                    exerctation ullameo rlbaoee{' '}
-                                    <span style={{ fontWeight: '700' }}>
-                                       Learn more
+                                       <p style={{ fontSize: '12px' }}>
+                                          Ut enim ad minim veniam, quis nostrud
+                                          exerctation ullameo rlbaoee lorem
+                                          ipsum dolore magna aliqu lorem ipsum
+                                          dolor{' '}
+                                          <span style={{ fontWeight: '700' }}>
+                                             Learn more
+                                          </span>
+                                       </p>
+                                    </div>
+                                    <span
+                                       style={{
+                                          fontSize: '36px',
+                                          fontWeight: '700'
+                                       }}
+                                    >
+                                       ₹20
                                     </span>
-                                 </p>
+                                 </div>
                               </div>
-                              <span
-                                 style={{ fontSize: '36px', fontWeight: '700' }}
-                              >
-                                 ₹20
-                              </span>
                            </div>
+                        </Link>
+                     </div>
+                  ))}
+
+                  {/* <div className="col-lg-4">
+                  <div className="card-banner">
+                     <div className="streampala">
+                        <div className="streampala-wrapper">
+                           <div style={{ textAlign: 'left' }}>
+                              <span style={{ fontSize: '18px' }}>
+                                 Streampala
+                              </span>
+                              <p style={{ fontSize: '12px' }}>
+                                 Ut enim ad minim veniam, quis nostrud
+                                 exerctation ullameo rlbaoee{' '}
+                                 <span style={{ fontWeight: '700' }}>
+                                    Learn more
+                                 </span>
+                              </p>
+                           </div>
+                           <span
+                              style={{ fontSize: '36px', fontWeight: '700' }}
+                           >
+                              ₹20
+                           </span>
                         </div>
                      </div>
                   </div>
+               </div>*/}
                </div>
 
                <Modal1
@@ -346,17 +337,17 @@ const Main = ({ token }) => {
                />
                <Modal2 show={show1} handleClose1={handleClose1} />
 
-               <div className="row g-4">
-                  <div className="col-lg-4">
-                     <div className="card-banner"></div>
-                  </div>
-                  <div className="col-lg-4">
-                     <div className="card-banner"></div>
-                  </div>
-                  <div className="col-lg-4">
-                     <div className="card-banner"></div>
-                  </div>
+               {/* <div className="row g-4">
+               <div className="col-lg-4">
+                  <div className="card-banner"></div>
                </div>
+               <div className="col-lg-4">
+                  <div className="card-banner"></div>
+               </div>
+               <div className="col-lg-4">
+                  <div className="card-banner"></div>
+               </div>
+            </div>*/}
             </div>
          </div>
       </div>

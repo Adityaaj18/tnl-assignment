@@ -7,17 +7,14 @@ const Login = () => {
    const [accessToken, setAccessToken] = useState()
 
    function googleResponse(response) {
-      console.log(response)
-      console.log(response.accessToken)
+      // console.log(response)
+      // console.log(response.accessToken)
       googleLogin(response.accessToken)
    }
 
-   const navigation = () => {
-      // if (accessToken == undefined) {
-      //    console.log('error in login')
-      // } else {
-      //    navigate('/home')
-      // }
+   const onSuccess = (response) => {
+      navigate('/home')
+      googleResponse(response)
    }
 
    async function googleLogin(accesstoken) {
@@ -34,9 +31,9 @@ const Login = () => {
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             buttonText="LOGIN WITH GOOGLE"
             scope="openid profile email https://www.googleapis.com/auth/user.birthday.read https://www.googleapis.com/auth/user.gender.read https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.upload"
-            onSuccess={googleResponse}
+            onSuccess={onSuccess}
             onFailure={googleResponse}
-            cookiePolicy={"single_host_origin"}
+            cookiePolicy={'single_host_origin'}
          />
       </div>
    )

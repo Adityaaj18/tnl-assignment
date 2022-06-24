@@ -20,7 +20,8 @@ const Header = ({ menuIconClick }) => {
                      style={{
                         fontSize: '26px',
                         margin: '10px 17px',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        color: '#962E40'
                      }}
                      onClick={menuIconClick}
                   />
@@ -33,18 +34,6 @@ const Header = ({ menuIconClick }) => {
                </h4>
             </div>
             <div className="subnav" style={{ display: 'flex' }}>
-               <div style={{ borderRight: '1px solid #f2f2f2' }}>
-                  <img
-                     src={require('../../img/profile.png')}
-                     alt=""
-                     style={{
-                        width: '48px',
-                        height: '48px',
-                        marginLeft: '15px',
-                        marginRight: '15px'
-                     }}
-                  />
-               </div>
                <div
                   style={{
                      borderRight: '1px solid #f2f2f2'
@@ -65,7 +54,8 @@ const Header = ({ menuIconClick }) => {
                      style={{
                         marginLeft: '12px',
                         marginRight: '12px',
-                        fontSize: '18px'
+                        fontSize: '18px',
+                        fontWeight: 'bold'
                      }}
                   >
                      ₹320.83
@@ -73,19 +63,13 @@ const Header = ({ menuIconClick }) => {
                </div>
                <div style={{ borderRight: '1px solid #f2f2f2' }}>
                   <img
-                     src={require('../../img/settings.png')}
+                     src={require('../../img/profile.png')}
                      alt=""
                      style={{
-                        margin: '10px 15px 0px 15px'
-                     }}
-                  />
-               </div>
-               <div>
-                  <img
-                     src={require('../../img/down.png')}
-                     alt=""
-                     style={{
-                        margin: '20px 15px 0px 15px'
+                        width: '48px',
+                        height: '48px',
+                        marginLeft: '15px',
+                        marginRight: '15px'
                      }}
                   />
                </div>
