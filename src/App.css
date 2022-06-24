@@ -119,10 +119,21 @@ margin-bottom: 150px;
 
 .welcome{
   border: 1px solid #9B51E0;
-  padding: 35px 40px;
+  padding: 35px 36px;
   border-radius:35px;
   background-color: #fff;
   /* margin-top: 120px; */
+  margin: 0px 20px;
+  display: flex;
+  justify-content:space-between;
+}
+
+.timer{
+  font-size:14px;
+  border: 1px solid #fff;
+  padding: 4px;
+  border-radius:8px;
+  
 }
 
 .icon{

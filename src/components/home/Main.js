@@ -72,27 +72,34 @@ const Main = ({ token }) => {
          }}
       >
          <div className="welcome">
-            <h1
-               style={{
-                  marginBottom: '5px',
-                  fontWeight: '600',
-                  fontSize: '24px',
-                  color: '#962E40'
-               }}
-            >
-               Welcome Back! Lets's catch up to speed!
-            </h1>
+            <div>
+               <h1
+                  style={{
+                     marginBottom: '5px',
+                     fontWeight: '600',
+                     fontSize: '24px',
+                     color: '#962E40'
+                  }}
+               >
+                  Welcome Back! Lets's catch up to speed!
+               </h1>
 
-            <p
-               style={{
-                  fontSize: '16px',
-
-                  color: '#9B51E0'
-               }}
-            >
-               Tip: Did you know the support team is online 24/7 to help you
-               out?
-            </p>
+               <p
+                  style={{
+                     fontSize: '16px',
+                     marginBottom: '0px',
+                     color: '#9B51E0'
+                  }}
+               >
+                  Tip: Did you know the support team is online 24/7 to help you
+                  out?
+               </p>
+            </div>
+            <img
+               src={require('../../img/welcome-img.png')}
+               alt=""
+               style={{ width: '65px', height: '65px' }}
+            />
          </div>
 
          <div className="" style={{ marginTop: '60px' }}>
@@ -197,7 +204,7 @@ const Main = ({ token }) => {
                                  padding: '10px 0px 0px 35px'
                               }}
                            >
-                              Wallets
+                              Wallet
                            </h4>
                         </div>
                         <div style={{ padding: '10px 20px 10px 10px' }}>
@@ -253,13 +260,6 @@ const Main = ({ token }) => {
                      }}
                   >
                      Campaigns you might like
-                     <div
-                        style={{
-                           borderBottom: '3px solid #962E40',
-                           borderRadius: '10px',
-                           paddingTop: '4px'
-                        }}
-                     ></div>
                   </span>
                </div>
                <div style={{ padding: '10px 0px 10px 10px' }}>
@@ -272,30 +272,39 @@ const Main = ({ token }) => {
                      <div key={campaign.id} className="col-lg-6">
                         <Link to="/register" className="link">
                            <div className="card-banner">
-                              <div className="streampala">
-                                 <div className="streampala-wrapper">
-                                    <div style={{ textAlign: 'left' }}>
-                                       <span style={{ fontSize: '24px' }}>
-                                          {campaign.name}
-                                       </span>
-                                       <p style={{ fontSize: '12px' }}>
-                                          Ut enim ad minim veniam, quis nostrud
-                                          exerctation ullameo rlbaoee lorem
-                                          ipsum dolore magna aliqu lorem ipsum
-                                          dolor{' '}
-                                          <span style={{ fontWeight: '700' }}>
-                                             Learn more
+                              <div style={{ padding: '30px' }}>
+                                 <span className="timer">
+                                    Ends in: 45d 15h 12m
+                                 </span>
+                              </div>
+                              <div style={{ paddingTop: '70px' }}>
+                                 <div className="streampala">
+                                    <div className="streampala-wrapper">
+                                       <div style={{ textAlign: 'left' }}>
+                                          <span style={{ fontSize: '24px' }}>
+                                             {campaign.name}
                                           </span>
-                                       </p>
+                                          <p style={{ fontSize: '12px' }}>
+                                             Ut enim ad minim veniam, quis
+                                             nostrud exerctation ullameo rlbaoee
+                                             lorem ipsum dolore magna aliqu
+                                             lorem ipsum dolor{' '}
+                                             <span
+                                                style={{ fontWeight: '700' }}
+                                             >
+                                                Learn more
+                                             </span>
+                                          </p>
+                                       </div>
+                                       <span
+                                          style={{
+                                             fontSize: '36px',
+                                             fontWeight: '700'
+                                          }}
+                                       >
+                                          ₹20
+                                       </span>
                                     </div>
-                                    <span
-                                       style={{
-                                          fontSize: '36px',
-                                          fontWeight: '700'
-                                       }}
-                                    >
-                                       ₹20
-                                    </span>
                                  </div>
                               </div>
                            </div>
