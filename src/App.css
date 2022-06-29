@@ -34,10 +34,11 @@
 .scroll-area::-webkit-scrollbar{
   width: 9px;
   
+  
 }
 
 .scroll-area::-webkit-scrollbar-thumb{
-  background-color: lightgray;
+  background-color: #9B51E0;
 }
 
 .campaign-wallet{

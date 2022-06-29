@@ -4,12 +4,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.pro-sidebar,
-.pro-sidebar-inner,
-.pro-sidebar-layout,
-.pro-sidebar-content{
-  border-right-color: #fff !important;
-}
+
 
 #header {
     position: fixed;
@@ -147,7 +142,7 @@
   color:#fff;
   border-style: none;
   border-radius:8px;
-  padding: 5px;
+  padding: 7px 35px;
 
 }
 .disabled{
@@ -191,9 +186,10 @@
   background-image: url(../../../img/banner.png);
   background-size: cover;
   background-repeat: no-repeat;
-  
+  border-radius: 35px;
   height:300px; 
   color: #fff;
+  
  
 }
 .cards-container .card-banner{
@@ -212,10 +208,11 @@
   
 }
 
-/* .menu-item:hover{
-  background-color: #962E40;
-  color: #fff;
-} */
+.menu-item-title{
+  font-weight: 600;
+ 
+  color: #BDBDBD;
+}
 
 
 

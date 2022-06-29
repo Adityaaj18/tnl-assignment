@@ -35,7 +35,7 @@ const Sidebar = ({ menuCollapse }) => {
                            navigate('/home')
                         }}
                      >
-                        Home
+                        <span className="menu-item-title">Home</span>
                      </MenuItem>
 
                      <MenuItem
@@ -47,7 +47,7 @@ const Sidebar = ({ menuCollapse }) => {
                            navigate('/analytics')
                         }}
                      >
-                        Analytics
+                        <span className="menu-item-title">Analytics</span>
                      </MenuItem>
 
                      <MenuItem
@@ -57,7 +57,7 @@ const Sidebar = ({ menuCollapse }) => {
                            navigate('/campaigns')
                         }}
                      >
-                        My Campaigns
+                        <span className="menu-item-title">My Campaigns</span>
                      </MenuItem>
 
                      <MenuItem
@@ -67,14 +67,14 @@ const Sidebar = ({ menuCollapse }) => {
                            navigate('/profile')
                         }}
                      >
-                        Profile
+                        <span className="menu-item-title">Profile</span>
                      </MenuItem>
 
                      <MenuItem
                         className="menu-item"
                         icon={<AiOutlineSetting className="sidebar-icon" />}
                      >
-                        Settings
+                        <span className="menu-item-title">Settings</span>
                      </MenuItem>
                      <MenuItem
                         className="menu-item"
@@ -82,13 +82,13 @@ const Sidebar = ({ menuCollapse }) => {
                            <AiOutlineQuestionCircle className="sidebar-icon" />
                         }
                      >
-                        Help & Support
+                        <span className="menu-item-title">Help & Support</span>
                      </MenuItem>
                      <MenuItem
                         className="menu-item"
                         icon={<FiLogOut className="sidebar-icon" />}
                      >
-                        Log Out
+                        <span className="menu-item-title">Log Out</span>
                      </MenuItem>
                   </Menu>
                </SidebarContent>

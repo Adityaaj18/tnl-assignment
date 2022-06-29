@@ -26,8 +26,6 @@ const Campaigns = () => {
          })
    }, [])
 
-   const card1 = document.querySelector('.camps :nth-child(1)')
-   card1.classList.add('col-lg-8')
    return (
       <div>
          <Header menuIconClick={menuIconClick} />
