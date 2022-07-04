@@ -13,26 +13,24 @@ const Modaal = ({ show, handleClose, handleShow }) => {
                         style={{
                            display: 'flex',
                            justifyContent: 'end',
-                           padding: '10px'
+                           padding: '20px'
                         }}
                      >
                         <AiFillCloseCircle
                            style={{
-                              fontSize: '22px'
+                              fontSize: '25px'
                            }}
                            onClick={handleClose}
                         />
                      </div>
                      <div
                         style={{
-                           marginTop: '15%',
+                           marginTop: '8%',
                            alignItems: 'center',
                            textAlign: 'center'
                         }}
                      >
-                        <h1 style={{ fontSize: '48px', fontWeight: '700' }}>
-                           Yipee!
-                        </h1>
+                        <img src={require('../img/yipee.png')} />
                         <p>lorem ipsum dolor sit amet, consectetur</p>
                         <button className="my-camp">My Campaigns</button>
                         <h1

@@ -62,7 +62,6 @@ const Main = ({ token }) => {
 
    return (
       <div
-         className=""
          style={{
             marginLeft: '60px',
             padding: '35px 25px',

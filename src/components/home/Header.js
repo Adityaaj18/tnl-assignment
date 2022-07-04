@@ -27,7 +27,16 @@ const Header = ({ menuIconClick }) => {
                   />
                </div>
 
-               <h4 style={{ marginBottom: '0px', marginTop: '10px' }}>
+               <h4
+                  style={{
+                     marginBottom: '0px',
+                     marginTop: '10px',
+                     color: '#9B51E0',
+                     fontSize: '24px',
+                     fontWeight: '700',
+                     paddingLeft: '50px'
+                  }}
+               >
                   {path == '/'
                      ? 'Home'
                      : pathName.charAt(0).toUpperCase() + pathName.slice(1)}
