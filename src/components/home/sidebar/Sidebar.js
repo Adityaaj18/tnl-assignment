@@ -54,7 +54,7 @@ const Sidebar = ({ menuCollapse }) => {
                         className="menu-item"
                         icon={<CgNotes className="sidebar-icon" />}
                         onClick={() => {
-                           navigate('/campaigns')
+                           navigate('/mycampaigns')
                         }}
                      >
                         <span className="menu-item-title">My Campaigns</span>

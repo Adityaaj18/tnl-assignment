@@ -134,6 +134,11 @@
   margin-top:20px;
 }
 
+.view-more:hover{
+  cursor: pointer;
+  color:#fff;
+}
+
 .start{
   background:#962E40;
   text-decoration: none;

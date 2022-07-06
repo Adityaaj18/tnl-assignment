@@ -14,6 +14,7 @@ import CampaignData from './components/CampaignData'
 import Main2 from './components/Main2'
 import CampaignSetup from './components/CampaignSetup'
 import Login from './components/Login'
+import MyCampaigns from './components/MyCampaigns'
 
 function App() {
    const [menuCollapse, setMenuCollapse] = useState(true)
@@ -31,6 +32,7 @@ function App() {
                <Route path="/register" element={<Register />} />
                <Route path="/profile" element={<Profile />} />
                <Route path="/campaigns" element={<Campaigns />} />
+               <Route path="/mycampaigns" element={<MyCampaigns />} />
                <Route path="/analytics" element={<Analytics />} />
                <Route path="/main2" element={<Main2 />} />
                <Route path="/setup" element={<CampaignSetup />} />

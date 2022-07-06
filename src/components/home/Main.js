@@ -4,8 +4,8 @@ import axios from 'axios'
 
 import Modal1 from './Modals/Modal1'
 import Modal2 from './Modals/Modal2'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { GrGamepad } from 'react-icons/gr'
+import { useNavigate } from 'react-router-dom'
+
 import { IoGameControllerOutline, IoWalletOutline } from 'react-icons/io5'
 
 const baseURL = 'http://127.0.0.1:8000/api/users/'
@@ -262,7 +262,12 @@ const Main = ({ token }) => {
                   </span>
                </div>
                <div style={{ padding: '10px 0px 10px 10px' }}>
-                  <a className="view-more">View More</a>
+                  <a
+                     className="view-more"
+                     onClick={() => navigate('/campaigns')}
+                  >
+                     View More
+                  </a>
                </div>
             </div>
             <div className="cards-container ">
@@ -310,32 +315,6 @@ const Main = ({ token }) => {
                         </Link>
                      </div>
                   ))}
-
-                  {/* <div className="col-lg-4">
-                  <div className="card-banner">
-                     <div className="streampala">
-                        <div className="streampala-wrapper">
-                           <div style={{ textAlign: 'left' }}>
-                              <span style={{ fontSize: '18px' }}>
-                                 Streampala
-                              </span>
-                              <p style={{ fontSize: '12px' }}>
-                                 Ut enim ad minim veniam, quis nostrud
-                                 exerctation ullameo rlbaoee{' '}
-                                 <span style={{ fontWeight: '700' }}>
-                                    Learn more
-                                 </span>
-                              </p>
-                           </div>
-                           <span
-                              style={{ fontSize: '36px', fontWeight: '700' }}
-                           >
-                              ₹20
-                           </span>
-                        </div>
-                     </div>
-                  </div>
-               </div>*/}
                </div>
 
                <Modal1
@@ -344,18 +323,6 @@ const Main = ({ token }) => {
                   setShow1={setShow1}
                />
                <Modal2 show={show1} handleClose1={handleClose1} />
-
-               {/* <div className="row g-4">
-               <div className="col-lg-4">
-                  <div className="card-banner"></div>
-               </div>
-               <div className="col-lg-4">
-                  <div className="card-banner"></div>
-               </div>
-               <div className="col-lg-4">
-                  <div className="card-banner"></div>
-               </div>
-            </div>*/}
             </div>
          </div>
       </div>
