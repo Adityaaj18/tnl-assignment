@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import GoogleLogin from 'react-google-login'
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { TokenContext } from '../context/TokenContext'
 
 const Login = () => {
    const [accessToken, setAccessToken] = useState()
+   const { setToken } = useContext(TokenContext)
 
    function googleResponse(response) {
-      // console.log(response)
-      // console.log(response.accessToken)
       googleLogin(response.accessToken)
+      // navigate('/home')
    }
 
    const onSuccess = (response) => {
-      navigate('/home')
+      // navigate('/home')
       googleResponse(response)
    }
 
@@ -22,6 +23,12 @@ const Login = () => {
          access_token: accesstoken
       })
       console.log(res)
+      setToken(res.data.key)
+      if (res.status == 200) {
+         navigate('/home')
+      }
+      window.localStorage.setItem('token', JSON.stringify(res.data.key))
+     
       return res.status
    }
    const navigate = useNavigate()

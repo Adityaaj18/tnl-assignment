@@ -1,15 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './home/Header'
 import Sidebar from './home/sidebar/Sidebar'
+import axios from 'axios'
 
 const Profile = () => {
    const [menuCollapse, setMenuCollapse] = useState(true)
+   const [user, setUser] = useState()
 
    const [isEdit, setIsEdit] = useState(false)
 
    const menuIconClick = () => {
       menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)
    }
+
+   useEffect(() => {
+      axios
+         .get('http://127.0.0.1:8000/api/users/current/', {
+            headers: {
+               // Authorization: `Token ${token}`
+               Authorization: `Token f362e4e2c00387b6e6ec36fab14c175761644aa2`
+            }
+         })
+         .then((res) => {
+            setUser(res.data)
+            console.log(res.data)
+         })
+   }, [])
 
    return (
       <div>
@@ -87,7 +103,7 @@ const Profile = () => {
                                                    color: '#9B51E0'
                                                 }}
                                              >
-                                                John Doe
+                                                {user.name}
                                              </h1>
                                           </div>
                                        </div>
@@ -397,7 +413,7 @@ const Profile = () => {
                                                    color: '#9B51E0'
                                                 }}
                                              >
-                                                John Doe
+                                                {user.name}
                                              </h1>
                                              <ul
                                                 style={{
@@ -466,7 +482,7 @@ const Profile = () => {
                                  <div className="col-lg-2 profile-data">
                                     Username
                                  </div>
-                                 <div className="col-lg-10">hiuaohn jdqh</div>
+                                 <div className="col-lg-10">{user.name}</div>
                               </div>
                               <div className="row data-row">
                                  <div className="col-lg-2 profile-data">
@@ -478,9 +494,7 @@ const Profile = () => {
                                  <div className="col-lg-2 profile-data">
                                     Email
                                  </div>
-                                 <div className="col-lg-10">
-                                    hiuaohn@gmail.com
-                                 </div>
+                                 <div className="col-lg-10">{user.email}</div>
                               </div>
                               <div className="row data-row">
                                  <div className="col-lg-2 profile-data">

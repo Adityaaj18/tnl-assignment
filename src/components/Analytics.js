@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Header from './home/Header'
 import Sidebar from './home/sidebar/Sidebar'
+import axios from 'axios'
+import { TokenContext } from '../context/TokenContext'
 
 const Analytics = () => {
    const [menuCollapse, setMenuCollapse] = useState(true)
@@ -8,6 +10,39 @@ const Analytics = () => {
    const menuIconClick = () => {
       menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)
    }
+   const [isLoading, setIsLoading] = useState(true)
+   var { token } = useContext(TokenContext)
+   console.log(token)
+   const [user, setUser] = useState()
+
+   useEffect(() => {
+      setIsLoading(true)
+
+      const fetchData = async () => {
+         try {
+            const { data } = await axios.get(
+               'http://127.0.0.1:8000/api/users/current/',
+               {
+                  headers: {
+                     Authorization: `Token ${token}`
+                  }
+               }
+            )
+            console.log(data)
+            setUser(data)
+            console.log('after', token)
+         } catch (err) {
+            console.log(err)
+            console.log('after', token)
+         } finally {
+            setIsLoading(false)
+            console.log('after', token)
+
+            // console.log(user)
+         }
+      }
+      fetchData()
+   }, [])
    return (
       <div>
          <Header menuIconClick={menuIconClick} />
@@ -22,7 +57,17 @@ const Analytics = () => {
                height: '100vh'
             }}
          >
-            Analytics
+            {isLoading ? (
+               <h1>Loading...</h1>
+            ) : (
+               <div>
+                  {' '}
+                  Analytics
+                  {token}
+                  {user.id}
+                  {user.name}
+               </div>
+            )}
          </div>
       </div>
    )

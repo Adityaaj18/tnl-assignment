@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/home/Header'
 import Sidebar from './components/home/sidebar/Sidebar'
 import Main from './components/home/Main'
@@ -15,9 +15,13 @@ import Main2 from './components/Main2'
 import CampaignSetup from './components/CampaignSetup'
 import Login from './components/Login'
 import MyCampaigns from './components/MyCampaigns'
+import { TokenContext } from './context/TokenContext'
 
 function App() {
    const [menuCollapse, setMenuCollapse] = useState(true)
+   const [token, setToken] = useState('')
+
+   const [user, setUser] = useState()
 
    const menuIconClick = () => {
       menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)
@@ -25,20 +29,22 @@ function App() {
 
    return (
       <div className="App">
-         <Router>
-            <Routes>
-               <Route path="/" element={<Login />} />
-               <Route path="/home" element={<Home />} />
-               <Route path="/register" element={<Register />} />
-               <Route path="/profile" element={<Profile />} />
-               <Route path="/campaigns" element={<Campaigns />} />
-               <Route path="/mycampaigns" element={<MyCampaigns />} />
-               <Route path="/analytics" element={<Analytics />} />
-               <Route path="/main2" element={<Main2 />} />
-               <Route path="/setup" element={<CampaignSetup />} />
-               <Route path="/analytics2" element={<Analytics2 />} />
-            </Routes>
-         </Router>
+         <TokenContext.Provider value={{ token, setToken }}>
+            <Router>
+               <Routes>
+                  <Route path="/" element={<Login />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/campaigns" element={<Campaigns />} />
+                  <Route path="/mycampaigns" element={<MyCampaigns />} />
+                  <Route path="/analytics" element={<Analytics />} />
+                  <Route path="/main2" element={<Main2 />} />
+                  <Route path="/setup" element={<CampaignSetup />} />
+                  <Route path="/analytics2" element={<Analytics2 />} />
+               </Routes>
+            </Router>
+         </TokenContext.Provider>
       </div>
    )
 }
