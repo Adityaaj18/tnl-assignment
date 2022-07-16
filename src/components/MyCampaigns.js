@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import { BsChevronDown } from 'react-icons/bs'
+import Loading from './Loading'
 
 const MyCampaigns = () => {
    const navigate = useNavigate()
@@ -148,7 +149,7 @@ const MyCampaigns = () => {
                   </div>
                </div>
                {isLoading ? (
-                  <h1>Loading...</h1>
+                  <Loading />
                ) : (
                   <div className="my-campaigns">
                      <div

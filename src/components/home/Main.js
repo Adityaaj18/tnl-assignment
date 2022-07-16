@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { IoGameControllerOutline, IoWalletOutline } from 'react-icons/io5'
 import { TokenContext } from '../../context/TokenContext'
 
+import Loading from '../Loading'
+
 const baseURL = 'http://127.0.0.1:8000/api/users/'
 
 const Main = () => {
@@ -30,7 +32,7 @@ const Main = () => {
    //const { token } = useContext(TokenContext)
    //console.log(typeof token)
 
-   const baseURL = 'http://127.0.0.1:8000/api/users'
+   const baseURL = 'http://127.0.0.1:8000/api'
    //f362e4e2c00387b6e6ec36fab14c175761644aa2
 
  const getToken = () => localStorage.getItem("token")
@@ -50,7 +52,7 @@ const Main = () => {
    const fetchData = async () => {
       try {
          const { data } = await axiosInstance.get(
-            '/current',
+            '/users/current',
             {
                headers: {
                   Authorization: getAuthorizationHeader()
@@ -72,45 +74,19 @@ const Main = () => {
 
 
 
-   // useEffect(() => {
-   //    setIsLoading(true)
+ 
 
-   //    const fetchData = async () => {
-   //       try {
-   //          const { data } = await axios.get(
-   //             'http://127.0.0.1:8000/api/users/current/',
-   //             {
-   //                headers: {
-   //                   Authorization: `Token f362e4e2c00387b6e6ec36fab14c175761644aa2`
-   //                }
-   //             }
-   //          )
-   //          console.log(data)
-   //          setUser(data)
-   //       } catch (err) {
-   //          console.log(err)
-   //       } finally {
-   //          setIsLoading(false)
-
-   //          // console.log(user)
-   //       }
-   //    }
-   //    fetchData()
-   // }, [])
-
-   // useEffect(() => {
-   //    axios
-   //       .get('http://127.0.0.1:8000/api/campaigns/', {
-   //          headers: {
-   //             // Authorization: `Token ${token}`
-   //             Authorization: `Token ${process.env.REACT_APP_TOKEN}`
-   //          }
-   //       })
-   //       .then((res) => {
-   //          setCampaigns(res.data)
-   //          // console.log(res.data)
-   //       })
-   // }, [])
+   useEffect(() => {
+      axiosInstance.get(
+         '/campaigns',
+         {
+            headers: {
+               Authorization: getAuthorizationHeader()
+            }
+         }
+      ).then((response) => { setCampaigns(response.data)})
+      
+   }, [])
 
    return (
       <div
@@ -123,7 +99,7 @@ const Main = () => {
          }}
       >
          {isLoading ? (
-            <h1>Loading...</h1>
+            <Loading />
          ) : (
             // <div>data</div>
             <div>

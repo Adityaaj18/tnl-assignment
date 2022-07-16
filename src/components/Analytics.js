@@ -15,34 +15,7 @@ const Analytics = () => {
    console.log(token)
    const [user, setUser] = useState()
 
-   useEffect(() => {
-      setIsLoading(true)
 
-      const fetchData = async () => {
-         try {
-            const { data } = await axios.get(
-               'http://127.0.0.1:8000/api/users/current/',
-               {
-                  headers: {
-                     Authorization: `Token ${token}`
-                  }
-               }
-            )
-            console.log(data)
-            setUser(data)
-            console.log('after', token)
-         } catch (err) {
-            console.log(err)
-            console.log('after', token)
-         } finally {
-            setIsLoading(false)
-            console.log('after', token)
-
-            // console.log(user)
-         }
-      }
-      fetchData()
-   }, [])
    return (
       <div>
          <Header menuIconClick={menuIconClick} />
@@ -57,17 +30,9 @@ const Analytics = () => {
                height: '100vh'
             }}
          >
-            {isLoading ? (
+          
                <h1>Loading...</h1>
-            ) : (
-               <div>
-                  {' '}
-                  Analytics
-                  {token}
-                  {user.id}
-                  {user.name}
-               </div>
-            )}
+            
          </div>
       </div>
    )

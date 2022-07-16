@@ -14,19 +14,45 @@ const Campaigns = () => {
    const menuIconClick = () => {
       menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)
    }
-   useEffect(() => {
-      axios
-         .get('http://127.0.0.1:8000/api/campaigns/', {
-            headers: {
-               // Authorization: `Token ${token}`
-               Authorization: `Token ${process.env.REACT_APP_TOKEN}`
-            }
-         })
-         .then((res) => {
-            setCampaigns(res.data)
-            console.log(res.data)
-         })
-   }, [])
+   
+   const baseURL = 'http://127.0.0.1:8000/api'
+
+   const getToken = () => localStorage.getItem("token")
+   ? JSON.parse(localStorage.getItem("token"))
+   : null;
+ 
+ const getAuthorizationHeader = () => `Token ${getToken()}`;
+ 
+ const axiosInstance = axios.create({
+   baseURL,
+   headers: { Authorization: getAuthorizationHeader() },
+ })
+
+ useEffect(() => {
+   axiosInstance.get(
+      '/campaigns',
+      {
+         headers: {
+            Authorization: getAuthorizationHeader()
+         }
+      }
+   ).then((response) => { setCampaigns(response.data)})
+   
+}, [])
+   
+   // useEffect(() => {
+   //    axios
+   //       .get('http://127.0.0.1:8000/api/campaigns/', {
+   //          headers: {
+   //             // Authorization: `Token ${token}`
+   //             Authorization: `Token ${process.env.REACT_APP_TOKEN}`
+   //          }
+   //       })
+   //       .then((res) => {
+   //          setCampaigns(res.data)
+   //          console.log(res.data)
+   //       })
+   // }, [])
 
    return (
       <div>
