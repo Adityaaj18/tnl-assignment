@@ -31,21 +31,40 @@ const CampaignSetup = () => {
       <div>
          <Header menuIconClick={menuIconClick} />
          <Sidebar menuCollapse={menuCollapse} />
+         <div
+            style={{
+               marginLeft: '60px',
+               padding: '35px 25px',
+               background: '#f2e9fa',
+               marginTop: '68px',
+               borderTopLeftRadius: '50px',
+               height: '100vh'
+            }}
+         >
+            <div className="container">
+               <p
+                  style={{
+                     fontSize: '24px',
+                     fontWeight: '700',
+                     marginTop: '50px'
+                  }}
+               >
+                  Your Ad Campaign Setup
+               </p>
+               <Stepper activeStep={currentStep - 1} orientation="horizontal">
+                  <Step>
+                     <StepLabel>campaign</StepLabel>
+                  </Step>
+                  <Step>
+                     <StepLabel></StepLabel>
+                  </Step>
+                  <Step>
+                     <StepLabel></StepLabel>
+                  </Step>
+               </Stepper>
 
-         <div className="container" style={{ marginTop: '100px' }}>
-            <Stepper activeStep={currentStep - 1} orientation="horizontal">
-               <Step>
-                  <StepLabel>campaign</StepLabel>
-               </Step>
-               <Step>
-                  <StepLabel></StepLabel>
-               </Step>
-               <Step>
-                  <StepLabel></StepLabel>
-               </Step>
-            </Stepper>
-
-            {showStep(currentStep)}
+               {showStep(currentStep)}
+            </div>
          </div>
       </div>
    )

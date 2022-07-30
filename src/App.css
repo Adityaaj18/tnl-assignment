@@ -84,16 +84,19 @@ margin-bottom: 150px;
 padding: 0px 20px;
 }
 
-#cancel{
-  padding: 7px 35px;
+.cancel{
+ 
+  text-decoration: none;
   font-size:14px;
+  color:#fff;
+  border-style: none;
   border-radius:10px;
-  background-color: #fff;
+  padding: 7px 35px;
+  margin-top:20px;
   color: #962E40;
   border: 1px solid #962E40;
-  font-weight: 600;
   
-  margin-top:10px;
+  
 
 }
 
@@ -127,7 +130,7 @@ padding: 0px 20px;
 
 .welcome{
   border: 1px solid #9B51E0;
-  padding: 35px 36px;
+  padding: 30px 36px;
   border-radius:35px;
   background-color: #fff;
   /* margin-top: 120px; */
@@ -154,6 +157,41 @@ padding: 0px 20px;
  margin-top: -60px;
  margin-left: 30px;
  
+}
+
+.table-head{
+  padding: 24px !important;
+ 
+}
+
+.table-row{
+  border: 1px solid #9B51E0;
+}
+
+.break{
+  padding: 4px !important;
+}
+
+.table-row td,
+.table-row th
+{
+  padding:25px;
+  background-color:#fff;
+}
+
+.table>:not(caption)>*>* {
+  border-bottom-width: 1px solid #9B51E0 !important;
+}
+
+.table-head:first-child{
+  border-top-left-radius: 25px !important;
+  border-bottom-left-radius: 25px !important;
+}
+
+.table-head:last-child{
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+  border-right: none !important;
 }
 
 @media screen and (max-width: 500px){

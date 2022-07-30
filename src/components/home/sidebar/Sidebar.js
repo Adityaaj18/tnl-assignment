@@ -87,6 +87,10 @@ const Sidebar = ({ menuCollapse }) => {
                      <MenuItem
                         className="menu-item"
                         icon={<FiLogOut className="sidebar-icon" />}
+                        onClick={() => {
+                           localStorage.removeItem('token')
+                           navigate('/')
+                        }}
                      >
                         <span className="menu-item-title">Log Out</span>
                      </MenuItem>

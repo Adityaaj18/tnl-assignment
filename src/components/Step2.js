@@ -19,18 +19,27 @@ const Step2 = () => {
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Lading page URL</label>
                   <div class="col-lg-6 col-sm-10">
-                     <input class="form-control" value={userData['url']} onChange={(e) =>
-                        setUserData({ ...userData, "url": e.target.value })
-                     } />
+                     <input
+                        class="form-control"
+                        value={userData['url']}
+                        onChange={(e) =>
+                           setUserData({ ...userData, url: e.target.value })
+                        }
+                     />
                   </div>
                </div>
                <br />
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Message copy</label>
                   <div class="col-lg-6 col-sm-10">
-                     <input type="textarea" class="form-control" value={userData['message']} onChange={(e) =>
-                        setUserData({ ...userData, "message": e.target.value })
-                     } />
+                     <input
+                        type="textarea"
+                        class="form-control"
+                        value={userData['message']}
+                        onChange={(e) =>
+                           setUserData({ ...userData, message: e.target.value })
+                        }
+                     />
                   </div>
                </div>
                <br />
@@ -58,20 +67,24 @@ const Step2 = () => {
                      Default checked radio
                   </label>
                </div>
-               <a
-                  className="view-more"
-                  style={{ display: 'flex', justifyContent: 'center' }}
-                  onClick={() => setStep(1)}
-               >
-                  Back
-               </a>
-               <a
-                  className="view-more"
-                  style={{ display: 'flex', justifyContent: 'center' }}
-                  onClick={() => setStep(3)}
-               >
-                  Next
-               </a>
+               <div style={{ display: 'flex', justifyContent: 'right' }}>
+                  <div style={{ display: 'flex' }}></div>
+
+                  <button
+                     className="cancel"
+                     style={{ marginRight: '13px' }}
+                     onClick={() => setStep(1)}
+                  >
+                     Back
+                  </button>
+                  <button
+                     className="view-more"
+                     style={{}}
+                     onClick={() => setStep(3)}
+                  >
+                     Next
+                  </button>
+               </div>
             </form>
          </div>
       </div>

@@ -7,20 +7,20 @@ const Step3 = () => {
    return (
       <div>
          choose ad placement
-         <a
-            className="view-more"
-            style={{ display: 'flex', justifyContent: 'center' }}
-            onClick={() => setStep(2)}
-         >
-            Back
-         </a>
-         <a
-            className="view-more"
-            style={{ display: 'flex', justifyContent: 'center' }}
-            onClick={submitData}
-         >
-            Finish
-         </a>
+         <div style={{ display: 'flex', justifyContent: 'right' }}>
+            <div style={{ display: 'flex' }}>
+               <button
+                  className="cancel"
+                  style={{ marginRight: '13px' }}
+                  onClick={() => setStep(2)}
+               >
+                  Back
+               </button>
+               <button className="view-more" onClick={submitData}>
+                  Finish
+               </button>
+            </div>
+         </div>
       </div>
    )
 }
