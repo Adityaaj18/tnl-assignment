@@ -15,7 +15,6 @@ const Analytics = () => {
    console.log(token)
    const [user, setUser] = useState()
 
-
    return (
       <div>
          <Header menuIconClick={menuIconClick} />
@@ -30,9 +29,7 @@ const Analytics = () => {
                height: '100vh'
             }}
          >
-          
-               <h1>Loading...</h1>
-            
+            <h1>no data</h1>
          </div>
       </div>
    )

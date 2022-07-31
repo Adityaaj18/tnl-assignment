@@ -335,7 +335,7 @@ const Main2 = () => {
                         </div>
                      </div>
                   </div>
-                  <div className="table" style={{ marginTop: '40px' }}>
+                  <div className="table " style={{ marginTop: '40px' }}>
                      <table className="table ">
                         <thead
                            style={{

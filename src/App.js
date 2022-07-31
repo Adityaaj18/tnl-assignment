@@ -16,6 +16,7 @@ import CampaignSetup from './components/CampaignSetup'
 import Login from './components/Login'
 import MyCampaigns from './components/MyCampaigns'
 import { TokenContext } from './context/TokenContext'
+import Wallet from './components/Wallet'
 
 function App() {
    const [menuCollapse, setMenuCollapse] = useState(true)
@@ -42,6 +43,7 @@ function App() {
                   <Route path="/main2" element={<Main2 />} />
                   <Route path="/setup" element={<CampaignSetup />} />
                   <Route path="/analytics2" element={<Analytics2 />} />
+                  <Route path="/wallet" element={<Wallet />} />
                </Routes>
             </Router>
          </TokenContext.Provider>

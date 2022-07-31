@@ -555,6 +555,167 @@ const Analytics2 = () => {
                         </div>
                      </div>
                   </div>
+                  <h5 style={{ fontWeight: '700' }}>Campaign Data</h5>
+                  <div className="row gx-5 gy-4">
+                     <div className="col-lg-6">
+                        <div>
+                           <div style={{ borderBottom: '1px solid #9B51E0' }}>
+                              <div
+                                 style={{
+                                    fontSize: '20px',
+                                    padding: '15px 30px',
+                                    display: 'flex',
+                                    color: '#9B51E0',
+                                    justifyContent: 'space-between'
+                                 }}
+                              >
+                                 <div style={{ display: 'flex' }}>
+                                    <HiOutlineSpeakerphone
+                                       style={{
+                                          marginTop: '5px',
+                                          marginRight: '10px',
+                                          fontSize: '25px'
+                                       }}
+                                    />
+                                    <p style={{ margin: '0px' }}>
+                                       All Campaigns
+                                    </p>
+                                 </div>
+                                 <FiChevronDown
+                                    style={{
+                                       fontSize: '25px',
+                                       marginTop: '5px'
+                                    }}
+                                 />
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div className="col-lg-6">
+                        <div>
+                           <div style={{ borderBottom: '1px solid #9B51E0' }}>
+                              <div
+                                 style={{
+                                    fontSize: '20px',
+                                    padding: '15px 30px',
+                                    display: 'flex',
+                                    color: '#9B51E0',
+                                    justifyContent: 'space-between'
+                                 }}
+                              >
+                                 <div style={{ display: 'flex' }}>
+                                    <RiTimerLine
+                                       style={{
+                                          marginTop: '5px',
+                                          marginRight: '10px',
+                                          fontSize: '25px'
+                                       }}
+                                    />
+                                    <p style={{ margin: '0px' }}>All Time</p>
+                                 </div>
+                                 <FiChevronDown
+                                    style={{
+                                       fontSize: '25px',
+                                       marginTop: '5px'
+                                    }}
+                                 />
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div className="table " style={{ marginTop: '40px' }}>
+                     <table className="table ">
+                        <thead
+                           style={{
+                              background: '#9B51E0',
+                              color: '#fff',
+                              borderRadius: '35px',
+                              padding: '10px',
+                              fontSize: '18px'
+                           }}
+                        >
+                           <tr style={{ padding: '10px', border: 'none' }}>
+                              <th className="table-head" scope="col">
+                                 Campaign Name
+                              </th>
+                              <th className="table-head" scope="col">
+                                 Status
+                              </th>
+                              <th className="table-head" scope="col">
+                                 Date
+                              </th>
+                              <th className="table-head" scope="col">
+                                 Budget
+                              </th>
+                              <th className="table-head" scope="col">
+                                 Spent
+                              </th>
+                              <th className="table-head" scope="col">
+                                 Views
+                              </th>
+                              <th className="table-head" scope="col">
+                                 Clicks
+                              </th>
+                           </tr>
+                        </thead>
+                        <br />
+                        <tbody
+                           style={{
+                              border: 'none'
+                           }}
+                        >
+                           <tr className="table-row">
+                              <th scope="row">Campaign 1</th>
+                              <td>
+                                 <span>Active</span>
+                              </td>
+
+                              <td>16.11.22-15.12.22</td>
+                              <td>150,000</td>
+                              <td>-</td>
+                              <td>N/A</td>
+                              <td>N/A</td>
+                           </tr>
+                           <div className="break"></div>
+                           <tr className="table-row">
+                              <th scope="row">Campaign 1</th>
+                              <td>
+                                 <span>Active</span>
+                              </td>
+                              <td>16.11.22-15.12.22</td>
+                              <td>150,000</td>
+                              <td>-</td>
+                              <td>N/A</td>
+                              <td>N/A</td>
+                           </tr>
+                           <div className="break"></div>
+                           <tr className="table-row">
+                              <th scope="row">Campaign 1</th>
+                              <td>
+                                 <span>Active</span>
+                              </td>
+                              <td>16.11.22-15.12.22</td>
+                              <td>150,000</td>
+                              <td>-</td>
+                              <td>N/A</td>
+                              <td>N/A</td>
+                           </tr>
+                           <div className="break"></div>
+                           <tr className="table-row">
+                              <th scope="row">Campaign 1</th>
+                              <td>
+                                 <span>Active</span>
+                              </td>
+                              <td>16.11.22-15.12.22</td>
+                              <td>150,000</td>
+                              <td>-</td>
+                              <td>N/A</td>
+                              <td>N/A</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
                </div>
             </div>
          </div>

@@ -88,7 +88,7 @@ padding: 0px 20px;
  
   text-decoration: none;
   font-size:14px;
-  color:#fff;
+  background:#fff;
   border-style: none;
   border-radius:10px;
   padding: 7px 35px;
@@ -101,22 +101,23 @@ padding: 0px 20px;
 }
 
 #edit-profile{
-  padding: 7px 35px;
+  text-decoration: none;
   font-size:14px;
+  background:#962E40;
+  border-style: none;
   border-radius:10px;
-  background-color: #962E40;
-  border:none;
-  font-weight: 600;
-  color: #fff;
-  margin-top:10px;
+  padding: 7px 35px;
+  margin-top:20px;
+  color:#fff ;
+  border: 1px solid #962E40;
 }
 
 .profile-data{
   font-size: 18px;
   font-weight: 600;
   padding-left: 75px;
-  padding-top: 5px;
- 
+  /* padding-top: 10px;
+  */
 }
 
 .data-row{
