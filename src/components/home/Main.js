@@ -35,57 +35,51 @@ const Main = () => {
    const baseURL = 'http://127.0.0.1:8000/api'
    //f362e4e2c00387b6e6ec36fab14c175761644aa2
 
- const getToken = () => localStorage.getItem("token")
-   ? JSON.parse(localStorage.getItem("token"))
-   : null;
- 
- const getAuthorizationHeader = () => `Token ${getToken()}`;
- 
- const axiosInstance = axios.create({
-   baseURL,
-   headers: { Authorization: getAuthorizationHeader() },
- })
+   const getToken = () =>
+      localStorage.getItem('token')
+         ? JSON.parse(localStorage.getItem('token'))
+         : null
 
- useEffect(() => {
-   setIsLoading(true)
-   
-   const fetchData = async () => {
-      try {
-         const { data } = await axiosInstance.get(
-            '/users/current',
-            {
+   const getAuthorizationHeader = () => `Token ${getToken()}`
+
+   const axiosInstance = axios.create({
+      baseURL,
+      headers: { Authorization: getAuthorizationHeader() }
+   })
+
+   useEffect(() => {
+      setIsLoading(true)
+
+      const fetchData = async () => {
+         try {
+            const { data } = await axiosInstance.get('/users/current', {
                headers: {
                   Authorization: getAuthorizationHeader()
                }
-            }
-         )
-         console.log(data)
-         setUser(data)
-      } catch (err) {
-         console.log(err)
-      } finally {
-         setIsLoading(false)
+            })
+            console.log(data)
+            setUser(data)
+         } catch (err) {
+            console.log(err)
+         } finally {
+            setIsLoading(false)
 
-         // console.log(user)
+            // console.log(user)
+         }
       }
-   }
-   fetchData()
- },[])
-
-
-
- 
+      fetchData()
+   }, [])
 
    useEffect(() => {
-      axiosInstance.get(
-         '/campaigns',
-         {
+      axiosInstance
+         .get('/campaigns', {
             headers: {
                Authorization: getAuthorizationHeader()
             }
-         }
-      ).then((response) => { setCampaigns(response.data)})
-      
+         })
+         .then((response) => {
+            setCampaigns(response.data)
+         })
    }, [])
 
    return (
@@ -109,16 +103,16 @@ const Main = () => {
                         style={{
                            marginBottom: '5px',
                            fontWeight: '600',
-                           fontSize: '24px',
+                           fontSize: '21px',
                            color: '#962E40'
                         }}
                      >
-                        Welcome Back! {user.name}
+                        Welcome Back {user.name}!
                      </h1>
 
                      <p
                         style={{
-                           fontSize: '16px',
+                           fontSize: '15px',
                            marginBottom: '0px',
                            color: '#9B51E0'
                         }}
@@ -130,7 +124,7 @@ const Main = () => {
                   <img
                      src={require('../../img/welcome-img.png')}
                      alt=""
-                     style={{ width: '65px', height: '65px' }}
+                     style={{ width: '60px', height: '60px' }}
                   />
                </div>
 
@@ -157,7 +151,8 @@ const Main = () => {
                                  <h4
                                     style={{
                                        fontWeight: '700',
-                                       padding: '10px 0px 0px 35px'
+                                       padding: '10px 0px 0px 20px',
+                                       fontSize: '22px'
                                     }}
                                  >
                                     Campaigns
@@ -233,7 +228,8 @@ const Main = () => {
                                  <h4
                                     style={{
                                        fontWeight: '700',
-                                       padding: '10px 0px 0px 35px'
+                                       padding: '10px 0px 0px 20px',
+                                       fontSize: '22px'
                                     }}
                                  >
                                     Wallet
@@ -323,7 +319,7 @@ const Main = () => {
                                           Ends in: 45d 15h 12m
                                        </span>
                                     </div>
-                                    <div style={{ paddingTop: '70px' }}>
+                                    <div style={{ paddingTop: '40px' }}>
                                        <div className="streampala">
                                           <div className="streampala-wrapper">
                                              <div style={{ textAlign: 'left' }}>

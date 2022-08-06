@@ -11,7 +11,8 @@ import { FiLogOut } from 'react-icons/fi'
 import {
    AiOutlineHome,
    AiOutlineSetting,
-   AiOutlineQuestionCircle
+   AiOutlineQuestionCircle,
+   AiOutlineWallet
 } from 'react-icons/ai'
 import { MdInsertChartOutlined } from 'react-icons/md'
 import { CgNotes } from 'react-icons/cg'
@@ -68,6 +69,16 @@ const Sidebar = ({ menuCollapse }) => {
                         }}
                      >
                         <span className="menu-item-title">Profile</span>
+                     </MenuItem>
+
+                     <MenuItem
+                        className="menu-item"
+                        icon={<AiOutlineWallet className="sidebar-icon" />}
+                        onClick={() => {
+                           navigate('/wallet')
+                        }}
+                     >
+                        <span className="menu-item-title">Wallet</span>
                      </MenuItem>
 
                      <MenuItem

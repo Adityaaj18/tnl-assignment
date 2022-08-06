@@ -107,7 +107,7 @@ const MyCampaigns = () => {
                                           Ends in: 45d 15h 12m
                                        </span>
                                     </div>
-                                    <div style={{ paddingTop: '70px' }}>
+                                    <div style={{ paddingTop: '40px' }}>
                                        <div className="streampala">
                                           <div className="streampala-wrapper">
                                              <div style={{ textAlign: 'left' }}>

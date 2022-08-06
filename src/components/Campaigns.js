@@ -14,45 +14,32 @@ const Campaigns = () => {
    const menuIconClick = () => {
       menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)
    }
-   
+
    const baseURL = 'http://127.0.0.1:8000/api'
 
-   const getToken = () => localStorage.getItem("token")
-   ? JSON.parse(localStorage.getItem("token"))
-   : null;
- 
- const getAuthorizationHeader = () => `Token ${getToken()}`;
- 
- const axiosInstance = axios.create({
-   baseURL,
-   headers: { Authorization: getAuthorizationHeader() },
- })
+   const getToken = () =>
+      localStorage.getItem('token')
+         ? JSON.parse(localStorage.getItem('token'))
+         : null
 
- useEffect(() => {
-   axiosInstance.get(
-      '/campaigns',
-      {
-         headers: {
-            Authorization: getAuthorizationHeader()
-         }
-      }
-   ).then((response) => { setCampaigns(response.data)})
-   
-}, [])
-   
-   // useEffect(() => {
-   //    axios
-   //       .get('http://127.0.0.1:8000/api/campaigns/', {
-   //          headers: {
-   //             // Authorization: `Token ${token}`
-   //             Authorization: `Token ${process.env.REACT_APP_TOKEN}`
-   //          }
-   //       })
-   //       .then((res) => {
-   //          setCampaigns(res.data)
-   //          console.log(res.data)
-   //       })
-   // }, [])
+   const getAuthorizationHeader = () => `Token ${getToken()}`
+
+   const axiosInstance = axios.create({
+      baseURL,
+      headers: { Authorization: getAuthorizationHeader() }
+   })
+
+   useEffect(() => {
+      axiosInstance
+         .get('/campaigns', {
+            headers: {
+               Authorization: getAuthorizationHeader()
+            }
+         })
+         .then((response) => {
+            setCampaigns(response.data)
+         })
+   }, [])
 
    return (
       <div>
@@ -113,12 +100,12 @@ const Campaigns = () => {
                         <div className="col-lg-6">
                            <Link to="/register" className="link">
                               <div className="card-banner">
-                                 <div style={{ padding: '30px' }}>
+                                 <div style={{ padding: '20px 30px' }}>
                                     <span className="timer">
                                        Ends in: 45d 15h 12m
                                     </span>
                                  </div>
-                                 <div style={{ paddingTop: '70px' }}>
+                                 <div style={{ paddingTop: '40px' }}>
                                     <div className="streampala">
                                        <div className="streampala-wrapper">
                                           <div style={{ textAlign: 'left' }}>

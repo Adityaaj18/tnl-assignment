@@ -246,7 +246,7 @@ const Wallet = () => {
                   </div>
                </div>
                <div style={{ textAlign: 'center', padding: '40px ' }}>
-                  <a href="#">Analyze your performnce >></a>
+                  <a href="#">Analyze your performance >></a>
                </div>
                <div>
                   <h5 style={{ fontWeight: '700' }}>
