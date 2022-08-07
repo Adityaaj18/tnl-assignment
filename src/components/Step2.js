@@ -3,6 +3,7 @@ import { multiStepContext } from '../StepContext'
 
 const Step2 = () => {
    const { setStep, userData, setUserData } = useContext(multiStepContext)
+   console.log(userData)
    return (
       <div>
          <div>
