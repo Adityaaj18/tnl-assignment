@@ -50,7 +50,7 @@ const Campaigns = () => {
             style={{
                marginLeft: '60px',
                padding: '35px 25px',
-               background: '#f2e9fa',
+               background: '#FDF6FF',
                marginTop: '68px',
                borderTopLeftRadius: '50px'
             }}

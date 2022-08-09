@@ -16,6 +16,7 @@
 
 .modal-dialog{
   max-width: 60vw;
+  
 }
 
 .modal-content{
@@ -216,6 +217,27 @@ padding: 0px 20px;
   .profile-section{
     margin-left: 80px;
   }
+}
+
+
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed{
+  color: 
+  #9B51E0 !important;
+}
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active{
+  color: 
+  #9B51E0 !important;
+  width: 25px !important;
+}
+
+.MuiStepper-root, .MuiStepper-horizontal, .css-m5vj9m-MuiStepper-root{
+  width: 50vw !important;
+  margin: auto !important;
+
+  
+
 }
 
 /* ad placement */

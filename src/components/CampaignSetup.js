@@ -35,8 +35,10 @@ const CampaignSetup = () => {
             style={{
                marginLeft: '60px',
                padding: '35px 25px',
-               background: '#f2e9fa',
+               background: '#FDF6FF',
+
                marginTop: '68px',
+
                borderTopLeftRadius: '50px',
                height: '100vh'
             }}
@@ -46,7 +48,7 @@ const CampaignSetup = () => {
                   style={{
                      fontSize: '24px',
                      fontWeight: '700',
-                     marginTop: '50px'
+                     marginBottom: '50px'
                   }}
                >
                   Your Ad Campaign Setup

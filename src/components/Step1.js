@@ -7,9 +7,14 @@ const Step1 = () => {
 
    return (
       <div>
-         <form>
+         <form style={{ marginTop: '50px' }}>
             <div className="form-group row">
-               <label className="col-sm-2 col-form-label">Brand Name</label>
+               <label
+                  className="col-sm-2 col-form-label"
+                  style={{ fontWeight: '700' }}
+               >
+                  Brand Name:
+               </label>
                <div className="col-lg-7 col-sm-10">
                   <input
                      type="text"
@@ -23,7 +28,12 @@ const Step1 = () => {
             </div>
             <br />
             <div className="form-group row">
-               <label className="col-sm-2 col-form-label">Campaign Name</label>
+               <label
+                  className="col-sm-2 col-form-label"
+                  style={{ fontWeight: '700' }}
+               >
+                  Campaign Name:
+               </label>
                <div className="col-lg-7 col-sm-10">
                   <input
                      type="text"
@@ -40,26 +50,29 @@ const Step1 = () => {
             </div>
             <br />
             <div className="form-group row">
-               <label className="col-sm-2 col-form-label">
-                  Campaign start date
+               <label
+                  className="col-sm-2 col-form-label"
+                  style={{ fontWeight: '700' }}
+               >
+                  Campaign start date:
                </label>
                <div className="col-lg-7 col-sm-10">
                   <input className="form-control" />
                </div>
             </div>
             <br />
-            <div className="form-group row">
+            <div className="form-group row" style={{ fontWeight: '700' }}>
                <label className="col-sm-2 col-form-label">
-                  Campaign end date
+                  Campaign end date:
                </label>
                <div className="col-lg-7 col-sm-10">
                   <input className="form-control" />
                </div>
             </div>
             <br />
-            <div className="form-group row">
+            <div className="form-group row" style={{ fontWeight: '700' }}>
                <label className="col-sm-2 col-form-label">
-                  Setup campaign budget
+                  Setup campaign budget:
                </label>
                <div className="col-lg-3 col-sm-10" style={{ display: 'flex' }}>
                   <div>
@@ -78,9 +91,12 @@ const Step1 = () => {
                   </span>
                </div>
             </div>
-            <div className="form-group row">
-               <label className="col-sm-2 col-form-label">
-                  Estimated Result
+            <div className="form-group row" style={{ fontWeight: '700' }}>
+               <label
+                  className="col-sm-2 col-form-label"
+                  style={{ fontWeight: '700' }}
+               >
+                  Estimated Result:
                </label>
 
                <div className="col-lg-3 col-sm-10" style={{ display: 'flex' }}>
