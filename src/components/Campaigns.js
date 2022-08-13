@@ -45,16 +45,7 @@ const Campaigns = () => {
       <div>
          <Header menuIconClick={menuIconClick} />
          <Sidebar menuCollapse={menuCollapse} />
-         <div
-            className=""
-            style={{
-               marginLeft: '60px',
-               padding: '35px 25px',
-               background: '#FDF6FF',
-               marginTop: '68px',
-               borderTopLeftRadius: '50px'
-            }}
-         >
+         <div className="main-content">
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                <div>
                   <FaArrowLeft

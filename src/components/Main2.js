@@ -17,16 +17,7 @@ const Main2 = () => {
       <div>
          <Header menuIconClick={menuIconClick} />
          <Sidebar menuCollapse={menuCollapse} />
-         <div
-            style={{
-               marginLeft: '60px',
-               padding: '35px 25px',
-               background: '#FDF6FF',
-               marginTop: '68px',
-               borderTopLeftRadius: '50px',
-               height: '100%'
-            }}
-         >
+         <div className="main-content">
             <div className="" style={{}}>
                <div style={{ textAlign: 'center' }}>
                   <BsPlusCircle

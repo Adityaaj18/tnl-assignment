@@ -1,0 +1,64 @@
+.welcome{
+    border: 1px solid #9B51E0;
+    padding:  20px 20px 20px 30px;
+    border-radius:35px;
+    background-color: #fff;
+    /* margin-top: 120px; */
+    margin: 0px 20px;
+    display: flex;
+    justify-content:space-between;
+  }
+
+  .welcome h1{
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 21px;
+    color: #962E40;
+  }
+.welcome p{
+    font-size: 15px;
+    margin-bottom: 0px;
+    color: #9B51E0
+}
+
+
+.campaign-wallet{
+    padding:20px;
+}
+.campaign-wallet-card{
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    /* margin:10px; */
+    border-radius:35px;
+    padding-top:15px;
+    background-color: #fff;
+  }
+
+  .campaign-wallet-card-wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.dot{
+    width: 13px;
+    height: 13px;
+   
+    border-radius:50%;
+    margin-top:5px
+  }
+
+  .dots-wrapper{
+    padding: 20px  ;
+  }
+  .dots{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size:16px;
+  
+  }
+
+  @media screen and (max-width: 500px){
+    .campaign-wallet-card-wrapper{
+      flex-direction: column;
+    }
+}

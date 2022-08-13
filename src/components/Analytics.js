@@ -19,16 +19,7 @@ const Analytics = () => {
       <div>
          <Header menuIconClick={menuIconClick} />
          <Sidebar menuCollapse={menuCollapse} />
-         <div
-            style={{
-               marginLeft: '60px',
-               padding: '35px 25px',
-               background: '#FDF6FF',
-               marginTop: '68px',
-               borderTopLeftRadius: '50px',
-               height: '100vh'
-            }}
-         >
+         <div className="main-content">
             <h1>no data</h1>
          </div>
       </div>

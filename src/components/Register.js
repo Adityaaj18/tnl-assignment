@@ -33,15 +33,7 @@ const Register = () => {
          <Header menuIconClick={menuIconClick} />
          <Sidebar menuCollapse={menuCollapse} />
 
-         <div
-            style={{
-               marginLeft: '60px',
-               padding: '35px 45px',
-               background: '#f2e9fa',
-               marginTop: '68px',
-               borderTopLeftRadius: '50px'
-            }}
-         >
+         <div className="main-content">
             <div className="modal-head card-banner">
                <div
                   style={{ display: 'flex', justifyContent: 'space-between' }}

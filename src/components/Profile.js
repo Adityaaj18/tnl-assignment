@@ -69,17 +69,7 @@ const Profile = () => {
       <div>
          <Header menuIconClick={menuIconClick} />
          <Sidebar menuCollapse={menuCollapse} />
-         <div
-            className=""
-            style={{
-               marginLeft: '60px',
-               padding: '35px 25px',
-               background: '#FDF6FF',
-               marginTop: '68px',
-               borderTopLeftRadius: '50px',
-               height: '150vh'
-            }}
-         >
+         <div className="main-content">
             {isLoading ? (
                <Loading />
             ) : (

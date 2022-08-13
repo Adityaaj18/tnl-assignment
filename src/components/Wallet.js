@@ -19,16 +19,7 @@ const Wallet = () => {
       <div>
          <Header menuIconClick={menuIconClick} />
          <Sidebar menuCollapse={menuCollapse} />
-         <div
-            style={{
-               marginLeft: '60px',
-               padding: '35px 25px',
-               background: '#FDF6FF',
-               marginTop: '68px',
-               borderTopLeftRadius: '50px',
-               height: '100vh'
-            }}
-         >
+         <div className="main-content">
             <div style={{ textAlign: 'center', marginTop: '30px' }}>
                <h1
                   style={{
@@ -246,7 +237,7 @@ const Wallet = () => {
                   </div>
                </div>
                <div style={{ textAlign: 'center', padding: '40px ' }}>
-                  <a href="#">Analyze your performance >></a>
+                  <a href="#">Analyze your performance >> </a>
                </div>
                <div>
                   <h5 style={{ fontWeight: '700' }}>

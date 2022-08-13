@@ -1,6 +1,8 @@
 import React from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useParams } from 'react-router-dom'
+import '../../styles/header.css'
+
 const Header = ({ menuIconClick }) => {
    // const handleClick = () => {
    //    console.log(menuCollapse)
@@ -13,30 +15,16 @@ const Header = ({ menuIconClick }) => {
 
    return (
       <div>
-         <nav className="navbar navbar-light  justify-content-between">
+         <nav className="navbar  justify-content-between">
             <div style={{ display: 'flex' }}>
                <div>
                   <GiHamburgerMenu
-                     style={{
-                        fontSize: '26px',
-                        margin: '10px 17px',
-                        cursor: 'pointer',
-                        color: '#962E40'
-                     }}
+                     className="hamburger-menu"
                      onClick={menuIconClick}
                   />
                </div>
 
-               <h4
-                  style={{
-                     marginBottom: '0px',
-                     marginTop: '10px',
-                     color: '#9B51E0',
-                     fontSize: '24px',
-                     fontWeight: '700',
-                     paddingLeft: '50px'
-                  }}
-               >
+               <h4 className="pg-title">
                   {path == '/'
                      ? 'Home'
                      : pathName.charAt(0).toUpperCase() + pathName.slice(1)}
@@ -48,39 +36,11 @@ const Header = ({ menuIconClick }) => {
                      borderRight: '1px solid #f2f2f2'
                   }}
                >
-                  <p
-                     style={{
-                        marginBottom: '0px',
-                        marginLeft: '15px',
-                        marginRight: '15px',
-                        fontSize: '14px',
-                        textAlign: 'center'
-                     }}
-                  >
-                     Balance
-                  </p>
-                  <h6
-                     style={{
-                        marginLeft: '12px',
-                        marginRight: '12px',
-                        fontSize: '18px',
-                        fontWeight: 'bold'
-                     }}
-                  >
-                     ₹320.83
-                  </h6>
+                  <p>Balance</p>
+                  <h6>₹320.83</h6>
                </div>
-               <div style={{ borderRight: '1px solid #f2f2f2' }}>
-                  <img
-                     src={require('../../img/profile.png')}
-                     alt=""
-                     style={{
-                        width: '48px',
-                        height: '48px',
-                        marginLeft: '15px',
-                        marginRight: '15px'
-                     }}
-                  />
+               <div className="nav-profile-pic">
+                  <img src={require('../../img/profile.png')} alt="" />
                </div>
             </div>
          </nav>

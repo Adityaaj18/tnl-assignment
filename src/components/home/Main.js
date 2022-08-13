@@ -11,6 +11,8 @@ import { TokenContext } from '../../context/TokenContext'
 
 import Loading from '../Loading'
 
+import '../../styles/main.css'
+
 const baseURL = 'http://127.0.0.1:8000/api/users/'
 
 const Main = () => {
@@ -83,40 +85,15 @@ const Main = () => {
    }, [])
 
    return (
-      <div
-         style={{
-            marginLeft: '60px',
-            padding: '35px 25px',
-            background: '#FDF6FF',
-            marginTop: '68px',
-            borderTopLeftRadius: '50px'
-         }}
-      >
+      <div className="main-content">
          {isLoading ? (
             <Loading />
          ) : (
-            // <div>data</div>
             <div>
                <div className="welcome">
                   <div>
-                     <h1
-                        style={{
-                           marginBottom: '5px',
-                           fontWeight: '600',
-                           fontSize: '21px',
-                           color: '#962E40'
-                        }}
-                     >
-                        Welcome Back {user.name}!
-                     </h1>
-
-                     <p
-                        style={{
-                           fontSize: '15px',
-                           marginBottom: '0px',
-                           color: '#9B51E0'
-                        }}
-                     >
+                     <h1>Welcome Back {user.name}!</h1>
+                     <p>
                         Tip: Did you know the support team is online 24/7 to
                         help you out?
                      </p>
@@ -132,13 +109,7 @@ const Main = () => {
                   <div className="campaign-wallet row gx-4 gy-5">
                      <div className="col-lg-6 ">
                         <div className="campaign-wallet-card  ">
-                           <div
-                              className="campaign-wallet-card-wrapper"
-                              style={{
-                                 display: 'flex',
-                                 justifyContent: 'space-between'
-                              }}
-                           >
+                           <div className="campaign-wallet-card-wrapper">
                               <div
                                  style={{
                                     padding: ' 5px 10px'

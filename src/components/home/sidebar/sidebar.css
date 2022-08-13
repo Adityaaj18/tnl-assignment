@@ -116,16 +116,7 @@
   padding-right: 50px; */
 }
 
-.campaign-wallet-card{
-  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-  /* margin:10px; */
-  border-radius:35px;
-  padding-top:15px;
-  background-color: #fff;
-  
-  
-  
-}
+
 
 .view-more{
   background:#962E40;
@@ -166,25 +157,6 @@
 
 }
 
-.dots{
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  font-size:16px;
-
-}
-
-.dot{
-  width: 13px;
-  height: 13px;
- 
-  border-radius:50%;
-  margin-top:5px
-}
-
-.dots-wrapper{
-  padding: 20px  ;
-}
 
 .cards{
   margin-top: 28px;
@@ -242,9 +214,7 @@
 }
 
 @media screen and (max-width: 500px){
-  .campaign-wallet-card-wrapper{
-    flex-direction: column;
-  }
+
   .cards{
     padding: 0px;
   }
@@ -261,9 +231,7 @@
     margin-bottom: 10px;
   } 
 
- .subnav{
-   justify-content:center !important;
- }
+
 }
 
 
