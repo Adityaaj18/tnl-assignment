@@ -4,7 +4,8 @@
   background: #FDF6FF;
   margin-top: 68px;
   border-top-left-radius: 50px;
-  height: 100%;
+  min-height: 100vh;
+  max-height: 100%;
 }
 
 .modal-body{
@@ -288,4 +289,36 @@ padding: 0px 20px;
   border-radius: 15px;
 
 }
-/* ----- */
+.step2{
+  margin-top: 50px;
+}
+
+
+input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 3px solid #BDBDBD;
+  background: transparent;
+ 
+}
+
+input[type='radio']:checked:after {
+width: 15px;
+height: 15px;
+border-radius: 15px;
+top: -2px;
+left: -1px;
+position: relative;
+content: '';
+display: inline-block;
+visibility: visible;
+border: 3px solid #941751;
+background: #FDF6FF;
+}

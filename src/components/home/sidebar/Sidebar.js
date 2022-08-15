@@ -21,6 +21,8 @@ import 'react-pro-sidebar/dist/css/styles.css'
 import './sidebar.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 
+console.log(window.location.pathname)
+
 const Sidebar = ({ menuCollapse }) => {
    const navigate = useNavigate()
    return (
@@ -31,10 +33,13 @@ const Sidebar = ({ menuCollapse }) => {
                   <Menu>
                      <MenuItem
                         className="menu-item"
-                        icon={<AiOutlineHome className="sidebar-icon active" />}
+                        icon={<AiOutlineHome className="sidebar-icon" />}
                         onClick={() => {
                            navigate('/home')
                         }}
+                        active={
+                           window.location.pathname === '/home' ? true : false
+                        }
                      >
                         <span className="menu-item-title">Home</span>
                      </MenuItem>
@@ -47,6 +52,11 @@ const Sidebar = ({ menuCollapse }) => {
                         onClick={() => {
                            navigate('/analytics')
                         }}
+                        active={
+                           window.location.pathname === '/analytics'
+                              ? true
+                              : false
+                        }
                      >
                         <span className="menu-item-title">Analytics</span>
                      </MenuItem>
@@ -57,6 +67,11 @@ const Sidebar = ({ menuCollapse }) => {
                         onClick={() => {
                            navigate('/mycampaigns')
                         }}
+                        active={
+                           window.location.pathname === '/mycampaigns'
+                              ? true
+                              : false
+                        }
                      >
                         <span className="menu-item-title">My Campaigns</span>
                      </MenuItem>
@@ -67,6 +82,11 @@ const Sidebar = ({ menuCollapse }) => {
                         onClick={() => {
                            navigate('/profile')
                         }}
+                        active={
+                           window.location.pathname === '/profile'
+                              ? true
+                              : false
+                        }
                      >
                         <span className="menu-item-title">Profile</span>
                      </MenuItem>
@@ -77,6 +97,9 @@ const Sidebar = ({ menuCollapse }) => {
                         onClick={() => {
                            navigate('/wallet')
                         }}
+                        active={
+                           window.location.pathname === '/wallet' ? true : false
+                        }
                      >
                         <span className="menu-item-title">Wallet</span>
                      </MenuItem>

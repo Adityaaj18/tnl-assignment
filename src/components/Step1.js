@@ -10,7 +10,7 @@ const Step1 = () => {
          <form style={{ marginTop: '50px' }}>
             <div className="form-group row">
                <label
-                  className="col-sm-2 col-form-label"
+                  className="col-sm-3 col-form-label"
                   style={{ fontWeight: '700' }}
                >
                   Brand Name:
@@ -29,7 +29,7 @@ const Step1 = () => {
             <br />
             <div className="form-group row">
                <label
-                  className="col-sm-2 col-form-label"
+                  className="col-sm-3 col-form-label"
                   style={{ fontWeight: '700' }}
                >
                   Campaign Name:
@@ -51,27 +51,27 @@ const Step1 = () => {
             <br />
             <div className="form-group row">
                <label
-                  className="col-sm-2 col-form-label"
+                  className="col-sm-3 col-form-label"
                   style={{ fontWeight: '700' }}
                >
                   Campaign start date:
                </label>
                <div className="col-lg-7 col-sm-10">
-                  <input className="form-control" />
+                  <input className="form-control" type="date" />
                </div>
             </div>
             <br />
             <div className="form-group row" style={{ fontWeight: '700' }}>
-               <label className="col-sm-2 col-form-label">
+               <label className="col-sm-3 col-form-label">
                   Campaign end date:
                </label>
                <div className="col-lg-7 col-sm-10">
-                  <input className="form-control" />
+                  <input className="form-control" type="date" />
                </div>
             </div>
             <br />
             <div className="form-group row" style={{ fontWeight: '700' }}>
-               <label className="col-sm-2 col-form-label">
+               <label className="col-sm-3 col-form-label">
                   Setup campaign budget:
                </label>
                <div className="col-lg-3 col-sm-10" style={{ display: 'flex' }}>
@@ -91,9 +91,10 @@ const Step1 = () => {
                   </span>
                </div>
             </div>
+            <br />
             <div className="form-group row" style={{ fontWeight: '700' }}>
                <label
-                  className="col-sm-2 col-form-label"
+                  className="col-sm-3 col-form-label"
                   style={{ fontWeight: '700' }}
                >
                   Estimated Result:

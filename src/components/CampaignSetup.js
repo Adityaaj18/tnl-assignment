@@ -44,13 +44,13 @@ const CampaignSetup = () => {
                </p>
                <Stepper activeStep={currentStep - 1} orientation="horizontal">
                   <Step>
-                     <StepLabel>campaign</StepLabel>
+                     <StepLabel>Campaign Details</StepLabel>
                   </Step>
                   <Step>
-                     <StepLabel></StepLabel>
+                     <StepLabel>Upload Creative</StepLabel>
                   </Step>
                   <Step>
-                     <StepLabel></StepLabel>
+                     <StepLabel>Preview Campaign</StepLabel>
                   </Step>
                </Stepper>
 

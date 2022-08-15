@@ -34,15 +34,14 @@ const Step3 = () => {
    // }, [])
 
    return (
-      <div>
-         choose ad placement
+      <div style={{ marginTop: '50px' }}>
          <div className="parent">
             <div className={`child-${currentRadioValue}`}></div>
          </div>
          <div className="row" style={{ marginTop: '40px' }}>
             <div className="col-lg-3">Choose ad placement:</div>
             <div className="col-lg-9">
-               <div className="row">
+               <div className="row gy-3">
                   <div className="col-lg-6">
                      <div>
                         <input
@@ -53,7 +52,12 @@ const Step3 = () => {
                            onChange={handleRadioChange}
                            checked={currentRadioValue === 'radio-1'}
                         />
-                        <label htmlFor="radio-item-1">top left</label>
+                        <label
+                           htmlFor="radio-item-1"
+                           style={{ paddingLeft: '10px' }}
+                        >
+                           High Left
+                        </label>
                      </div>
                   </div>
                   <div className="col-lg-6">
@@ -66,7 +70,12 @@ const Step3 = () => {
                            onChange={handleRadioChange}
                            checked={currentRadioValue === 'radio-2'}
                         />
-                        <label htmlFor="radio-item-2">top right</label>
+                        <label
+                           htmlFor="radio-item-2"
+                           style={{ paddingLeft: '10px' }}
+                        >
+                           High Right
+                        </label>
                      </div>
                   </div>
                   <div className="col-lg-6">
@@ -80,7 +89,12 @@ const Step3 = () => {
                            onChange={handleRadioChange}
                            checked={currentRadioValue === 'radio-3'}
                         />
-                        <label htmlFor="radio-item-3">bottom left</label>
+                        <label
+                           htmlFor="radio-item-3"
+                           style={{ paddingLeft: '10px' }}
+                        >
+                           Low Left(Recommended.See Why)
+                        </label>
                      </div>
                   </div>
                   <div className="col-lg-6">
@@ -94,7 +108,12 @@ const Step3 = () => {
                            onChange={handleRadioChange}
                            checked={currentRadioValue === 'radio-4'}
                         />
-                        <label htmlFor="radio-item-4">bottom right</label>
+                        <label
+                           htmlFor="radio-item-4"
+                           style={{ paddingLeft: '10px' }}
+                        >
+                           Low Right
+                        </label>
                      </div>
                   </div>
                </div>
