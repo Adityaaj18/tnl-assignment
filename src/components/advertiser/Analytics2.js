@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Header from './home/Header'
-import Main from './home/Main'
-import Sidebar from './home/sidebar/Sidebar'
+import Header from '../home/Header'
+import Main from '../home/Main'
+import Sidebar from '../home/sidebar/Sidebar'
 import { AiFillCaretDown, AiOutlineCalendar } from 'react-icons/ai'
 import { HiOutlineSpeakerphone } from 'react-icons/hi'
 import { FiChevronDown } from 'react-icons/fi'
@@ -36,7 +36,7 @@ const Analytics2 = () => {
                      </h1>
                   </div>
                   <img
-                     src={require('../img/welcome-img.png')}
+                     src={require('../../img/welcome-img.png')}
                      alt=""
                      style={{ width: '65px', height: '65px' }}
                   />

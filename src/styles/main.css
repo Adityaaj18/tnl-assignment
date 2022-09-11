@@ -46,6 +46,14 @@
     margin-top:5px
   }
 
+  .status{
+    width: 10px;
+    height: 10px;
+   margin-top: auto;
+   margin-bottom: auto;
+    border-radius:50%;
+  }
+
   .dots-wrapper{
     padding: 20px  ;
   }

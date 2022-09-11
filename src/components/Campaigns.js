@@ -38,6 +38,7 @@ const Campaigns = () => {
          })
          .then((response) => {
             setCampaigns(response.data)
+            console.log(response.data)
          })
    }, [])
 

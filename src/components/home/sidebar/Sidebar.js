@@ -25,9 +25,10 @@ console.log(window.location.pathname)
 
 const Sidebar = ({ menuCollapse }) => {
    const navigate = useNavigate()
+
    return (
       <>
-         <div id="header">
+         <div id="header" className={menuCollapse ? 'zindex1' : 'zindex2'}>
             <ProSidebar collapsed={menuCollapse}>
                <SidebarContent>
                   <Menu>

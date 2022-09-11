@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Header from './home/Header'
-import Sidebar from './home/sidebar/Sidebar'
+import Header from '../home/Header'
+import Sidebar from '../home/sidebar/Sidebar'
 import { BsPlusCircle, BsArrowRightCircle } from 'react-icons/bs'
 import { AiFillCaretDown, AiOutlineCalendar } from 'react-icons/ai'
 import { HiOutlineSpeakerphone } from 'react-icons/hi'

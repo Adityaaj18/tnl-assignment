@@ -9,14 +9,15 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import Campaigns from './components/Campaigns'
 import Analytics from './components/Analytics'
-import Analytics2 from './components/Analytics2'
+import Analytics2 from './components/advertiser/Analytics2'
 import CampaignData from './components/CampaignData'
-import Main2 from './components/Main2'
+import Main2 from './components/advertiser/Main2'
 import CampaignSetup from './components/CampaignSetup'
 import Login from './components/Login'
 import MyCampaigns from './components/MyCampaigns'
 import { TokenContext } from './context/TokenContext'
 import Wallet from './components/Wallet'
+import SignUp from './components/advertiser/SignUp'
 
 function App() {
    const [menuCollapse, setMenuCollapse] = useState(true)
@@ -43,6 +44,7 @@ function App() {
                   <Route path="/main2" element={<Main2 />} />
                   <Route path="/setup" element={<CampaignSetup />} />
                   <Route path="/analytics2" element={<Analytics2 />} />
+                  <Route path="/signup" element={<SignUp />} />
                   <Route path="/wallet" element={<Wallet />} />
                </Routes>
             </Router>

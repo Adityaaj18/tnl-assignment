@@ -61,6 +61,9 @@ const Main = () => {
             })
             console.log(data)
             setUser(data)
+            // if (!data.role === 'Streamer') {
+            //    navigate('/main2')
+            // }
          } catch (err) {
             console.log(err)
          } finally {
@@ -72,6 +75,29 @@ const Main = () => {
       fetchData()
    }, [])
 
+   // useEffect(() => {
+   //    setIsLoading(true)
+
+   //    const fetchData = async () => {
+   //       try {
+   //          const { data } = await axiosInstance.get(`/wallet/cf10cb3b`, {
+   //             headers: {
+   //                Authorization: getAuthorizationHeader()
+   //             }
+   //          })
+   //          console.log(data)
+   //          // setUser(data)
+   //       } catch (err) {
+   //          console.log(err)
+   //       } finally {
+   //          setIsLoading(false)
+
+   //          // console.log(user)
+   //       }
+   //    }
+   //    fetchData()
+   // }, [])
+
    useEffect(() => {
       axiosInstance
          .get('/campaigns', {
@@ -80,7 +106,14 @@ const Main = () => {
             }
          })
          .then((response) => {
+            console.log('camps', response.data)
             setCampaigns(response.data)
+            // response.data.map((data) => {
+            //    const a = new Date(data.start_date)
+            //    const b = new Date(data.start_date)
+            //    const diff = a.getTime() - b.getTime()
+            //    console.log(diff)
+            // })
          })
    }, [])
 
@@ -267,7 +300,7 @@ const Main = () => {
                               fontWeight: '700'
                            }}
                         >
-                           Campaigns you might like
+                           Campaigns Marketplace
                         </span>
                      </div>
                      <div style={{ padding: '10px 0px 10px 10px' }}>
