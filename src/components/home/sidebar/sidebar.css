@@ -145,8 +145,25 @@
   margin-top:20px;
 }
 
+.view-more-outlined{
+  background:transparent;
+  text-decoration: none;
+  font-size:14px;
+  color:#962E40;
+  border: 0.5px solid #962E40;
+  border-radius:10px;
+  padding: 7px 35px;
+  margin-top:20px;
+  margin-right: 20px;
+}
+
 .view-more:hover{
   cursor: pointer;
+  color:#fff;
+}
+
+.view-more-outlined:hover{
+  background:#962E40;
   color:#fff;
 }
 
