@@ -201,13 +201,13 @@
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 35px;
-  height:250px; 
+  height: 250px; 
   color: #fff;
-  
- 
+  padding: 0;
+  width: 40vw;
 }
 .cards-container .card-banner{
-  border-radius: 35px;
+  border-radius: 35px ;
 }
 
 .card-banner2{
@@ -225,25 +225,7 @@
 
 .menu-item-title{
   font-weight: 600;
- 
   color: #BDBDBD;
-}
-
-
-
-.streampala{
-  
-  background: rgba(0, 0, 0, 0.5);
-  padding: 0px 30px;
- 
-  
-}
-
-.streampala-wrapper{
-  display: flex;
-  justify-content: space-between;
-  margin-top:10px;
- 
 }
 
 @media screen and (max-width: 500px){

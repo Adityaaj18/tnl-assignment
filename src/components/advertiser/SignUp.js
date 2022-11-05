@@ -24,7 +24,7 @@ export default function SignUp() {
 
   useEffect(() => {
     async function fetchOrganizations() {
-      const { data } = await axios.get(baseURL + "org-types/");
+      const { data } = await axios.get(baseURL + "/org-types/");
       setOrgType(data);
     }
 
@@ -48,7 +48,7 @@ export default function SignUp() {
     };
 
     try {
-      await axios.post(baseURL + "advertisers/", bodyObj);
+      await axios.post(baseURL + "/advertisers/", bodyObj);
       navigate("/ad/login");
     } catch (error) {
       setError(true);

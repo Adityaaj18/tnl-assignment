@@ -1,4 +1,6 @@
 import React from "react";
+import { GiArrowCursor, GiMoneyStack } from "react-icons/gi";
+import { BsFillPlayFill } from "react-icons/bs";
 
 export default function LandingPage() {
   return (
@@ -23,63 +25,59 @@ export default function LandingPage() {
       <header className="header">
         <div className="navbar-area">
           <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-12">
-                <nav className="navbar-lp navbar-expand-lg">
-                  <a className="navbar-brand" href="index.html">
-                    <img src="assets/img/logo/logo.svg" alt="Logo" />
-                  </a>
-                  <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                  >
-                    <span className="toggler-icon"></span>
-                    <span className="toggler-icon"></span>
-                    <span className="toggler-icon"></span>
-                  </button>
+            <nav className="navbar-lp navbar-expand-lg">
+              <a className="navbar-brand" href="index.html">
+                <img src={require("../img/logo.png")} alt="Logo" />
+              </a>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="toggler-icon"></span>
+                <span className="toggler-icon"></span>
+                <span className="toggler-icon"></span>
+              </button>
 
-                  <div
-                    className="collapse navbar-collapse sub-menu-bar"
-                    id="navbarSupportedContent"
-                  >
-                    <ul id="nav" className="navbar-nav ms-auto">
-                      <li className="nav-item">
-                        <a className="page-scroll active" href="#home">
-                          Home
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="page-scroll" href="#features">
-                          Features
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="page-scroll" href="#about">
-                          About
-                        </a>
-                      </li>
+              <div
+                className="collapse navbar-collapse sub-menu-bar"
+                id="navbarSupportedContent"
+              >
+                <ul id="nav" className="navbar-nav ms-auto">
+                  <li className="nav-item">
+                    <a className="page-scroll active" href="#home">
+                      Home
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="page-scroll" href="#features">
+                      Features
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="page-scroll" href="#about">
+                      About
+                    </a>
+                  </li>
 
-                      <li className="nav-item">
-                        <a className="page-scroll" href="#why">
-                          Why
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a href="javascript:void(0)">Pricing</a>
-                      </li>
-                      <li className="nav-item">
-                        <a href="javascript:void(0)">Clients</a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
+                  <li className="nav-item">
+                    <a className="page-scroll" href="#why">
+                      Why
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="javascript:void(0)">Pricing</a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="javascript:void(0)">Clients</a>
+                  </li>
+                </ul>
               </div>
-            </div>
+            </nav>
           </div>
         </div>
       </header>
@@ -90,18 +88,20 @@ export default function LandingPage() {
             <div className="col-lg-6">
               <div className="hero-content">
                 <h1 className="wow fadeInUp" data-wow-delay=".4s">
-                  Your using free lite version
+                  Every View Counts!
                 </h1>
                 <p className="wow fadeInUp" data-wow-delay=".6s">
-                  Please, purchase full version to get all sections, features
-                  and permission to remove footer credit.
+                  StreamPala allows YouTube streamers to connect with brands,
+                  and, earn for every view on their livestreams! Streamers
+                  choose brands they want to partner with, while brands pay for
+                  every time someone views their ad!
                 </p>
                 <a
                   href="javascript:void(0)"
                   className="main-btn border-btn btn-hover wow fadeInUp"
                   data-wow-delay=".6s"
                 >
-                  Purchase Now
+                  Sign Up with YouTube
                 </a>
                 <a href="#features" className="scroll-bottom">
                   <i className="lni lni-arrow-down"></i>
@@ -126,10 +126,11 @@ export default function LandingPage() {
                   <i className="lni lni-bootstrap"></i>
                 </div>
                 <div className="content">
-                  <h3>Bootstrap 5</h3>
+                  <h3>Open Marketplace</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore
+                    All campaigns are visible on an open marketplace, so
+                    streamers can choose the brands that resonate with their
+                    audience
                   </p>
                 </div>
               </div>
@@ -140,10 +141,11 @@ export default function LandingPage() {
                   <i className="lni lni-layout"></i>
                 </div>
                 <div className="content">
-                  <h3>Clean Design</h3>
+                  <h3>Safe Wallet</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore
+                    Streamer wallet that captures all earnings and with easy
+                    withdrawals, while advertisers keep track of every paisa
+                    spent
                   </p>
                 </div>
               </div>
@@ -154,10 +156,10 @@ export default function LandingPage() {
                   <i className="lni lni-coffee-cup"></i>
                 </div>
                 <div className="content">
-                  <h3>Easy to Use</h3>
+                  <h3>Easy Analytics</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore
+                    Get all the data that matters in 1 dashboard, so you can
+                    always see how your campaigns are performing
                   </p>
                 </div>
               </div>
@@ -192,14 +194,13 @@ export default function LandingPage() {
               <div className="about-content">
                 <div className="section-title mb-30">
                   <h2 className="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                    Perfect Solution Thriving Online Business
+                    How It Works
                   </h2>
                   <p className="wow fadeInUp" data-wow-delay=".4s">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    dinonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem.Lorem ipsum dolor sit amet.
+                    For Streamers: <br />
+                    1. Simply sign up with your YouTube account, <br />
+                    2. Add your StreamPala Magic Link to your OBS <br />
+                    3. And choose campaigns you’d like to earn from
                   </p>
                 </div>
                 <a
@@ -207,7 +208,7 @@ export default function LandingPage() {
                   className="main-btn btn-hover border-btn wow fadeInUp"
                   data-wow-delay=".6s"
                 >
-                  Discover More
+                  Sign Up with YouTube
                 </a>
               </div>
             </div>
@@ -222,18 +223,18 @@ export default function LandingPage() {
               <div className="about-content">
                 <div className="section-title mb-30">
                   <h2 className="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                    Easy to Use with Tons of Awesome Features
+                    Highest Payout in the Industry.
                   </h2>
                   <p className="wow fadeInUp" data-wow-delay=".4s">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua.
+                    The bulk of advertiser budgets go straight to the wallets of
+                    streamers, with StreamPala earning minimal commissions on
+                    every campaign.
                   </p>
                 </div>
                 <ul>
-                  <li>Quick Access</li>
-                  <li>Easily to Manage</li>
-                  <li>24/7 Support</li>
+                  <li>Earn up to 100% of advertiser budgets</li>
+                  <li>Make up to 50p per view</li>
+                  <li>Get more than any other tool that pays-per-view</li>
                 </ul>
                 <a
                   href="javascript:void(0)"
@@ -274,11 +275,13 @@ export default function LandingPage() {
               <div className="col-xxl-5 col-xl-6 col-lg-8 col-md-9">
                 <div className="section-title text-center mb-60">
                   <h2 className="mb-25 wow fadeInUp" data-wow-delay=".2s">
-                    Why Choose SaaSpal
+                    StreamPala is for Everybody.
                   </h2>
-                  <p className="wow fadeInUp" data-wow-delay=".4s">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore
+                  <p className="wow fadeInUp text-center" data-wow-delay=".4s">
+                    Our easy-to-understand interface makes it possible for
+                    livestreamers to start earning from day 1, while advertisers
+                    can effortlessly set up ads and reach their audience within
+                    minutes!
                   </p>
                 </div>
               </div>
@@ -287,84 +290,42 @@ export default function LandingPage() {
             <div className="row">
               <div className="col-lg-4 col-md-6">
                 <div className="single-feature-extended">
-                  <div className="icon">
-                    <i className="lni lni-display"></i>
+                  <div className="icon-last-sec">
+                    <GiMoneyStack />
                   </div>
                   <div className="content">
-                    <h3>SaaS Focused</h3>
+                    <h3>Earn From Your Passion</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore
+                      Earn for every view, irrespective of the size of your
+                      subscriber base or streaming history.
                     </p>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="single-feature-extended">
-                  <div className="icon">
-                    <i className="lni lni-leaf"></i>
+                  <div className="icon-last-sec">
+                    <GiArrowCursor />
                   </div>
                   <div className="content">
-                    <h3>Awesome Design</h3>
+                    <h3>Choose Your Campaigns</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore
+                      Select any campaign you want to be a part of, and, start
+                      or stop any time you like.
                     </p>
                   </div>
                 </div>
               </div>
               <div className="col-lg-4 col-md-6">
                 <div className="single-feature-extended">
-                  <div className="icon">
-                    <i className="lni lni-grid-alt"></i>
+                  <div className="icon-last-sec">
+                    <BsFillPlayFill />
                   </div>
                   <div className="content">
-                    <h3>Ready to Use</h3>
+                    <h3>Approved by YouTube</h3>
                     <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-feature-extended">
-                  <div className="icon">
-                    <i className="lni lni-javascript"></i>
-                  </div>
-                  <div className="content">
-                    <h3>Vanilla JS</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-feature-extended">
-                  <div className="icon">
-                    <i className="lni lni-layers"></i>
-                  </div>
-                  <div className="content">
-                    <h3>Essential Sections</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-feature-extended">
-                  <div className="icon">
-                    <i className="lni lni-rocket"></i>
-                  </div>
-                  <div className="content">
-                    <h3>Highly Optimized</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore
+                      StreamPala is approved by YouTube, so your account and
+                      audience is always safe.
                     </p>
                   </div>
                 </div>

@@ -31,7 +31,7 @@ export default function CreateAdAccount() {
 
   useEffect(() => {
     async function fetchRandomName() {
-      const { data } = await axios.get(baseURL + "name-generate");
+      const { data } = await axios.get(baseURL + "/name-generate");
       setAdAccount({ ...adAccount, name: data.name });
     }
 
@@ -50,7 +50,7 @@ export default function CreateAdAccount() {
     formData.set("brand_name", adAccount.brandname);
     formData.set("owner", 3);
 
-    const { data } = await axios.post(baseURL + "ad-accounts/", formData);
+    const { data } = await axios.post(baseURL + "/ad-accounts/", formData);
     console.log(data); // take us to manage ad accounts page
   };
 
@@ -60,8 +60,12 @@ export default function CreateAdAccount() {
       <div className="main-content">
         <div className="welcome">
           <div>
-            <h1>Welcome to StreamPala </h1>
-            <p>Please share these details to set up your advertiser account:</p>
+            <h1>Hey Testing</h1>
+            <p>
+              Setup your first ad account to start advertising on StreamPala.
+              You can always modify your ad account later, as well as create
+              more ad accounts of you need.
+            </p>
           </div>
           <img
             src={require("../../img/welcome-img.png")}

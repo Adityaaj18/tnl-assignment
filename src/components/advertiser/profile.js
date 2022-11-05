@@ -1,69 +1,59 @@
 import React, { useState, useEffect } from "react";
-import Header from "./home/Header";
-import Sidebar from "./home/sidebar/Sidebar";
+import Header from "../home/Header";
+import Sidebar from "../home/sidebar/Sidebar";
 import axios from "axios";
-import Loading from "./Loading";
+import Loading from "../Loading";
+import { Form } from "react-bootstrap";
 
-const Profile = () => {
-  const [menuCollapse, setMenuCollapse] = useState(true);
+const baseURL = process.env.REACT_APP_URL;
+
+const AdvertiserProfile = () => {
+  const thisUser = JSON.parse(window.localStorage.getItem("authData"));
+  const config = {
+    headers: { Authorization: `Token ${thisUser?.token}` },
+  };
+
   const [user, setUser] = useState();
+  const [editUser, setEditUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isEdit, setIsEdit] = useState(false);
 
+  useEffect(() => {
+    async function fetchProfileData() {
+      const { data } = await axios.get(baseURL + `users/user-info/`, config);
+      setUser(data);
+      setIsLoading(false);
+    }
+
+    fetchProfileData();
+  }, []);
+
+  const [menuCollapse, setMenuCollapse] = useState(true);
   const menuIconClick = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
 
-  const baseURL = "http://127.0.0.1:8000/api";
+  const handleEditingOn = () => {
+    setEditUser({
+      business_name: user.business_name,
+      linkedin_url: user.linkedin_url,
+      email: user.email,
+      phone: user.phone,
+      email_alert: user.email_alert,
+    });
 
-  const getToken = () =>
-    localStorage.getItem("token")
-      ? JSON.parse(localStorage.getItem("token"))
-      : null;
+    setIsEdit(true);
+  };
 
-  const getAuthorizationHeader = () => `Token ${getToken()}`;
-
-  const axiosInstance = axios.create({
-    baseURL,
-    headers: { Authorization: getAuthorizationHeader() },
-  });
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const fetchData = async () => {
-      try {
-        const { data } = await axiosInstance.get("/users/current", {
-          headers: {
-            Authorization: getAuthorizationHeader(),
-          },
-        });
-        console.log(data);
-        setUser(data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-
-        // console.log(user)
-      }
-    };
-    fetchData();
-  }, []);
-
-  // useEffect(() => {
-  //    axios
-  //       .get('http://127.0.0.1:8000/api/users/current/', {
-  //          headers: {
-  //             // Authorization: `Token ${token}`
-  //             Authorization: `Token f362e4e2c00387b6e6ec36fab14c175761644aa2`
-  //          }
-  //       })
-  //       .then((res) => {
-  //          setUser(res.data)
-  //          console.log(res.data)
-  //       })
-  // }, [])
+  const updateProfile = async () => {
+    const { data } = await axios.patch(
+      baseURL + `advertisers/${thisUser?.user_id}/`,
+      editUser,
+      config
+    );
+    setUser(data);
+    setIsEdit(false);
+  };
 
   return (
     <div>
@@ -82,7 +72,7 @@ const Profile = () => {
                       <div className="">
                         <div style={{ height: "170px" }}>
                           <img
-                            src={require("../img/profile-bg.png")}
+                            src={require("../../img/profile-bg.png")}
                             alt=""
                             style={{
                               width: "100%",
@@ -109,7 +99,7 @@ const Profile = () => {
                             <div style={{ display: "flex" }}>
                               <div style={{ display: "flex" }}>
                                 <img
-                                  src={require("../img/johndoe.png")}
+                                  src={require("../../img/johndoe.png")}
                                   alt=""
                                   style={{
                                     width: "182px",
@@ -135,7 +125,7 @@ const Profile = () => {
                                       color: "#9B51E0",
                                     }}
                                   >
-                                    {user.name}
+                                    {user?.full_name}
                                   </h1>
                                 </div>
                               </div>
@@ -147,13 +137,13 @@ const Profile = () => {
                             >
                               <div className="profile-buttons">
                                 <button
-                                  onClick={() => setIsEdit(!isEdit)}
+                                  onClick={() => setIsEdit(false)}
                                   className="cancel"
                                 >
                                   Cancel
                                 </button>
                                 <button
-                                  onClick={() => setIsEdit(!isEdit)}
+                                  onClick={updateProfile}
                                   id="edit-profile"
                                 >
                                   Save
@@ -179,18 +169,15 @@ const Profile = () => {
                                 border: "1px solid #d9c0f0",
                               }}
                             >
-                              <label
-                                style={{
-                                  fontSize: "14px",
-                                  padding: "5px 29px",
-                                  borderRight: "1px solid #f2f2f2",
-                                  color: "#6F6F6F",
-                                }}
-                              >
-                                streampala.com/
-                              </label>
                               <input
                                 type="text"
+                                value={editUser.business_name}
+                                onChange={(e) =>
+                                  setEditUser({
+                                    ...editUser,
+                                    business_name: e.target.value,
+                                  })
+                                }
                                 style={{
                                   border: "none",
                                   padding: "5px",
@@ -220,7 +207,7 @@ const Profile = () => {
                                 }}
                               >
                                 <img
-                                  src={require("../img/yt-logo.png")}
+                                  src={require("../../img/linkedin.png")}
                                   alt=""
                                   style={{
                                     width: "30px",
@@ -231,6 +218,13 @@ const Profile = () => {
                               </div>
                               <input
                                 type="text"
+                                value={editUser.linkedin_url}
+                                onChange={(e) =>
+                                  setEditUser({
+                                    ...editUser,
+                                    linkedin_url: e.target.value,
+                                  })
+                                }
                                 style={{
                                   border: "none",
                                   padding: "5px",
@@ -246,57 +240,6 @@ const Profile = () => {
                             style={{ color: "#f2e9fa" }}
                           >
                             .
-                          </div>
-                          <div className="col-lg-9">
-                            <div
-                              style={{
-                                display: "flex",
-                                width: "100%",
-                                backgroundColor: "#fff",
-                                borderRadius: "6px",
-                                border: "1px solid #d9c0f0",
-                              }}
-                            >
-                              <div
-                                style={{
-                                  padding: "2px 118px 2px 29px",
-                                  borderRight: "1px solid #f2f2f2",
-                                }}
-                              >
-                                <img
-                                  src={require("../img/dc-logo.png")}
-                                  alt=""
-                                  style={{
-                                    width: "30px",
-                                    height: "22px",
-                                    fontWeight: "700",
-                                  }}
-                                />
-                              </div>
-                              <input
-                                type="text"
-                                style={{
-                                  border: "none",
-                                  padding: "5px",
-                                  width: "100%",
-                                  borderRadius: "6px",
-                                }}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row data-row">
-                          <div className="col-lg-2 profile-data">Bio</div>
-                          <div className="col-lg-9">
-                            <textarea
-                              type="text"
-                              style={{
-                                width: "100%",
-                                height: "150px",
-                                borderRadius: "6px",
-                                border: "1px solid #d9c0f0",
-                              }}
-                            />
                           </div>
                         </div>
                         <div className="row data-row">
@@ -323,6 +266,13 @@ const Profile = () => {
                               </label>
                               <input
                                 type="text"
+                                value={editUser.email}
+                                onChange={(e) =>
+                                  setEditUser({
+                                    ...editUser,
+                                    email: e.target.value,
+                                  })
+                                }
                                 style={{
                                   border: "none",
                                   padding: "5px",
@@ -357,12 +307,49 @@ const Profile = () => {
                               </label>
                               <input
                                 type="text"
+                                value={editUser.phone}
+                                onChange={(e) =>
+                                  setEditUser({
+                                    ...editUser,
+                                    phone: e.target.value,
+                                  })
+                                }
                                 style={{
                                   border: "none",
                                   padding: "5px",
                                   width: "100%",
                                   borderRadius: "6px",
                                 }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="row data-row">
+                          <div className="col-lg-2 profile-data">
+                            Email Alert
+                          </div>
+                          <div className="col-lg-9">
+                            <div
+                              style={{
+                                display: "flex",
+                                width: "100%",
+                                backgroundColor: "#fff",
+                                borderRadius: "6px",
+                                border: "1px solid #d9c0f0",
+                              }}
+                            >
+                              <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                style={{ fontSize: "22px" }}
+                                checked={editUser?.email_alert}
+                                onChange={(e) =>
+                                  setEditUser({
+                                    ...editUser,
+                                    email_alert: e.target.checked,
+                                  })
+                                }
                               />
                             </div>
                           </div>
@@ -380,7 +367,7 @@ const Profile = () => {
                       <div className="">
                         <div style={{ height: "170px" }}>
                           <img
-                            src={require("../img/profile-bg.png")}
+                            src={require("../../img/profile-bg.png")}
                             alt=""
                             style={{
                               width: "100%",
@@ -407,7 +394,7 @@ const Profile = () => {
                             <div style={{ display: "flex" }}>
                               <div style={{ display: "flex" }}>
                                 <img
-                                  src={require("../img/johndoe.png")}
+                                  src={require("../../img/johndoe.png")}
                                   alt=""
                                   style={{
                                     width: "182px",
@@ -434,43 +421,26 @@ const Profile = () => {
                                       color: "#9B51E0",
                                     }}
                                   >
-                                    {user.name}
+                                    {user?.full_name}
                                   </h1>
-                                  <ul
+
+                                  <div
                                     style={{
-                                      listStyle: "none",
-                                      padding: "20px",
+                                      padding: "5px",
+                                      display: "flex",
+                                      alignItems: "center",
                                     }}
                                   >
-                                    <li>
-                                      <div>
-                                        <img
-                                          style={{
-                                            padding: "5px",
-                                            width: "36px",
-                                          }}
-                                          src={require("../img/yt-logo.png")}
-                                          alt=""
-                                        />
-                                        youtube
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div>
-                                        <img
-                                          style={{
-                                            width: "36px",
-                                            height: "30px",
-
-                                            padding: "6px",
-                                          }}
-                                          src={require("../img/dc-logo.png")}
-                                          alt=""
-                                        />
-                                        discord
-                                      </div>
-                                    </li>
-                                  </ul>
+                                    <img
+                                      style={{
+                                        padding: "5px",
+                                        width: "36px",
+                                      }}
+                                      src={require("../../img/linkedin.png")}
+                                      alt=""
+                                    />
+                                    {user?.linkedin_url}
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -480,7 +450,7 @@ const Profile = () => {
                               }}
                             >
                               <button
-                                onClick={() => setIsEdit(!isEdit)}
+                                onClick={handleEditingOn}
                                 id="edit-profile"
                               >
                                 Edit
@@ -497,20 +467,33 @@ const Profile = () => {
                         </div>
 
                         <div className="row data-row">
-                          <div className="col-lg-2 profile-data">Username</div>
-                          <div className="col-lg-10">{user.name}</div>
+                          <div className="col-lg-2 profile-data">
+                            Organization
+                          </div>
+                          <div className="col-lg-10">{user?.business_name}</div>
                         </div>
                         <div className="row data-row">
-                          <div className="col-lg-2 profile-data">Your bio</div>
-                          <div className="col-lg-10">hiuaohn jdqh</div>
-                        </div>
-                        <div className="row data-row">
-                          <div className="col-lg-2 profile-data">Email</div>
-                          <div className="col-lg-10">{user.email}</div>
+                          <div className="col-lg-2 profile-data">
+                            Work Email
+                          </div>
+                          <div className="col-lg-10">{user?.email}</div>
                         </div>
                         <div className="row data-row">
                           <div className="col-lg-2 profile-data">Phone</div>
-                          <div className="col-lg-10">+91948789441</div>
+                          <div className="col-lg-10">(+91){user?.phone}</div>
+                        </div>
+                        <div className="row data-row">
+                          <div className="col-lg-2 profile-data">
+                            Email Alert
+                          </div>
+                          <div className="col-lg-10">
+                            <Form.Check
+                              type="switch"
+                              id="custom-switch"
+                              style={{ fontSize: "22px" }}
+                              checked={user?.email_alert}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -525,4 +508,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default AdvertiserProfile;

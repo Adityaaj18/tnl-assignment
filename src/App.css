@@ -137,7 +137,7 @@ padding: 0px 20px;
   border: 1px solid #fff;
   padding: 4px;
   border-radius:8px;
-  
+  color: white;
 }
 
 .icon{
@@ -248,7 +248,7 @@ th:last-child {
   border-radius: 15px;
 }
 
-.child-radio-1{
+.child-TL{
   position: absolute;
 
   background: #fff;
@@ -260,7 +260,7 @@ th:last-child {
   border-radius: 15px;
 
 }
-.child-radio-2{
+.child-TR{
   position: absolute;
 
   background: #fff;
@@ -272,7 +272,7 @@ th:last-child {
   border-radius: 15px;
 
 }
-.child-radio-3{
+.child-BL{
   position: absolute;
   background: #fff;
   bottom: 0;
@@ -283,7 +283,7 @@ th:last-child {
   border-radius: 15px;
 
 }
-.child-radio-4{
+.child-BR{
   position: absolute;
   background: #fff;
   bottom: 0;
@@ -344,6 +344,10 @@ background: #FDF6FF;
 
 .Paused{
   color : #F26327;
+}
+
+.Completed-s{
+  color :  #F2C94C;
 }
 
 .post-campaign-modal{
@@ -415,4 +419,76 @@ background: #FDF6FF;
   text-align: center;
   margin-top: 60px;
   margin-bottom: 30px;
+}
+
+/* streamer side marketplace dashboard */
+
+.marketplace-card-container{
+  margin: 30px 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1100px) {
+  .marketplace-card-container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .marketplace-card-container {
+    display: grid;
+    gap: 20px;
+    place-items: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.st-campaign-card{
+  background-image: url(./img/banner.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 35px;
+  padding: 0;
+  height: fit-content;
+}
+
+.streampala{
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.streampala h3, h2{
+  color: white;
+}
+
+.streampala p{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: left !important;
+  color: #F2F2F2;
+  text-overflow: ellipsis;
+}
+
+.learn-more{
+  font-weight: bold;
+  color: white;
+}
+
+.streampala-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.campaign-info-para p{
+  color: #333333;
+  text-align: left;
+  font-size: 16px;
 }

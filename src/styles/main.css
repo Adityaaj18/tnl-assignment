@@ -70,3 +70,124 @@
       flex-direction: column;
     }
 }
+
+
+.ad-accounts-container{
+  margin: 30px 20px;
+  display: grid;
+  /* place-items: center; */
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1100px) {
+  .ad-accounts-container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .ad-accounts-container {
+    display: grid;
+    gap: 20px;
+    place-items: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+.ad-account-card{
+  width: 20rem;
+  margin-top: 30px;
+  background: #FFFFFF;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.03);
+  border-radius: 35px;
+  text-align: left;
+}
+
+.ad-account-card-menu{
+  display: flex;
+  justify-content: space-between;
+}
+
+.ad-account-card-option{
+  border: none;
+  background: transparent;
+}
+
+.ad-account-card-option:hover{
+  border: none;
+  background: transparent;
+}
+
+.ad-account-card-option:focus{
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+.dropdown-options{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #9B51E0;
+}
+
+.ad-account-card-info{
+  padding: 20px;
+}
+
+.ad-account-card-info p{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 25px;
+  color: #962E40;
+  text-align: left;
+}
+
+.account-campaign-data{
+  padding: 20px;
+}
+
+.data-status{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.add-adAccount{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-adAccount-btn{
+  color: #9B51E0;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.add-adAccount h4{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 29px;
+
+  color: #962E40;
+}
+
+.brand-logo >img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+

@@ -4,15 +4,6 @@ import { useParams } from "react-router-dom";
 import "../../styles/header.css";
 
 const Header = ({ menuIconClick, user }) => {
-  // const handleClick = () => {
-  //    console.log(menuCollapse)
-  // }
-
-  // const name = useParams()
-  // console.log(name)
-  const path = window.location.pathname;
-  const pathName = path.slice(1);
-
   return (
     <div>
       <nav className="navbar  justify-content-between">
@@ -23,12 +14,6 @@ const Header = ({ menuIconClick, user }) => {
               onClick={menuIconClick}
             />
           </div>
-
-          <h4 className="pg-title">
-            {path == "/"
-              ? "Home"
-              : pathName.charAt(0).toUpperCase() + pathName.slice(1)}
-          </h4>
         </div>
         {user !== "none" && (
           <div className="subnav" style={{ display: "flex" }}>

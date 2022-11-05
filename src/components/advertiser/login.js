@@ -36,7 +36,7 @@ export default function AdvertiserLogin({ history }) {
         password: user.password,
       };
 
-      const { data } = await axios.post(baseURL + "auth-token/", obj);
+      const { data } = await axios.post(baseURL + "/auth-token/", obj);
 
       window.localStorage.setItem("authData", JSON.stringify(data));
 
@@ -44,9 +44,12 @@ export default function AdvertiserLogin({ history }) {
         headers: { Authorization: `Token ${data.token}` },
       };
 
-      const allAccounts = await axios.get(baseURL + "ad-accounts/get/", config);
+      const allAccounts = await axios.get(
+        baseURL + "/ad-accounts/get/",
+        config
+      );
 
-      window.sessionStorage.setItem(
+      window.localStorage.setItem(
         "adAccounts",
         JSON.stringify(allAccounts.data)
       );
@@ -57,7 +60,7 @@ export default function AdvertiserLogin({ history }) {
         }
       });
 
-      window.sessionStorage.setItem("activeAccount", JSON.stringify(temp));
+      window.localStorage.setItem("activeAccount", JSON.stringify(temp));
 
       if (allAccounts.data?.length === 0) {
         navigate("/create-ad-account");

@@ -23,7 +23,7 @@ export default function Main2({ history }) {
 
   useEffect(() => {
     async function fetchCampaignData() {
-      const { data } = await axios.get(baseURL + "campaigns/");
+      const { data } = await axios.get(baseURL + "/campaigns/");
       setCampaigns(data);
     }
 

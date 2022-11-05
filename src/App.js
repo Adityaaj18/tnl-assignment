@@ -21,6 +21,8 @@ import SignUp from "./components/advertiser/SignUp";
 import AdvertiserLogin from "./components/advertiser/login";
 import CreateAdAccount from "./components/advertiser/adAccount";
 import LandingPage from "./landingPage/home";
+import AdvertiserManagement from "./components/advertiser/advertiserManagement";
+import AdvertiserProfile from "./components/advertiser/profile";
 
 function App() {
   const [menuCollapse, setMenuCollapse] = useState(true);
@@ -43,6 +45,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/ad/profile" element={<AdvertiserProfile />} />
             <Route path="/campaigns" element={<Campaigns />} />
             <Route path="/mycampaigns" element={<MyCampaigns />} />
             <Route path="/analytics" element={<Analytics />} />
@@ -51,6 +54,10 @@ function App() {
             <Route path="/analytics2" element={<Analytics2 />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/wallet" element={<Wallet />} />
+            <Route
+              path="/adAccount-management"
+              element={<AdvertiserManagement />}
+            />
             <Route path="/create-ad-account" element={<CreateAdAccount />} />
           </Routes>
         </Router>

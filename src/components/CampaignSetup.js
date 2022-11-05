@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const CampaignSetup = () => {
   const navigate = useNavigate();
   const activeAccount = JSON.parse(
-    window.sessionStorage.getItem("activeAccount")
+    window.localStorage.getItem("activeAccount")
   );
 
   useEffect(() => {
