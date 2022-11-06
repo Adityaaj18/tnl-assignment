@@ -4,6 +4,8 @@ import Sidebar from "./home/sidebar/Sidebar";
 import axios from "axios";
 import Loading from "./Loading";
 
+const baseURL = process.env.REACT_APP_URL;
+
 const Profile = () => {
   const [menuCollapse, setMenuCollapse] = useState(true);
   const [user, setUser] = useState();
@@ -14,56 +16,20 @@ const Profile = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
 
-  const baseURL = "http://127.0.0.1:8000/api";
-
-  const getToken = () =>
-    localStorage.getItem("token")
-      ? JSON.parse(localStorage.getItem("token"))
-      : null;
-
-  const getAuthorizationHeader = () => `Token ${getToken()}`;
-
-  const axiosInstance = axios.create({
-    baseURL,
-    headers: { Authorization: getAuthorizationHeader() },
-  });
+  const token = JSON.parse(window.localStorage.getItem("token"));
+  const config = {
+    headers: { Authorization: `Token ${token}` },
+  };
 
   useEffect(() => {
-    setIsLoading(true);
+    async function fetchProfileData() {
+      const { data } = await axios.get(baseURL + `/users/user-info/`, config);
+      setUser(data);
+      setIsLoading(false);
+    }
 
-    const fetchData = async () => {
-      try {
-        const { data } = await axiosInstance.get("/users/current", {
-          headers: {
-            Authorization: getAuthorizationHeader(),
-          },
-        });
-        console.log(data);
-        setUser(data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-
-        // console.log(user)
-      }
-    };
-    fetchData();
+    fetchProfileData();
   }, []);
-
-  // useEffect(() => {
-  //    axios
-  //       .get('http://127.0.0.1:8000/api/users/current/', {
-  //          headers: {
-  //             // Authorization: `Token ${token}`
-  //             Authorization: `Token f362e4e2c00387b6e6ec36fab14c175761644aa2`
-  //          }
-  //       })
-  //       .then((res) => {
-  //          setUser(res.data)
-  //          console.log(res.data)
-  //       })
-  // }, [])
 
   return (
     <div>

@@ -49,6 +49,8 @@ const Main = () => {
     fetchDashboardInfo();
   }, []);
 
+  const [magicLink, setMagicLink] = useState("https://streampala.com/xyz");
+
   return (
     <div className="main-content">
       {isLoading ? (
@@ -58,10 +60,88 @@ const Main = () => {
           <div className="welcome">
             <div>
               <h1>Welcome Back {user?.full_name}!</h1>
-              <p>
-                Tip: Did you know the support team is online 24/7 to help you
-                out?
-              </p>
+
+              {user?.last_login !== null ? (
+                user?.magic_url === false ? (
+                  <div className="col-lg-6">
+                    <p style={{ textAlign: "left" }}>
+                      Reminder: You haven’t set up the Magic Link in your OBS
+                      yet. Simply copy and paste the URL below into your OBS to
+                      begin. If you need help, watch this quick tutorial or
+                      contact us for support.
+                    </p>
+                    <div
+                      className="mt-3"
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                      }}
+                    >
+                      <input
+                        type="text"
+                        value={magicLink}
+                        style={{
+                          padding: "5px",
+                          width: "100%",
+                          borderRadius: "6px",
+                        }}
+                        readOnly
+                      />
+                      <button
+                        className="copy"
+                        onClick={() => {
+                          navigator.clipboard.writeText(magicLink);
+                        }}
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <p>
+                      Tip: Did you know the support team is online 24/7 to help
+                      you out?
+                    </p>
+                  </>
+                )
+              ) : (
+                <div className="col-lg-6">
+                  <p style={{ textAlign: "left" }}>
+                    Get Started: Here’s your unique Magic Link to set up
+                    StreamPala. Simply copy and paste this URL into your OBS to
+                    start earning from ad campaigns:
+                  </p>
+                  <div
+                    className="mt-3"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <input
+                      type="text"
+                      value={magicLink}
+                      style={{
+                        padding: "5px",
+                        width: "100%",
+                        borderRadius: "6px",
+                      }}
+                      readOnly
+                    />
+                    <button
+                      className="view-more"
+                      onClick={() => {
+                        navigator.clipboard.writeText(magicLink);
+                      }}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
             <img
               src={require("../../img/welcome-img.png")}
@@ -96,14 +176,7 @@ const Main = () => {
                     </div>
 
                     <div style={{ padding: "10px 20px 10px 10px" }}>
-                      <a
-                        onClick={() => {
-                          console.log("new");
-                        }}
-                        className="view-more"
-                      >
-                        View More
-                      </a>
+                      <a className="view-more">View More</a>
                     </div>
                   </div>
                   <div className="dots-wrapper">
@@ -248,9 +321,12 @@ const Main = () => {
           </div>
 
           <div className="marketplace-card-container">
-            {campaigns?.map((e) => (
+            {campaigns?.slice(0, 2).map((e) => (
               <Card key={e.id}>
-                <Link to={`/register/?q=${e.id}`}>
+                <Link
+                  to={`/register/?q=${e.id}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <Card.Body className="st-campaign-card">
                     <div style={{ padding: "30px" }}>
                       <div className={`${e.status} mb-2`}>

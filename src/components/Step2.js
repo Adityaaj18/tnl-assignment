@@ -19,10 +19,10 @@ const Step2 = () => {
 
     if (utilData) {
       try {
-        const { data } = await axios.put(
-          baseURL + `/campaigns/${utilData}/`,
-          userData
-        );
+        // const { data } = await axios.put(
+        //   baseURL + `/campaigns/${utilData}/`,
+        //   userData
+        // );
         setStep(3);
       } catch (err) {
         console.log(err);

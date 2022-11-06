@@ -20,7 +20,7 @@ const AdvertiserProfile = () => {
 
   useEffect(() => {
     async function fetchProfileData() {
-      const { data } = await axios.get(baseURL + `users/user-info/`, config);
+      const { data } = await axios.get(baseURL + `/users/user-info/`, config);
       setUser(data);
       setIsLoading(false);
     }

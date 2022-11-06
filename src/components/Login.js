@@ -7,6 +7,7 @@ import { TokenContext } from "../context/TokenContext";
 const baseURL = process.env.REACT_APP_URL;
 
 const Login = () => {
+  const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState();
   const { setToken } = useContext(TokenContext);
 
@@ -33,7 +34,6 @@ const Login = () => {
 
     return res.status;
   }
-  const navigate = useNavigate();
   return (
     <div className="container">
       <GoogleLogin

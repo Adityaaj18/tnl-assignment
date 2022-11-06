@@ -1,8 +1,52 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { GiArrowCursor, GiMoneyStack } from "react-icons/gi";
 import { BsFillPlayFill } from "react-icons/bs";
+import GoogleLogin from "react-google-login";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { TokenContext } from "../context/TokenContext";
+import { FaStore } from "react-icons/fa";
+import { AiFillWallet } from "react-icons/ai";
+import { DiGoogleAnalytics } from "react-icons/di";
+import {
+  BsInstagram,
+  BsFacebook,
+  BsYoutube,
+  BsWhatsapp,
+  BsTelegram,
+  BsDiscord,
+} from "react-icons/bs";
+
+const baseURL = process.env.REACT_APP_URL;
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+  const [accessToken, setAccessToken] = useState();
+  const { setToken } = useContext(TokenContext);
+
+  function googleResponse(response) {
+    googleLogin(response.accessToken);
+    // navigate('/home')
+  }
+
+  const onSuccess = (response) => {
+    // navigate('/home')
+    googleResponse(response);
+  };
+
+  async function googleLogin(accesstoken) {
+    let res = await axios.post(baseURL + "/auth/google/", {
+      access_token: accesstoken,
+    });
+    console.log(res.data);
+    setToken(res.data.key);
+    if (res.status == 200) {
+      window.localStorage.setItem("token", JSON.stringify(res.data.key));
+      navigate("/home");
+    }
+
+    return res.status;
+  }
   return (
     <div>
       <div className="preloader">
@@ -25,7 +69,7 @@ export default function LandingPage() {
       <header className="header">
         <div className="navbar-area">
           <div className="container">
-            <nav className="navbar-lp navbar-expand-lg">
+            <nav className="navbar navbar-expand-lg">
               <a className="navbar-brand" href="index.html">
                 <img src={require("../img/logo.png")} alt="Logo" />
               </a>
@@ -54,26 +98,14 @@ export default function LandingPage() {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="page-scroll" href="#features">
-                      Features
-                    </a>
+                    <Link to="/campaigns" className="page-scroll">
+                      Marketplace
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="page-scroll" href="#about">
-                      About
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a className="page-scroll" href="#why">
-                      Why
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="javascript:void(0)">Pricing</a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="javascript:void(0)">Clients</a>
+                    <Link to="/signup" className="page-scroll">
+                      Sign Up
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -96,13 +128,23 @@ export default function LandingPage() {
                   choose brands they want to partner with, while brands pay for
                   every time someone views their ad!
                 </p>
-                <a
-                  href="javascript:void(0)"
-                  className="main-btn border-btn btn-hover wow fadeInUp"
+                <GoogleLogin
+                  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                  buttonText="Login with YouTube"
+                  scope="openid profile email https://www.googleapis.com/auth/user.birthday.read https://www.googleapis.com/auth/user.gender.read https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.upload"
+                  onSuccess={onSuccess}
+                  onFailure={googleResponse}
+                  cookiePolicy={"single_host_origin"}
+                  className="google-login-btn"
+                />
+                &nbsp;
+                <Link
+                  to="/signup"
+                  className="main-btn btn-hover wow fadeInUp"
                   data-wow-delay=".6s"
                 >
-                  Sign Up with YouTube
-                </a>
+                  Advertiser Sign Up →
+                </Link>
                 <a href="#features" className="scroll-bottom">
                   <i className="lni lni-arrow-down"></i>
                 </a>
@@ -123,7 +165,7 @@ export default function LandingPage() {
             <div className="col-lg-4 col-md-8 col-sm-10">
               <div className="single-feature">
                 <div className="icon">
-                  <i className="lni lni-bootstrap"></i>
+                  <FaStore />
                 </div>
                 <div className="content">
                   <h3>Open Marketplace</h3>
@@ -138,7 +180,7 @@ export default function LandingPage() {
             <div className="col-lg-4 col-md-8 col-sm-10">
               <div className="single-feature">
                 <div className="icon">
-                  <i className="lni lni-layout"></i>
+                  <AiFillWallet />
                 </div>
                 <div className="content">
                   <h3>Safe Wallet</h3>
@@ -153,7 +195,7 @@ export default function LandingPage() {
             <div className="col-lg-4 col-md-8 col-sm-10">
               <div className="single-feature">
                 <div className="icon">
-                  <i className="lni lni-coffee-cup"></i>
+                  <DiGoogleAnalytics />
                 </div>
                 <div className="content">
                   <h3>Easy Analytics</h3>
@@ -193,23 +235,34 @@ export default function LandingPage() {
             <div className="col-xl-6 col-lg-6">
               <div className="about-content">
                 <div className="section-title mb-30">
-                  <h2 className="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  <h2
+                    className="mb-25 wow fadeInUp"
+                    data-wow-delay=".2s"
+                    style={{ color: "#162447" }}
+                  >
                     How It Works
                   </h2>
-                  <p className="wow fadeInUp" data-wow-delay=".4s">
-                    For Streamers: <br />
+                  <p
+                    className="wow fadeInUp"
+                    data-wow-delay=".4s"
+                    style={{ lineHeight: "40px" }}
+                  >
+                    <strong>For Streamers:</strong> <br />
                     1. Simply sign up with your YouTube account, <br />
                     2. Add your StreamPala Magic Link to your OBS <br />
                     3. And choose campaigns you’d like to earn from
                   </p>
                 </div>
-                <a
-                  href="javascript:void(0)"
-                  className="main-btn btn-hover border-btn wow fadeInUp"
-                  data-wow-delay=".6s"
-                >
-                  Sign Up with YouTube
-                </a>
+
+                <GoogleLogin
+                  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                  buttonText="Login with YouTube"
+                  scope="openid profile email https://www.googleapis.com/auth/user.birthday.read https://www.googleapis.com/auth/user.gender.read https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube.upload"
+                  onSuccess={onSuccess}
+                  onFailure={googleResponse}
+                  cookiePolicy={"single_host_origin"}
+                  className="google-login-btn-2"
+                />
               </div>
             </div>
           </div>
@@ -274,7 +327,11 @@ export default function LandingPage() {
             <div className="row justify-content-center">
               <div className="col-xxl-5 col-xl-6 col-lg-8 col-md-9">
                 <div className="section-title text-center mb-60">
-                  <h2 className="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  <h2
+                    className="mb-25 wow fadeInUp"
+                    data-wow-delay=".2s"
+                    style={{ color: "#162447" }}
+                  >
                     StreamPala is for Everybody.
                   </h2>
                   <p className="wow fadeInUp text-center" data-wow-delay=".4s">
@@ -335,31 +392,77 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="contact" className="subscribe-section pt-120">
+      <section id="about" className="about-section pt-150">
         <div className="container">
-          <div className="subscribe-wrapper img-bg">
-            <div className="row align-items-center">
-              <div className="col-xl-6 col-lg-7">
-                <div className="section-title mb-15">
-                  <h2 className="text-white mb-25">Subscribe Our Newsletter</h2>
-                  <p className="text-white pr-5">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor
+          <div className="row align-items-center">
+            <div className="col-xl-6 col-lg-6">
+              <div className="about-img">
+                <img
+                  src="assets/img/about/about-1.png"
+                  alt=""
+                  className="w-100"
+                />
+                <img
+                  src="assets/img/about/about-left-shape.svg"
+                  alt=""
+                  className="shape shape-1"
+                />
+                <img
+                  src="assets/img/about/left-dots.svg"
+                  alt=""
+                  className="shape shape-2"
+                />
+              </div>
+            </div>
+            <div className="col-xl-6 col-lg-6">
+              <div className="about-content">
+                <div className="section-title mb-30">
+                  <h2
+                    className="mb-25 wow fadeInUp"
+                    data-wow-delay=".2s"
+                    style={{ color: "#162447" }}
+                  >
+                    Join the Community:
+                  </h2>
+                  <p
+                    className="wow fadeInUp"
+                    data-wow-delay=".4s"
+                    style={{ lineHeight: "40px" }}
+                  >
+                    Join our fast-growing community of livestreamers and
+                    creators on our Discord for early campaign access, exciting
+                    challenges and free giveaways.
                   </p>
                 </div>
               </div>
-              <div className="col-xl-6 col-lg-5">
-                <form action="#" className="subscribe-form">
-                  <input
-                    type="email"
-                    name="subs-email"
-                    id="subs-email"
-                    placeholder="Your Email"
-                  />
-                  <button type="submit" className="main-btn btn-hover">
-                    Subscribe
-                  </button>
-                </form>
+              <div className="">
+                <h2
+                  className="mb-25 wow fadeInUp"
+                  data-wow-delay=".2s"
+                  style={{ color: "#162447" }}
+                >
+                  Follow Us on Social Media:
+                </h2>
+                <ul id="social-media-handles">
+                  <li>
+                    <BsDiscord />
+                  </li>
+                  <li>
+                    <BsInstagram />
+                  </li>
+                  <li>
+                    <BsFacebook />
+                  </li>
+                  <li>
+                    <BsYoutube />
+                  </li>
+                  <li>
+                    <BsWhatsapp />
+                  </li>
+                  <li>
+                    <BsTelegram />
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

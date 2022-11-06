@@ -101,6 +101,22 @@ padding: 0px 20px;
 
 }
 
+.copy{
+  background:#962E40;
+  text-decoration: none;
+  font-size:14px;
+  color:#fff;
+  border-style: none;
+  border-radius:10px;
+  padding: 7px 35px;
+  margin-left: 20px;
+}
+
+.copy:hover{
+  background:#962E40;
+  color:#fff;
+}
+
 #edit-profile{
   text-decoration: none;
   font-size:14px;
@@ -346,7 +362,7 @@ background: #FDF6FF;
   color : #F26327;
 }
 
-.Completed-s{
+.Completed-s,.Completed{
   color :  #F2C94C;
 }
 
@@ -492,3 +508,4 @@ background: #FDF6FF;
   text-align: left;
   font-size: 16px;
 }
+

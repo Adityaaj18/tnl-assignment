@@ -6,7 +6,7 @@ import "../../styles/header.css";
 const Header = ({ menuIconClick, user }) => {
   return (
     <div>
-      <nav className="navbar  justify-content-between">
+      <nav className="navbar navbar-other justify-content-between">
         <div style={{ display: "flex" }}>
           <div>
             <GiHamburgerMenu
@@ -22,7 +22,7 @@ const Header = ({ menuIconClick, user }) => {
                 borderRight: "1px solid #f2f2f2",
               }}
             >
-              <p>Balance</p>
+              <p style={{ color: "#962E40" }}>Balance</p>
               <h6>₹320.83</h6>
             </div>
             <div className="nav-profile-pic">

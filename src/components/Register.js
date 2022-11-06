@@ -4,10 +4,12 @@ import Header from "./home/Header";
 import Sidebar from "./home/sidebar/Sidebar";
 import axios from "axios";
 import getCountdown from "../utils/countdown";
+import { useNavigate } from "react-router-dom";
 
 const baseURL = process.env.REACT_APP_URL;
 
 const Register = () => {
+  const navigate = useNavigate();
   const [campaign, setCampaign] = useState();
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
@@ -37,6 +39,29 @@ const Register = () => {
     fetchCampaignData();
   }, [campaignId]);
 
+  const token = JSON.parse(window.localStorage.getItem("token"));
+  const config = {
+    headers: { Authorization: `Token ${token}` },
+  };
+
+  const registrationHandler = async () => {
+    try {
+      await axios.get(baseURL + `/campaigns/${campaignId}/activate/`, config);
+      setShow(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deRegistrationHandler = async () => {
+    try {
+      await axios.get(baseURL + `/campaigns/${campaignId}/deactivate/`, config);
+      navigate("/home");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Header menuIconClick={menuIconClick} />
@@ -56,6 +81,7 @@ const Register = () => {
                 fontWeight: "700",
                 paddingTop: "20px",
                 paddingRight: "20px",
+                color: "white",
                 // textAlign: 'right'
               }}
             >
@@ -90,14 +116,12 @@ const Register = () => {
                 </div>
               </div>
               <div className="col-lg-2">
-                <button
-                  className="start"
-                  onClick={() => {
-                    setShow(true);
-                  }}
-                >
+                <button className="start" onClick={registrationHandler}>
                   Register
                 </button>
+                {/* <button className="start" onClick={deRegistrationHandler}>
+                  Cancel Register
+                </button> */}
                 <h1
                   style={{
                     fontSize: "48px",
@@ -163,7 +187,7 @@ const Register = () => {
                         marginLeft: "17px",
                       }}
                     >
-                      {campaign?.streamer_count}+ streamers
+                      {campaign?.streamers_count}+ streamers
                     </a>
                   </div>
                 </div>
@@ -300,6 +324,7 @@ const Register = () => {
                 handleClose={handleClose}
                 handleShow={handleShow}
                 show={show}
+                data={campaign}
               />
             </div>
           </div>
