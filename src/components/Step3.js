@@ -26,7 +26,7 @@ const Step3 = () => {
   const updateCampaign = async () => {
     if (utilData) {
       try {
-        // await axios.put(baseURL + `/campaigns/${utilData}/`, userData);
+        await axios.put(baseURL + `/campaigns/${utilData}/`, userData);
         setModalShow(true);
       } catch (err) {
         console.log(err);

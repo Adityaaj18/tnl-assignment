@@ -24,9 +24,8 @@ const Step1 = (props) => {
     };
 
     try {
-      // const { data } = await axios.post(baseURL + "/campaigns/", formToPost);
-      // setUtilData(data.id);
-      setUtilData(10);
+      const { data } = await axios.post(baseURL + "/campaigns/", formToPost);
+      setUtilData(data.id);
       setStep(2);
     } catch (err) {
       console.log(err);
