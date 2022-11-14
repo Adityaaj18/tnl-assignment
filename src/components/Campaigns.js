@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Header from "./home/Header";
 import Sidebar from "./home/sidebar/Sidebar";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
 import { BsChevronDown } from "react-icons/bs";
+import { Dropdown } from "react-bootstrap";
 
 const baseURL = process.env.REACT_APP_URL;
 
 const Campaigns = () => {
+  const navigate = useNavigate();
   const [menuCollapse, setMenuCollapse] = useState(true);
 
   const [campaigns, setCampaigns] = useState([]);
@@ -21,6 +23,8 @@ const Campaigns = () => {
   const config = {
     headers: { Authorization: `Token ${token}` },
   };
+
+  const [sortType, setSortType] = useState("Recent Campaigns");
 
   useEffect(() => {
     axios
@@ -39,13 +43,16 @@ const Campaigns = () => {
       <div className="main-content">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
-            <FaArrowLeft
-              style={{
-                fontSize: "22px",
-                marginBottom: "10px",
-                marginRight: "15px",
-              }}
-            />
+            <span onClick={() => navigate("/home")}>
+              <FaArrowLeft
+                style={{
+                  fontSize: "22px",
+                  marginBottom: "10px",
+                  marginRight: "15px",
+                  cursor: "pointer",
+                }}
+              />
+            </span>
             <span
               style={{
                 fontSize: "24px",
@@ -66,10 +73,13 @@ const Campaigns = () => {
               color: " #962E40",
             }}
           >
-            <span style={{ fontWeight: "600" }}>
-              Sort By:Recent Campaigns
-              <BsChevronDown style={{ marginLeft: "10px" }} />
-            </span>
+            <Dropdown>
+              <Dropdown.Toggle className="sorting-option">
+                <span style={{ fontWeight: "600" }}>Sort By: {sortType}</span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu style={{ width: "100%" }}></Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
         <div className="campaigns-container">
@@ -77,7 +87,7 @@ const Campaigns = () => {
             <div className="row g-4" style={{ marginBottom: "50px" }}>
               {campaigns.map((campaign) => (
                 <div className="col-lg-6">
-                  <Link to="/register" className="link">
+                  <Link to={`/register/?q=${campaign.id}`} className="link">
                     <div className="card-banner">
                       <div style={{ padding: "20px 30px" }}>
                         <span className="timer">Ends in: 45d 15h 12m</span>

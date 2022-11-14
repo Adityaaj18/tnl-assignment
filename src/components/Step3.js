@@ -20,13 +20,23 @@ const Step3 = () => {
 
   const handleRadioChange = (e) => {
     setCurrentRadioValue(e.target.value);
-    setUserData({ ...userData, adPosition: e.target.value });
+    setUserData({ ...userData, ad_placement: e.target.value });
   };
 
   const updateCampaign = async () => {
     if (utilData) {
       try {
-        await axios.put(baseURL + `/campaigns/${utilData}/`, userData);
+        const formData = new FormData();
+
+        for (const key in userData) {
+          if (key === "media_file" || key === "custom_tnc") {
+            formData.append(key, userData[key]);
+          } else {
+            formData.set(key, userData[key]);
+          }
+        }
+
+        await axios.put(baseURL + `/campaigns/${utilData}/`, formData);
         setModalShow(true);
       } catch (err) {
         console.log(err);

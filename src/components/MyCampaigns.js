@@ -9,7 +9,7 @@ import { BsChevronDown } from "react-icons/bs";
 import Loading from "./Loading";
 import styled from "styled-components";
 import "../styles/mycampaigns.css";
-import { Card } from "react-bootstrap";
+import { Card, Dropdown } from "react-bootstrap";
 import { GoPrimitiveDot } from "react-icons/go";
 import getCountdown from "../utils/countdown";
 
@@ -58,15 +58,21 @@ const MyCampaigns = () => {
     headers: { Authorization: `Token ${token}` },
   };
 
+  const [sortType, setSortType] = useState("default");
+
   useEffect(() => {
-    axios
-      .get(baseURL + "/campaigns/", {
-        config,
-      })
-      .then((res) => {
-        setCampaigns(res.data);
-        console.log(res.data);
-      });
+    if (!token) {
+      window.location.replace("/");
+    } else {
+      axios
+        .get(baseURL + "/campaigns/", {
+          config,
+        })
+        .then((res) => {
+          setCampaigns(res.data);
+          console.log(res.data);
+        });
+    }
   }, []);
 
   useEffect(() => {
@@ -79,12 +85,16 @@ const MyCampaigns = () => {
 
   useEffect(() => {
     setIsLoading(true);
+
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          baseURL + `/users/${user?.id}/campaigns/`,
-          config
-        );
+        let endPoint = baseURL + `/users/${user?.id}/campaigns/`;
+        if (sortType === "dt-up") {
+          endPoint += "?sort=dt-up";
+        } else if (sortType === "asc") {
+          endPoint += "?sort=asc";
+        }
+        const { data } = await axios.get(endPoint, config);
         console.log(data);
         setMyCampaigns(data);
       } catch (err) {
@@ -94,8 +104,10 @@ const MyCampaigns = () => {
         // console.log(user)
       }
     };
-    fetchData();
-  }, [user]);
+    if (user) {
+      fetchData();
+    }
+  }, [user, sortType]);
 
   return (
     <div>
@@ -197,10 +209,34 @@ const MyCampaigns = () => {
                     color: " #962E40",
                   }}
                 >
-                  <span style={{ fontWeight: "600" }}>
-                    Sort By:New to Oldest
-                    <BsChevronDown style={{ marginLeft: "10px" }} />
-                  </span>
+                  <Dropdown>
+                    <Dropdown.Toggle className="sorting-option">
+                      <span style={{ fontWeight: "600" }}>
+                        Sort By: {sortType}
+                      </span>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu style={{ width: "100%" }}>
+                      <Dropdown.Item
+                        className="dropdown-options"
+                        onClick={() => setSortType("asc")}
+                      >
+                        asc
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-options"
+                        onClick={() => setSortType("dt-up")}
+                      >
+                        dt-up
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-options"
+                        onClick={() => setSortType("default")}
+                      >
+                        default
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </div>
               </div>
             </div>

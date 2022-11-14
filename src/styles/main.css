@@ -129,6 +129,26 @@
   outline-offset: none !important;
 }
 
+.sorting-option{
+  border: none;
+  background: transparent;
+  color: #962E40;
+}
+
+.sorting-option:hover{
+  border: none;
+  background: transparent;
+  color: #962E40;
+}
+
+.sorting-option:focus{
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  outline-offset: none !important;
+  color: #962E40 !important;
+}
+
 .dropdown-options{
   font-family: 'Montserrat';
   font-style: normal;

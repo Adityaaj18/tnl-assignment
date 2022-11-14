@@ -30,22 +30,30 @@ const Register = () => {
   const params = new URLSearchParams(search);
   const campaignId = params.get("q");
 
-  useEffect(() => {
-    async function fetchCampaignData() {
-      const { data } = await axios.get(baseURL + `/campaigns/${campaignId}`);
-      setCampaign(data);
-    }
-
-    fetchCampaignData();
-  }, [campaignId]);
-
   const token = JSON.parse(window.localStorage.getItem("token"));
   const config = {
     headers: { Authorization: `Token ${token}` },
   };
 
+  useEffect(() => {
+    async function fetchCampaignData() {
+      let res;
+      if (token) {
+        res = await axios.get(baseURL + `/campaigns/${campaignId}`, config);
+      } else {
+        res = await axios.get(baseURL + `/campaigns/${campaignId}`);
+      }
+      setCampaign(res.data);
+    }
+
+    fetchCampaignData();
+  }, [campaignId]);
+
   const registrationHandler = async () => {
     try {
+      if (!token) {
+        window.location.replace("/");
+      }
       await axios.get(baseURL + `/campaigns/${campaignId}/activate/`, config);
       setShow(true);
     } catch (err) {
@@ -116,12 +124,19 @@ const Register = () => {
                 </div>
               </div>
               <div className="col-lg-2">
-                <button className="start" onClick={registrationHandler}>
-                  Register
-                </button>
-                {/* <button className="start" onClick={deRegistrationHandler}>
-                  Cancel Register
-                </button> */}
+                {campaign?.user_status ? (
+                  <button
+                    className="cancel-registration"
+                    onClick={deRegistrationHandler}
+                  >
+                    Cancel Registeration
+                  </button>
+                ) : (
+                  <button className="start" onClick={registrationHandler}>
+                    Register
+                  </button>
+                )}
+
                 <h1
                   style={{
                     fontSize: "48px",
@@ -225,29 +240,7 @@ const Register = () => {
               <div className="row gx-2">
                 <div className="col-lg-4">
                   <img
-                    src={require("../img/banner.png")}
-                    alt=""
-                    style={{
-                      width: "100%",
-                      height: "160px",
-                      borderRadius: "35px",
-                    }}
-                  />
-                </div>
-                <div className="col-lg-4">
-                  <img
-                    src={require("../img/banner.png")}
-                    alt=""
-                    style={{
-                      width: "100%",
-                      height: "160px",
-                      borderRadius: "35px",
-                    }}
-                  />
-                </div>
-                <div className="col-lg-4">
-                  <img
-                    src={require("../img/banner.png")}
+                    src={campaign.media_file}
                     alt=""
                     style={{
                       width: "100%",

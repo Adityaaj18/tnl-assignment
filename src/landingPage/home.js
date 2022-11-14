@@ -16,6 +16,8 @@ import {
   BsTelegram,
   BsDiscord,
 } from "react-icons/bs";
+import { HiUserGroup } from "react-icons/hi";
+import { GiMagnifyingGlass } from "react-icons/gi";
 
 const baseURL = process.env.REACT_APP_URL;
 
@@ -263,6 +265,27 @@ export default function LandingPage() {
                   cookiePolicy={"single_host_origin"}
                   className="google-login-btn-2"
                 />
+
+                <div className="section-title mb-3 mt-3">
+                  <p
+                    className="wow fadeInUp"
+                    data-wow-delay=".4s"
+                    style={{ lineHeight: "40px" }}
+                  >
+                    <strong>For Advertisers:</strong> <br />
+                    1. Sign up with your work email <br />
+                    2. Create your brand profile with relevant details <br />
+                    3. Create ad campaigns with their budget and duration
+                  </p>
+                </div>
+
+                <Link
+                  to="/signup"
+                  className="main-btn btn-hover wow fadeInUp"
+                  data-wow-delay=".6s"
+                >
+                  Create Advertiser Account →
+                </Link>
               </div>
             </div>
           </div>
@@ -275,7 +298,11 @@ export default function LandingPage() {
             <div className="col-xl-6 col-lg-6">
               <div className="about-content">
                 <div className="section-title mb-30">
-                  <h2 className="mb-25 wow fadeInUp" data-wow-delay=".2s">
+                  <h2
+                    className="mb-25 wow fadeInUp"
+                    data-wow-delay=".2s"
+                    style={{ color: "#162447" }}
+                  >
                     Highest Payout in the Industry.
                   </h2>
                   <p className="wow fadeInUp" data-wow-delay=".4s">
@@ -345,6 +372,9 @@ export default function LandingPage() {
             </div>
 
             <div className="row">
+              <h3 style={{ textAlign: "center", color: "#162447" }}>
+                For Streamers
+              </h3>
               <div className="col-lg-4 col-md-6">
                 <div className="single-feature-extended">
                   <div className="icon-last-sec">
@@ -383,6 +413,54 @@ export default function LandingPage() {
                     <p>
                       StreamPala is approved by YouTube, so your account and
                       audience is always safe.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <h3 style={{ textAlign: "center", color: "#162447" }}>
+                For Advertisers
+              </h3>
+              <div className="col-lg-4 col-md-6">
+                <div className="single-feature-extended">
+                  <div className="icon-last-sec">
+                    <HiUserGroup />
+                  </div>
+                  <div className="content">
+                    <h3>Target Gen-Z</h3>
+                    <p>
+                      Reach an audience that is hard to reach through
+                      traditional media, including social!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6">
+                <div className="single-feature-extended">
+                  <div className="icon-last-sec">
+                    <GiArrowCursor />
+                  </div>
+                  <div className="content">
+                    <h3>Non-interruptive</h3>
+                    <p>
+                      Your ad appears as a part of the content, and does not
+                      ruin the experience like typical ads
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6">
+                <div className="single-feature-extended">
+                  <div className="icon-last-sec">
+                    <GiMagnifyingGlass />
+                  </div>
+                  <div className="content">
+                    <h3>Real-time Analytics</h3>
+                    <p>
+                      Get real-time data on all meaningful metrics in a
+                      beautifully visualized dashboard
                     </p>
                   </div>
                 </div>

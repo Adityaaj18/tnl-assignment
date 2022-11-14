@@ -6,10 +6,17 @@ import Sidebar from "../home/sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 const baseURL = process.env.REACT_APP_URL;
+const mediaURL = process.env.REACT_APP_MEDIA;
 
 export default function CreateAdAccount() {
   const navigate = useNavigate();
   const login = JSON.parse(window.localStorage.getItem("authData"));
+  const accounts = JSON.parse(window.localStorage.getItem("adAccounts"));
+
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const src = params.get("q");
+  const accId = params.get("id");
 
   useEffect(() => {
     if (!login) {
@@ -28,15 +35,38 @@ export default function CreateAdAccount() {
     brandname: "",
     brandlogo: "",
   });
+  const [accountIndex, setAccountIndex] = useState(-1);
 
   useEffect(() => {
-    async function fetchRandomName() {
-      const { data } = await axios.get(baseURL + "/name-generate");
-      setAdAccount({ ...adAccount, name: data.name });
+    let temp;
+    if (accounts) {
+      temp = accounts.length + 1;
+    } else {
+      temp = 1;
     }
-
-    fetchRandomName();
+    setAdAccount({ ...adAccount, name: `Ad Account ${temp}` });
   }, []);
+
+  useEffect(() => {
+    if (src === "edit") {
+      if (accId < 0 || accId > accounts.length) {
+        navigate("/adAccount-management");
+      } else {
+        accounts.some((e, idx) => {
+          if (e.id == accId) {
+            setAccountIndex(idx);
+            setAdAccount({
+              ...adAccount,
+              name: e.name,
+              brandname: e.brand_name,
+            });
+
+            return true;
+          }
+        });
+      }
+    }
+  }, [src]);
 
   const handleUploadFile = (e) => {
     setAdAccount({ ...adAccount, brandlogo: e.target.files[0] });
@@ -45,13 +75,37 @@ export default function CreateAdAccount() {
   const submitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("brand_logo", adAccount.brandlogo);
     formData.set("name", adAccount.name);
     formData.set("brand_name", adAccount.brandname);
-    formData.set("owner", 3);
 
-    const { data } = await axios.post(baseURL + "/ad-accounts/", formData);
-    console.log(data); // take us to manage ad accounts page
+    if (src === "edit") {
+      if (adAccount.brandlogo) {
+        formData.append("brand_logo", adAccount.brandlogo);
+      }
+
+      const { data } = await axios.patch(
+        baseURL + `/ad-accounts/${accId}/`,
+        formData
+      );
+
+      let obj = {};
+      if (accountIndex !== -1) {
+        for (const key in data) {
+          obj[key] = data[key];
+        }
+      }
+
+      accounts[accountIndex] = obj;
+      localStorage.setItem("adAccounts", JSON.stringify(accounts));
+
+      navigate("/adAccount-management");
+    } else {
+      formData.append("brand_logo", adAccount.brandlogo);
+      formData.set("owner", login.user_id);
+
+      await axios.post(baseURL + "/ad-accounts/", formData);
+      navigate("/adAccount-management");
+    }
   };
 
   return (
@@ -126,6 +180,17 @@ export default function CreateAdAccount() {
                 className="form-control"
                 onChange={handleUploadFile}
               />
+              <br />
+              <p style={{ color: "black", textAlign: "left" }}>
+                Current file :{" "}
+                <a
+                  href={mediaURL + accounts[accountIndex]?.brand_logo}
+                  style={{ color: "black" }}
+                  target="_blank"
+                >
+                  {accounts[accountIndex]?.brand_logo.split("/").pop()}
+                </a>
+              </p>
             </div>
           </div>
           <br />
@@ -135,7 +200,7 @@ export default function CreateAdAccount() {
               Cancel
             </button>
             <button className="view-more" type="submit">
-              Save
+              {src === "edit" ? "Update" : "Save"}
             </button>
           </div>
         </form>

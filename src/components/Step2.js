@@ -19,9 +19,19 @@ const Step2 = () => {
 
     if (utilData) {
       try {
+        const formData = new FormData();
+
+        for (const key in userData) {
+          if (key === "media_file" || key === "custom_tnc") {
+            formData.append(key, userData[key]);
+          } else {
+            formData.set(key, userData[key]);
+          }
+        }
+
         const { data } = await axios.put(
           baseURL + `/campaigns/${utilData}/`,
-          userData
+          formData
         );
         setStep(3);
       } catch (err) {
