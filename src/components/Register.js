@@ -3,8 +3,9 @@ import Modaal from "./Modaal";
 import Header from "./home/Header";
 import Sidebar from "./home/sidebar/Sidebar";
 import axios from "axios";
-import getCountdown from "../utils/countdown";
+import { getCountdown } from "../utils/countdown";
 import { useNavigate } from "react-router-dom";
+import CampaignPolicy from "../legal/campaignPolicy";
 
 const baseURL = process.env.REACT_APP_URL;
 
@@ -240,7 +241,7 @@ const Register = () => {
               <div className="row gx-2">
                 <div className="col-lg-4">
                   <img
-                    src={campaign.media_file}
+                    src={campaign?.media_file}
                     alt=""
                     style={{
                       width: "100%",
@@ -265,51 +266,7 @@ const Register = () => {
                 </div>
                 <div className="scroll-area" style={{ paddingTop: "30px" }}>
                   <div style={{ padding: "10px" }}>
-                    <ul>
-                      <li>
-                        {" "}
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod tempor
-                      </li>
-
-                      <li>
-                        {" "}
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod tempor
-                      </li>
-                      <li>
-                        {" "}
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod tempor
-                      </li>
-                    </ul>
-                    <div>
-                      <span
-                        style={{
-                          fontWeight: "700",
-                          fontSize: "20px",
-                        }}
-                      >
-                        Lorem Ipsum
-                      </span>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod temporLorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, § sed do eiusmod
-                        temporLorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, § sed do eiusmod temporLorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, § sed do eiusmod tempor
-                      </p>
-                      <br />
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        § sed do eiusmod temporLorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, § sed do eiusmod
-                        temporLorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, § sed do eiusmod temporLorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, § sed do eiusmod tempor
-                      </p>
-                    </div>
+                    <CampaignPolicy data={campaign} />
                   </div>
                 </div>
               </div>

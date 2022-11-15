@@ -12,7 +12,7 @@ import { TokenContext } from "../../context/TokenContext";
 import Loading from "../Loading";
 
 import "../../styles/main.css";
-import getCountdown from "../../utils/countdown";
+import { getCountdown } from "../../utils/countdown";
 import { Card } from "react-bootstrap";
 import { GoPrimitiveDot } from "react-icons/go";
 

@@ -11,7 +11,7 @@ import styled from "styled-components";
 import "../styles/mycampaigns.css";
 import { Card, Dropdown } from "react-bootstrap";
 import { GoPrimitiveDot } from "react-icons/go";
-import getCountdown from "../utils/countdown";
+import { getCountdown } from "../utils/countdown";
 
 const baseURL = process.env.REACT_APP_URL;
 

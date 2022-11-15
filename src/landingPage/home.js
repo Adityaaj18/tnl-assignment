@@ -554,11 +554,12 @@ export default function LandingPage() {
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="footer-widget">
                   <div className="logo mb-30">
-                    <a href="index.html">
-                      <img src="assets/img/logo/logo.svg" alt="" />
-                    </a>
+                    <img src={require("../img/logo.png")} alt="logo" />
                   </div>
-                  <p className="desc mb-30 text-white">
+                  <p
+                    className="desc mb-30 text-white"
+                    style={{ textAlign: "left" }}
+                  >
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                     dinonumy eirmod tempor invidunt.
                   </p>
@@ -612,16 +613,34 @@ export default function LandingPage() {
                   <h3>Features</h3>
                   <ul className="links">
                     <li>
-                      <a href="javascript:void(0)">How it works</a>
+                      <Link to="/legal/platform-terms" target="_blank">
+                        Platform Terms
+                      </Link>
                     </li>
                     <li>
-                      <a href="javascript:void(0)">Privacy policy</a>
+                      <Link to="/legal/privacy-policy" target="_blank">
+                        Privacy policy
+                      </Link>
                     </li>
                     <li>
-                      <a href="javascript:void(0)">Terms of service</a>
+                      <Link to="/legal/terms-of-use" target="_blank">
+                        Terms of service
+                      </Link>
+                    </li>
+                    {/* <li>
+                      <Link to="/legal/refund-policy" target="_blank">
+                        Refund policy
+                      </Link>
+                    </li> */}
+                    <li>
+                      <Link to="/legal/advertising-policy" target="_blank">
+                        Advertising policy
+                      </Link>
                     </li>
                     <li>
-                      <a href="javascript:void(0)">Refund policy</a>
+                      <Link to="/legal/direct-advertiser-terms" target="_blank">
+                        Direct Advertiser policy
+                      </Link>
                     </li>
                   </ul>
                 </div>

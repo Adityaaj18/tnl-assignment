@@ -9,7 +9,7 @@ const initialState = {
   email: "",
   phoneNumber: "",
   organization: "",
-  organizationType: "",
+  advertiserType: 1,
   password: "",
   newsletter: false,
 };
@@ -18,9 +18,17 @@ const baseURL = process.env.REACT_APP_URL;
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const login = JSON.parse(window.localStorage.getItem("authData"));
+  useEffect(() => {
+    if (login) {
+      navigate("/main2");
+    }
+  }, []);
+
   const [orgType, setOrgType] = useState([]);
   const [user, setUser] = useState(initialState);
   const [error, setError] = useState(false);
+  const [acceptTNC, setAcceptTNC] = useState(false);
 
   useEffect(() => {
     async function fetchOrganizations() {
@@ -42,14 +50,18 @@ export default function SignUp() {
       email: user.email,
       phone: user.phoneNumber,
       business_name: user.organization,
-      org_type: user.organizationType,
+      advertiser_type: user.advertiserType,
       password: user.password,
       newsletter: user.newsletter,
     };
 
     try {
-      await axios.post(baseURL + "/advertisers/", bodyObj);
-      navigate("/ad/login");
+      if (acceptTNC) {
+        await axios.post(baseURL + "/advertisers/", bodyObj);
+        navigate("/ad/login");
+      } else {
+        console.log("please accept tnc");
+      }
     } catch (error) {
       setError(true);
     }
@@ -136,7 +148,11 @@ export default function SignUp() {
                 Organization Type:
               </label>
               <div className="col-lg-8 col-sm-10">
-                <Form.Select name="organizationType" onChange={handleChange}>
+                <Form.Select
+                  name="advertiserType"
+                  onChange={handleChange}
+                  value={user.advertiserType}
+                >
                   {orgType?.map((e, idx) => (
                     <option key={idx} value={e.value}>
                       {e.name}
@@ -176,6 +192,22 @@ export default function SignUp() {
                   >
                     {" "}
                     Sign me up for the Live! Live Revolution Newsletter
+                  </p>
+                </div>
+                <div className="d-flex">
+                  <input
+                    type="checkbox"
+                    onChange={(e) => setAcceptTNC(e.target.checked)}
+                  />
+                  <p
+                    style={{
+                      color: "#9B51E0",
+                      marginBottom: "0px",
+                      paddingLeft: "5px",
+                    }}
+                  >
+                    {" "}
+                    Accept Terms and Conditions
                   </p>
                 </div>
                 <div className="d-flex justify-content-center">

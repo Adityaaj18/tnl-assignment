@@ -134,11 +134,21 @@ const Step2 = () => {
               <div className="col-lg-7 col-sm-10">
                 <input
                   type="file"
+                  accept="application/pdf"
                   className="form-control"
                   onChange={(e) =>
                     setUserData({ ...userData, custom_tnc: e.target.files[0] })
                   }
                 />
+                <p
+                  style={{
+                    color: "grey",
+                    textAlign: "left",
+                    marginTop: "10px",
+                  }}
+                >
+                  only pdf file
+                </p>
               </div>
             </div>
           )}

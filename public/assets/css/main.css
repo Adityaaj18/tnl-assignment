@@ -48,7 +48,7 @@ button:focus,
 }
 
 a:hover {
-  color: #5864FF;
+  color: #962E40;
 }
 
 a {
@@ -239,7 +239,7 @@ p {
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   border: none;
-  background: #5864FF;
+  background: #962E40;
   overflow: hidden;
 }
 
@@ -248,9 +248,9 @@ p {
 }
 
 .main-btn.border-btn {
-  border: 2px solid #5864FF;
+  border: 2px solid #962E40;
   background: transparent;
-  color: #5864FF;
+  color: #962E40;
 }
 
 .btn-hover {
@@ -283,7 +283,7 @@ p {
 .scroll-top {
   width: 45px;
   height: 45px;
-  background: #5864FF;
+  background: #962E40;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -309,7 +309,7 @@ p {
 
 .scroll-top:hover {
   color: #fff;
-  background: rgba(88, 100, 255, 0.8);
+  background: #9B394B;
 }
 
 @keyframes animation1 {
@@ -419,7 +419,7 @@ p {
   height: 100%;
   border-style: solid;
   /* Spinner Color */
-  border-color: #5864FF #5864FF #ddd;
+  border-color: #962E40 #962E40 #ddd;
   border-radius: 50%;
   border-width: 6px;
 }
@@ -789,7 +789,7 @@ p {
   border-radius: 35px !important;
   font-weight: bold !important;
   color: white !important;
-  background: #5864FF !important;
+  background: #962E40 !important;
 }
 
 
@@ -874,8 +874,8 @@ p {
   height: 40px;
   border-radius: 50%;
   background: #fff;
-  border: 3px solid #5864FF;
-  color: #5864FF;
+  border: 3px solid #962E40;
+  color: #962E40;
   left: 15px;
   bottom: 0;
   z-index: 9;
@@ -957,7 +957,7 @@ p {
   height: 130px;
   border-radius: 50%;
   background: rgba(88, 100, 255, 0.1);
-  color: #5864FF;
+  color: #962E40;
   margin: auto;
   margin-bottom: 30px;
   font-size: 65px;
@@ -1043,7 +1043,7 @@ p {
 }
 
 .box-style .content a.main-btn.border-btn:hover {
-  color: #5864FF;
+  color: #962E40;
 }
 
 .box-style .content a.main-btn.border-btn:hover::after {
@@ -1063,15 +1063,15 @@ p {
 }
 
 .box-style.color-2 {
-  border-color: #5864FF;
+  border-color: #962E40;
 }
 
 .box-style.color-2 .icon {
-  color: #5864FF;
+  color: #962E40;
 }
 
 .box-style.color-2 .content a:hover {
-  color: #5864FF;
+  color: #962E40;
 }
 
 .box-style.color-2 .content .main-btn:hover {
@@ -1234,7 +1234,7 @@ p {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #5864FF;
+  background: #962E40;
   position: absolute;
   left: 0;
   top: 6.5px;
@@ -1252,7 +1252,7 @@ ul#social-media-handles li{
 }
 
 ul#social-media-handles li:hover{
-  color : #5864FF
+  color : #962E40
 }
 
 /* ====== feature-extended css ====== */
@@ -1281,7 +1281,7 @@ ul#social-media-handles li:hover{
   font-size: 65px;
   line-height: 1;
   margin-bottom: 30px;
-  color: #5864FF;
+  color: #962E40;
   text-align: center;
 }
 
@@ -1387,7 +1387,7 @@ ul#social-media-handles li:hover{
     position: static;
     margin-top: 20px;
     background: #fff;
-    color: #5864FF;
+    color: #962E40;
     padding: 17.5px 35px;
   }
 }
@@ -1397,7 +1397,7 @@ ul#social-media-handles li:hover{
     position: absolute;
     margin-top: 0px;
     color: #fff;
-    background: #5864FF;
+    background: #962E40;
     padding: 17.5px 25px;
   }
 }
@@ -1420,12 +1420,17 @@ ul#social-media-handles li:hover{
 @media (max-width: 767px) {
   .footer {
     padding-top: 120px;
-    background: #5864FF;
+    background: #962E40;
   }
 }
 
 .footer .widget-wrapper .footer-widget {
   margin-bottom: 40px;
+}
+
+.footer .widget-wrapper .footer-widget .logo img{
+  width: 100px;
+  height: 100px;
 }
 
 @media only screen and (min-width: 1400px) {
@@ -1466,7 +1471,7 @@ ul#social-media-handles li:hover{
 }
 
 .footer .widget-wrapper .footer-widget .socials li a:hover {
-  color: #5864FF;
+  color: #962E40;
   background: #fff;
 }
 

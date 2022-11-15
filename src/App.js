@@ -23,6 +23,11 @@ import CreateAdAccount from "./components/advertiser/adAccount";
 import LandingPage from "./landingPage/home";
 import AdvertiserManagement from "./components/advertiser/advertiserManagement";
 import AdvertiserProfile from "./components/advertiser/profile";
+import TermsOfUse from "./legal/termsOfUse";
+import PrivacyPolicy from "./legal/privacyPolicy";
+import AdvertisingPolicy from "./legal/advertisingPolicy";
+import DirectAdvertiserTerms from "./legal/directAdvertiserTerms";
+import PlatformTerms from "./legal/platformTerms";
 
 function App() {
   const [menuCollapse, setMenuCollapse] = useState(true);
@@ -59,6 +64,20 @@ function App() {
               element={<AdvertiserManagement />}
             />
             <Route path="/create-ad-account" element={<CreateAdAccount />} />
+
+            {/* legal pages */}
+
+            <Route path="/legal/terms-of-use" element={<TermsOfUse />} />
+            <Route path="/legal/privacy-policy" element={<PrivacyPolicy />} />
+            <Route
+              path="/legal/advertising-policy"
+              element={<AdvertisingPolicy />}
+            />
+            <Route
+              path="/legal/direct-advertiser-terms"
+              element={<DirectAdvertiserTerms />}
+            />
+            <Route path="/legal/platform-terms" element={<PlatformTerms />} />
           </Routes>
         </Router>
       </TokenContext.Provider>

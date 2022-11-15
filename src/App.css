@@ -517,3 +517,17 @@ background: #FDF6FF;
   font-size: 16px;
 }
 
+.legal{
+  margin-top: 30px;
+}
+
+
+.legal p{
+  color: black !important;
+  text-align: left;
+}
+
+.campaign-legal p{
+  color: black !important;
+  text-align: left;
+}
