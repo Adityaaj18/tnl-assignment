@@ -10,12 +10,13 @@ import { useNavigate } from "react-router-dom";
 
 const CampaignSetup = () => {
   const navigate = useNavigate();
+  const login = JSON.parse(window.localStorage.getItem("authData"));
   const activeAccount = JSON.parse(
     window.localStorage.getItem("activeAccount")
   );
 
   useEffect(() => {
-    if (activeAccount === null) {
+    if (activeAccount === null || !login) {
       navigate("/ad/login");
     }
   }, []);
@@ -50,6 +51,7 @@ const CampaignSetup = () => {
               fontSize: "24px",
               fontWeight: "700",
               marginBottom: "50px",
+              color: "black",
             }}
           >
             Your Ad Campaign Setup

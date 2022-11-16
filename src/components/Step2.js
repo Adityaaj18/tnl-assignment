@@ -147,7 +147,7 @@ const Step2 = () => {
                     marginTop: "10px",
                   }}
                 >
-                  only pdf file
+                  Only PDF files allowed under 10Mb
                 </p>
               </div>
             </div>

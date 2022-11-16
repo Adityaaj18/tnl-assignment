@@ -16,31 +16,21 @@ export default function CampaignPolicy({ data }) {
 
   return (
     <div className="campaign-legal">
-      <p>CAMPAIGN TERMS AND CONDITIONS</p>
       <p>
-        Valid from the Starting Date of Campaign as Mentioned on StreamPala.com
+        <strong>Campaign Details:</strong>
       </p>
-      <p>&nbsp;</p>
-      <p style={{ backgroundColor: "yellow" }}>{info?.brand_name}</p>
-      <p>Brand message automated and placed from the campaign setup</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>
-        <br />
-      </p>
-      <p>Campaign Details:</p>
+      <br />
       <ul>
         <li>
           <p>
             By Registering for this campaign, you have a chance to earn INR{" "}
-            <strong>{data?.budget}</strong> for every{" "}
-            <strong>{data?.budget * 2}</strong> from your content.
+            <strong>40p</strong> for every view from your content.
           </p>
         </li>
         <li>
           <p>
             Campaign Duration:{" "}
-            <strong>{duration(data.start_date, data.end_date)}</strong> Days
+            <strong>{duration(data?.start_date, data?.end_date)} Days</strong>
           </p>
         </li>
       </ul>

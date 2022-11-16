@@ -92,7 +92,9 @@ export default function Main2({ history }) {
                             fontSize: "25px",
                           }}
                         />
-                        <p style={{ margin: "0px" }}>All Campaigns</p>
+                        <p style={{ margin: "0px", color: "#9B51E0" }}>
+                          All Campaigns
+                        </p>
                       </div>
                       <FiChevronDown
                         style={{
@@ -193,7 +195,9 @@ export default function Main2({ history }) {
                             fontSize: "25px",
                           }}
                         />
-                        <p style={{ margin: "0px" }}>All Time</p>
+                        <p style={{ margin: "0px", color: "#9B51E0" }}>
+                          All Time
+                        </p>
                       </div>
                       <FiChevronDown
                         style={{
@@ -297,7 +301,9 @@ export default function Main2({ history }) {
                             fontSize: "25px",
                           }}
                         />
-                        <p style={{ margin: "0px" }}>All Campaigns</p>
+                        <p style={{ margin: "0px", color: "#9B51E0" }}>
+                          All Campaigns
+                        </p>
                       </div>
                       <FiChevronDown
                         style={{
@@ -329,7 +335,9 @@ export default function Main2({ history }) {
                             fontSize: "25px",
                           }}
                         />
-                        <p style={{ margin: "0px" }}>All Time</p>
+                        <p style={{ margin: "0px", color: "#9B51E0" }}>
+                          All Time
+                        </p>
                       </div>
                       <FiChevronDown
                         style={{

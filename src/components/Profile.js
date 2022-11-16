@@ -31,6 +31,34 @@ const Profile = () => {
     fetchProfileData();
   }, []);
 
+  const [editUser, setEditUser] = useState();
+
+  const handleEditingOn = () => {
+    setEditUser({
+      ...editUser,
+      full_name: user.full_name,
+      username: user.username,
+      phone: user.phone,
+      bio: user.bio,
+      discord_url: user.discord_url,
+    });
+    setIsEdit(true);
+  };
+
+  const updateUserProfile = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.patch(
+        baseURL + `/users/${user.id}/`,
+        editUser
+      );
+      setUser(data);
+      setIsEdit(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Header menuIconClick={menuIconClick} />
@@ -101,7 +129,7 @@ const Profile = () => {
                                       color: "#9B51E0",
                                     }}
                                   >
-                                    {user.name}
+                                    {user.full_name}
                                   </h1>
                                 </div>
                               </div>
@@ -113,13 +141,13 @@ const Profile = () => {
                             >
                               <div className="profile-buttons">
                                 <button
-                                  onClick={() => setIsEdit(!isEdit)}
+                                  onClick={() => setIsEdit(false)}
                                   className="cancel"
                                 >
                                   Cancel
                                 </button>
                                 <button
-                                  onClick={() => setIsEdit(!isEdit)}
+                                  onClick={updateUserProfile}
                                   id="edit-profile"
                                 >
                                   Save
@@ -133,6 +161,22 @@ const Profile = () => {
                         className="profile-body"
                         style={{ paddingTop: "44px" }}
                       >
+                        <div className="row data-row">
+                          <div className="col-lg-2 profile-data">Full name</div>
+                          <div className="col-lg-9">
+                            <input
+                              type="text"
+                              style={{
+                                border: "1px solid #d9c0f0",
+                                padding: "10px",
+                                width: "100%",
+                                borderRadius: "6px",
+                              }}
+                              value={editUser.full_name}
+                            />
+                          </div>
+                        </div>
+
                         <div className="row data-row">
                           <div className="col-lg-2 profile-data">Username</div>
                           <div className="col-lg-9">
@@ -163,56 +207,14 @@ const Profile = () => {
                                   width: "100%",
                                   borderRadius: "6px",
                                 }}
+                                value={editUser.username}
                               />
                             </div>
                           </div>
                         </div>
                         <div className="row data-row gy-3">
                           <div className="col-lg-2 profile-data">Website</div>
-                          <div className="col-lg-9">
-                            <div
-                              style={{
-                                display: "flex",
-                                width: "100%",
-                                backgroundColor: "#fff",
-                                borderRadius: "6px",
-                                border: "1px solid #d9c0f0",
-                              }}
-                            >
-                              <div
-                                style={{
-                                  padding: "2px 118px 2px 29px",
-                                  borderRight: "1px solid #f2f2f2",
-                                }}
-                              >
-                                <img
-                                  src={require("../img/yt-logo.png")}
-                                  alt=""
-                                  style={{
-                                    width: "30px",
-                                    height: "30px",
-                                    fontWeight: "700",
-                                  }}
-                                />
-                              </div>
-                              <input
-                                type="text"
-                                style={{
-                                  border: "none",
-                                  padding: "5px",
-                                  width: "100%",
-                                  borderRadius: "6px",
-                                }}
-                              />
-                            </div>
-                          </div>
 
-                          <div
-                            className="col-lg-2 profile-data"
-                            style={{ color: "#f2e9fa" }}
-                          >
-                            .
-                          </div>
                           <div className="col-lg-9">
                             <div
                               style={{
@@ -247,6 +249,7 @@ const Profile = () => {
                                   width: "100%",
                                   borderRadius: "6px",
                                 }}
+                                value={editUser.discord_url}
                               />
                             </div>
                           </div>
@@ -259,46 +262,15 @@ const Profile = () => {
                               style={{
                                 width: "100%",
                                 height: "150px",
+                                padding: "10px",
                                 borderRadius: "6px",
                                 border: "1px solid #d9c0f0",
                               }}
+                              value={editUser.bio}
                             />
                           </div>
                         </div>
-                        <div className="row data-row">
-                          <div className="col-lg-2 profile-data">Email</div>
-                          <div className="col-lg-9">
-                            <div
-                              style={{
-                                display: "flex",
-                                width: "100%",
-                                backgroundColor: "#fff",
-                                borderRadius: "6px",
-                                border: "1px solid #d9c0f0",
-                              }}
-                            >
-                              <label
-                                style={{
-                                  fontSize: "14px",
-                                  padding: "5px 68px 5px 29px",
-                                  borderRight: "1px solid #f2f2f2",
-                                  color: "#6F6F6F",
-                                }}
-                              >
-                                gmail.com
-                              </label>
-                              <input
-                                type="text"
-                                style={{
-                                  border: "none",
-                                  padding: "5px",
-                                  width: "100%",
-                                  borderRadius: "6px",
-                                }}
-                              />
-                            </div>
-                          </div>
-                        </div>
+
                         <div className="row data-row">
                           <div className="col-lg-2 profile-data">Phone</div>
                           <div className="col-lg-9">
@@ -329,6 +301,7 @@ const Profile = () => {
                                   width: "100%",
                                   borderRadius: "6px",
                                 }}
+                                value={editUser.phone}
                               />
                             </div>
                           </div>
@@ -400,7 +373,7 @@ const Profile = () => {
                                       color: "#9B51E0",
                                     }}
                                   >
-                                    {user.name}
+                                    {user.full_name}
                                   </h1>
                                   <ul
                                     style={{
@@ -418,7 +391,7 @@ const Profile = () => {
                                           src={require("../img/yt-logo.png")}
                                           alt=""
                                         />
-                                        youtube
+                                        {user?.yt_channel}
                                       </div>
                                     </li>
                                     <li>
@@ -433,7 +406,7 @@ const Profile = () => {
                                           src={require("../img/dc-logo.png")}
                                           alt=""
                                         />
-                                        discord
+                                        {user?.discord_url}
                                       </div>
                                     </li>
                                   </ul>
@@ -446,7 +419,7 @@ const Profile = () => {
                               }}
                             >
                               <button
-                                onClick={() => setIsEdit(!isEdit)}
+                                onClick={handleEditingOn}
                                 id="edit-profile"
                               >
                                 Edit
@@ -464,19 +437,21 @@ const Profile = () => {
 
                         <div className="row data-row">
                           <div className="col-lg-2 profile-data">Username</div>
-                          <div className="col-lg-10">{user.name}</div>
+                          <div className="col-lg-10">{user?.username}</div>
                         </div>
                         <div className="row data-row">
                           <div className="col-lg-2 profile-data">Your bio</div>
-                          <div className="col-lg-10">hiuaohn jdqh</div>
+                          <div className="col-lg-10">{user?.bio}</div>
                         </div>
                         <div className="row data-row">
                           <div className="col-lg-2 profile-data">Email</div>
-                          <div className="col-lg-10">{user.email}</div>
+                          <div className="col-lg-10">{user?.email}</div>
                         </div>
                         <div className="row data-row">
                           <div className="col-lg-2 profile-data">Phone</div>
-                          <div className="col-lg-10">+91948789441</div>
+                          <div className="col-lg-10">
+                            {user?.phone ? "+91" + user.phone : ""}
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -23,6 +23,12 @@ const Step3 = () => {
     setUserData({ ...userData, ad_placement: e.target.value });
   };
 
+  const login = JSON.parse(window.localStorage.getItem("authData"));
+
+  const config = {
+    headers: { Authorization: `Token ${login.token}` },
+  };
+
   const updateCampaign = async () => {
     if (utilData) {
       try {
@@ -36,8 +42,24 @@ const Step3 = () => {
           }
         }
 
-        await axios.put(baseURL + `/campaigns/${utilData}/`, formData);
-        setModalShow(true);
+        const { data } = await axios.put(
+          baseURL + `/campaigns/${utilData}/`,
+          formData
+        );
+        const bodyObj = {
+          customer: data.owner,
+          amount: data.budget,
+          campaign: utilData,
+        };
+
+        const res = await axios.post(
+          baseURL + `/pay/create-order`,
+          bodyObj,
+          config
+        );
+
+        window.open(res.data.data.payments.url, "name", "width=600,height=700");
+        // setModalShow(true);
       } catch (err) {
         console.log(err);
       }

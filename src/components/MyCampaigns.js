@@ -212,7 +212,14 @@ const MyCampaigns = () => {
                   <Dropdown>
                     <Dropdown.Toggle className="sorting-option">
                       <span style={{ fontWeight: "600" }}>
-                        Sort By: {sortType}
+                        Sort By:{" "}
+                        {sortType === "default"
+                          ? "Recent Campaigns"
+                          : sortType === "dt-up"
+                          ? "Date Uploaded"
+                          : sortType === "asc"
+                          ? "Old to New"
+                          : ""}
                       </span>
                     </Dropdown.Toggle>
 
@@ -221,19 +228,19 @@ const MyCampaigns = () => {
                         className="dropdown-options"
                         onClick={() => setSortType("asc")}
                       >
-                        asc
+                        Old to New
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-options"
                         onClick={() => setSortType("dt-up")}
                       >
-                        dt-up
+                        Date Uploaded
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-options"
                         onClick={() => setSortType("default")}
                       >
-                        default
+                        Recent Campaigns
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>

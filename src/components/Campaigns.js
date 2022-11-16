@@ -6,6 +6,7 @@ import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
 import { BsChevronDown } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
+import { getCountdown } from "../utils/countdown";
 
 const baseURL = process.env.REACT_APP_URL;
 
@@ -88,9 +89,11 @@ const Campaigns = () => {
               {campaigns.map((campaign) => (
                 <div className="col-lg-6">
                   <Link to={`/register/?q=${campaign.id}`} className="link">
-                    <div className="card-banner">
+                    <div className="card-banner-3">
                       <div style={{ padding: "20px 30px" }}>
-                        <span className="timer">Ends in: 45d 15h 12m</span>
+                        <span className="timer">
+                          Ends in: {getCountdown(campaign?.end_date)}
+                        </span>
                       </div>
                       <div style={{ paddingTop: "40px" }}>
                         <div className="streampala">
@@ -100,9 +103,7 @@ const Campaigns = () => {
                                 {campaign.name}
                               </span>
                               <p style={{ fontSize: "12px" }}>
-                                Ut enim ad minim veniam, quis nostrud
-                                exerctation ullameo rlbaoee lorem ipsum dolore
-                                magna aliqu lorem ipsum dolor{" "}
+                                {campaign.description}{" "}
                                 <span style={{ fontWeight: "700" }}>
                                   Learn more
                                 </span>
@@ -114,7 +115,7 @@ const Campaigns = () => {
                                 fontWeight: "700",
                               }}
                             >
-                              ₹20
+                              ₹{campaign.budget}
                             </span>
                           </div>
                         </div>

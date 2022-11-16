@@ -204,23 +204,34 @@
   height: 250px; 
   color: #fff;
   padding: 0;
-  width: 40vw;
+  /* width: 40vw; */
 }
-.cards-container .card-banner{
+
+
+
+.cards-container .card-banner .card-banner-3{
   border-radius: 35px ;
 }
 
 .card-banner2{
   background:url(../../../img/banner.png);
   background-size: cover;
- 
   background-repeat: no-repeat;
   border-radius:35px;
   min-height:550px; 
   color: #fff;
-  box-shadow: rgba(255, 255, 255, 0.911) 0px 8px 24px;
- 
-  
+  box-shadow: rgba(255, 255, 255, 0.911) 0px 8px 24px; 
+}
+
+.card-banner-3{
+  background-image: url(../../../img/banner.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 35px;
+  height: 250px; 
+  color: #fff;
+  padding: 0;
+  width: 40vw;
 }
 
 .menu-item-title{

@@ -29,13 +29,5 @@ export function duration(starting, ending) {
   var days = duration.days();
   duration.subtract(days, "days");
 
-  //Get hours and subtract from duration
-  var hours = duration.hours();
-  duration.subtract(hours, "hours");
-
-  //Get Minutes and subtract from duration
-  var minutes = duration.minutes();
-  duration.subtract(minutes, "minutes");
-
-  return days + "d " + hours + "h " + minutes + "m";
+  return days;
 }

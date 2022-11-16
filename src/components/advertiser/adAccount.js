@@ -181,16 +181,20 @@ export default function CreateAdAccount() {
                 onChange={handleUploadFile}
               />
               <br />
-              <p style={{ color: "black", textAlign: "left" }}>
-                Current file :{" "}
-                <a
-                  href={mediaURL + accounts[accountIndex]?.brand_logo}
-                  style={{ color: "black" }}
-                  target="_blank"
-                >
-                  {accounts[accountIndex]?.brand_logo.split("/").pop()}
-                </a>
-              </p>
+              {src === "edit" && (
+                <p style={{ color: "black", textAlign: "left" }}>
+                  Current file :{" "}
+                  <a
+                    href={mediaURL + accounts[accountIndex]?.brand_logo}
+                    style={{
+                      color: "black",
+                    }}
+                    target="_blank"
+                  >
+                    {accounts[accountIndex]?.brand_logo.split("/").pop()}
+                  </a>
+                </p>
+              )}
             </div>
           </div>
           <br />
