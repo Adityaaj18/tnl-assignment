@@ -2,7 +2,11 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Header from "../home/Header";
 import { Alert, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "../../../src/styles/custom.css";
+import eyeOpen from "../../img/eye-open.svg";
+import eyeClose from "../../img/eye-close.svg";
+
 
 const initialState = {
   name: "",
@@ -28,7 +32,10 @@ export default function SignUp() {
   const [orgType, setOrgType] = useState([]);
   const [user, setUser] = useState(initialState);
   const [error, setError] = useState(false);
+  const [regexError, setRegexError] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
   const [acceptTNC, setAcceptTNC] = useState(false);
+  const [showPasswordIconPress, setShowPasswordIconPress] = useState(false);
 
   useEffect(() => {
     async function fetchOrganizations() {
@@ -56,7 +63,8 @@ export default function SignUp() {
     };
 
     try {
-      if (acceptTNC) {
+      // if (acceptTNC) {
+      if (true) {
         await axios.post(baseURL + "/advertisers/", bodyObj);
         navigate("/ad/login");
       } else {
@@ -64,6 +72,36 @@ export default function SignUp() {
       }
     } catch (error) {
       setError(true);
+    }
+  };
+
+  const RegexValidation = () => {
+    var phNo = document.getElementById("ph-no").value;
+    var password = document.getElementById("password").value;
+    var phNoRegex = /[6-9]\d{9}$/;
+    var passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?!.*[^a-zA-Z0-9@#$^+=])(.{8,15})$/;
+    if (!phNoRegex.test(phNo)) {
+      setRegexError(1);
+      setErrMessage("Phone number should contain 10 numbers and valid and not contain country code")
+    } else if (!passwordRegex.test(password)) {
+      setRegexError(1);
+      setErrMessage("Password should contain atleast one capital,one number and minimum length should be 8")
+
+    }
+
+    else {
+      setRegexError(false);
+    }
+  };
+
+  const showPassword = () => {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+      setShowPasswordIconPress(true);
+    } else {
+      x.type = "password";
+      setShowPasswordIconPress(false);
     }
   };
   return (
@@ -90,6 +128,9 @@ export default function SignUp() {
             {error && (
               <Alert variant="danger">Phone number already exists.</Alert>
             )}
+            {regexError && (
+              <Alert variant="danger">{errMessage}</Alert>
+            )}
             <div className="form-group row">
               <label
                 className="col-sm-3 col-form-label"
@@ -102,6 +143,7 @@ export default function SignUp() {
                   className="form-control"
                   type="text"
                   name="name"
+                  required
                   onChange={handleChange}
                 />
               </div>
@@ -114,7 +156,9 @@ export default function SignUp() {
                   className="form-control"
                   type="email"
                   name="email"
+                  required
                   onChange={handleChange}
+                  pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z]+.com+$"
                 />
               </div>
             </div>
@@ -124,9 +168,12 @@ export default function SignUp() {
               <div className="col-lg-8 col-sm-10">
                 <input
                   className="form-control"
+                  id="ph-no"
                   type="tel"
                   name="phoneNumber"
+                  required
                   onChange={handleChange}
+                  pattern="^[6-9]\d{9}$"
                 />
               </div>
             </div>
@@ -138,6 +185,7 @@ export default function SignUp() {
                   className="form-control"
                   type="text"
                   name="organization"
+                  required
                   onChange={handleChange}
                 />
               </div>
@@ -152,6 +200,7 @@ export default function SignUp() {
                   name="advertiserType"
                   onChange={handleChange}
                   value={user.advertiserType}
+                  required
                 >
                   {orgType?.map((e, idx) => (
                     <option key={idx} value={e.value}>
@@ -164,13 +213,17 @@ export default function SignUp() {
             <br />
             <div className="form-group row" style={{ fontWeight: "700" }}>
               <label className="col-sm-3 col-form-label">Password:</label>
-              <div className="col-lg-8 col-sm-10">
+              <div className="col-lg-8 col-sm-10 eye_icon_container">
                 <input
                   className="form-control"
+                  id="password"
                   type="password"
                   name="password"
+                  required
                   onChange={handleChange}
+                  pattern="^(?=.*\d)(?=.*[A-Z])(?!.*[^a-zA-Z0-9@#$^+=])(.{8,15})$"
                 />
+                <img className="eye_icon" src={(showPasswordIconPress) ? eyeClose : eyeOpen} alt="eye_image" onClick={showPassword} />
               </div>
             </div>
             <br />
@@ -198,6 +251,7 @@ export default function SignUp() {
                   <input
                     type="checkbox"
                     onChange={(e) => setAcceptTNC(e.target.checked)}
+                    required
                   />
                   <p
                     style={{
@@ -211,9 +265,16 @@ export default function SignUp() {
                   </p>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button className="view-more" type="submit">
+                  <button className="view-more" type="submit" onClick={RegexValidation}>
                     Sign Up
                   </button>
+                </div>
+                <div className="d-flex justify-content-center">
+                  already have an account?{" "}
+                  <Link to="/ad/login" style={{ color: "#9B51E0" }}>
+                    {" "}
+                    Login
+                  </Link>
                 </div>
               </div>
             </div>

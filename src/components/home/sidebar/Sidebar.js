@@ -123,7 +123,7 @@ const Sidebar = ({ menuCollapse }) => {
                         className="menu-item"
                         icon={<FiLogOut className="sidebar-icon" />}
                         onClick={() => {
-                           localStorage.removeItem('token')
+                           window.localStorage.removeItem('authData')
                            navigate('/')
                         }}
                      >

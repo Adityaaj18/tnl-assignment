@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 import Header from "../home/Header";
 import { Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import eyeOpen from "../../img/eye-open.svg";
+import eyeClose from "../../img/eye-close.svg";
+import "../../styles/custom.css";
+
 
 const initialState = {
   email: "",
@@ -15,6 +19,8 @@ export default function AdvertiserLogin({ history }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(initialState);
   const [error, setError] = useState(false);
+  const [showPasswordIconPress, setShowPasswordIconPress] = useState(false);
+
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -71,6 +77,16 @@ export default function AdvertiserLogin({ history }) {
       setError(true);
     }
   };
+  const showPassword = () => {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+      setShowPasswordIconPress(true);
+    } else {
+      x.type = "password";
+      setShowPasswordIconPress(false);
+    }
+  };
   return (
     <>
       <Header user="none" />
@@ -101,6 +117,7 @@ export default function AdvertiserLogin({ history }) {
                   type="email"
                   name="email"
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -108,13 +125,17 @@ export default function AdvertiserLogin({ history }) {
 
             <div className="form-group row" style={{ fontWeight: "700" }}>
               <label className="col-sm-3 col-form-label">Password:</label>
-              <div className="col-lg-8 col-sm-10">
+              <div className="col-lg-8 col-sm-10 eye_icon_container">
                 <input
                   className="form-control"
+                  id="password"
                   type="password"
                   name="password"
                   onChange={handleChange}
+                  required
                 />
+                <img className="eye_icon" src={(showPasswordIconPress) ? eyeClose : eyeOpen} alt="eye_image" onClick={showPassword} />
+
               </div>
             </div>
             <br />

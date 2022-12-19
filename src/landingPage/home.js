@@ -109,6 +109,11 @@ export default function LandingPage() {
                       Sign Up
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link to="/ad/login" className="page-scroll">
+                      Advertiser Sign In
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </nav>
