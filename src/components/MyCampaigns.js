@@ -216,10 +216,10 @@ const MyCampaigns = () => {
                         {sortType === "default"
                           ? "Recent Campaigns"
                           : sortType === "dt-up"
-                          ? "Date Uploaded"
-                          : sortType === "asc"
-                          ? "Old to New"
-                          : ""}
+                            ? "Date Uploaded"
+                            : sortType === "asc"
+                              ? "Old to New"
+                              : ""}
                       </span>
                     </Dropdown.Toggle>
 

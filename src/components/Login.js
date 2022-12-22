@@ -30,6 +30,8 @@ const Login = () => {
     if (res.status == 200) {
       window.localStorage.setItem("token", JSON.stringify(res.data.key));
       navigate("/home");
+    } else {
+      console.log("error");
     }
 
     return res.status;

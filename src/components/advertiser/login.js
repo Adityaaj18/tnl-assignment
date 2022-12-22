@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../home/Header";
 import { Alert } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import eyeOpen from "../../img/eye-open.svg";
 import eyeClose from "../../img/eye-close.svg";
 import "../../styles/custom.css";
+import { TokenContext } from "../../context/TokenContext";
+import backArrow from "../../img/back-arrow.svg";
 
 
 const initialState = {
@@ -20,6 +22,7 @@ export default function AdvertiserLogin({ history }) {
   const [user, setUser] = useState(initialState);
   const [error, setError] = useState(false);
   const [showPasswordIconPress, setShowPasswordIconPress] = useState(false);
+  const { setToken } = useContext(TokenContext);
 
 
   const handleChange = (e) => {
@@ -44,7 +47,15 @@ export default function AdvertiserLogin({ history }) {
 
       const { data } = await axios.post(baseURL + "/auth-token/", obj);
 
+
       window.localStorage.setItem("authData", JSON.stringify(data));
+      // let res = await axios.post(baseURL + "/auth/google/", {
+      //   access_token: accesstoken,
+      // });
+      // console.log(res.data);
+      // setToken(res.data.key);
+      window.localStorage.setItem("token", JSON.stringify(data.token));
+      navigate("/home");
 
       const config = {
         headers: { Authorization: `Token ${data.token}` },
@@ -69,12 +80,14 @@ export default function AdvertiserLogin({ history }) {
       window.localStorage.setItem("activeAccount", JSON.stringify(temp));
 
       if (allAccounts.data?.length === 0) {
-        navigate("/create-ad-account");
+        // navigate("/create-ad-account");
+        navigate("/home");
       } else {
         navigate("/main2");
       }
     } catch (error) {
       setError(true);
+
     }
   };
   const showPassword = () => {
@@ -89,7 +102,10 @@ export default function AdvertiserLogin({ history }) {
   };
   return (
     <>
-      <Header user="none" />
+      {/* <Header user="none" /> */}
+      <div className="home_btn">
+        <Link to="/"><svg fill="#962E40" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z" /></svg> </Link>
+      </div>
       <div className="main-content">
         <div className="welcome">
           <div>
@@ -108,7 +124,8 @@ export default function AdvertiserLogin({ history }) {
           onSubmit={submitHandler}
         >
           <div className="col-lg-8" style={{ marginTop: "50px" }}>
-            {error && <Alert variant="danger">Invalid credential.</Alert>}
+
+            {error && <Alert variant="danger">Invalid credentials please check your email and password.</Alert>}
             <div className="form-group row" style={{ fontWeight: "700" }}>
               <label className="col-sm-3 col-form-label">Email:</label>
               <div className="col-lg-8 col-sm-10">

@@ -238,6 +238,9 @@
   font-weight: 600;
   color: #BDBDBD;
 }
+.sidebar_{
+  z-index:99999;
+}
 
 @media screen and (max-width: 500px){
 

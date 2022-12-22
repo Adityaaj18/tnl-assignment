@@ -48,6 +48,19 @@
     margin-right: 15px;
 }
 
+.ad_account_dropdown{
+    background-color: transparent!important;
+    color: #962e40 !important;
+    border: none!important;
+    box-shadow: none!important;
+}
+.ad_account_dropdown:hover{
+    background-color: transparent!important;
+    color: #962e40 !important;
+    border: none!important;
+    box-shadow: none!important;
+}
+
 @media screen and (max-width: 500px){
     .subnav{
         justify-content:center !important;

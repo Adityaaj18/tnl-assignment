@@ -1,5 +1,5 @@
 //import useState hook to create menu collapse state
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 //import react pro sidebar components
 import { ProSidebar, Menu, MenuItem, SidebarContent } from 'react-pro-sidebar'
@@ -12,7 +12,10 @@ import {
    AiOutlineHome,
    AiOutlineSetting,
    AiOutlineQuestionCircle,
-   AiOutlineWallet
+   AiOutlineWallet,
+   AiOutlinePlusCircle,
+   AiOutlineProfile,
+   AiOutlineUser
 } from 'react-icons/ai'
 import { MdInsertChartOutlined } from 'react-icons/md'
 import { CgNotes } from 'react-icons/cg'
@@ -20,17 +23,33 @@ import { FaUsersCog } from 'react-icons/fa'
 import 'react-pro-sidebar/dist/css/styles.css'
 import './sidebar.css'
 import { NavLink, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 console.log(window.location.pathname)
 
+const baseURL = process.env.REACT_APP_URL;
 const Sidebar = ({ menuCollapse }) => {
    const navigate = useNavigate()
 
+   const [user, setUser] = useState();
+   const token = JSON.parse(window.localStorage.getItem("token"));
+   const config = {
+      headers: { Authorization: `Token ${token}` },
+   };
+   useEffect(() => {
+      async function fetchMyProfile() {
+         const { data } = await axios.get(baseURL + "/users/user-info/", config);
+         setUser(data);
+         console.log(data, data.advertiser_type, "data in sidebar");
+      }
+      fetchMyProfile();
+   }, []);
+
    return (
       <>
-         <div id="header" className={menuCollapse ? 'zindex1' : 'zindex2'}>
+         <div id="header" className={menuCollapse ? 'zindex1 sidebar_' : 'zindex2 sidebar_'} >
             <ProSidebar collapsed={menuCollapse}>
-               <SidebarContent>
+               <SidebarContent >
                   <Menu>
                      <MenuItem
                         className="menu-item"
@@ -45,22 +64,22 @@ const Sidebar = ({ menuCollapse }) => {
                         <span className="menu-item-title">Home</span>
                      </MenuItem>
 
-                     <MenuItem
-                        className="menu-item"
-                        icon={
-                           <MdInsertChartOutlined className="sidebar-icon" />
-                        }
-                        onClick={() => {
-                           navigate('/analytics')
-                        }}
-                        active={
-                           window.location.pathname === '/analytics'
-                              ? true
-                              : false
-                        }
-                     >
-                        <span className="menu-item-title">Analytics</span>
-                     </MenuItem>
+                     {
+                        user && user.advertiser_type === 1 && (
+                           <MenuItem
+                              className="menu-item"
+                              icon={<AiOutlinePlusCircle className="sidebar-icon" />}
+                              onClick={() => {
+                                 navigate('/create-ad-account')
+                              }}
+                              active={
+                                 window.location.pathname === '/create-ad-account' ? true : false
+                              }
+                           >
+                              <span className="menu-item-title">Ad Accounts</span>
+                           </MenuItem>)
+
+                     }
 
                      <MenuItem
                         className="menu-item"
@@ -79,21 +98,6 @@ const Sidebar = ({ menuCollapse }) => {
 
                      <MenuItem
                         className="menu-item"
-                        icon={<FaUsersCog className="sidebar-icon" />}
-                        onClick={() => {
-                           navigate('/profile')
-                        }}
-                        active={
-                           window.location.pathname === '/profile'
-                              ? true
-                              : false
-                        }
-                     >
-                        <span className="menu-item-title">Profile</span>
-                     </MenuItem>
-
-                     <MenuItem
-                        className="menu-item"
                         icon={<AiOutlineWallet className="sidebar-icon" />}
                         onClick={() => {
                            navigate('/wallet')
@@ -107,10 +111,54 @@ const Sidebar = ({ menuCollapse }) => {
 
                      <MenuItem
                         className="menu-item"
+                        icon={<AiOutlineUser className="sidebar-icon" />}
+                        onClick={() => {
+                           navigate('/profile')
+                        }}
+                        active={
+                           window.location.pathname === '/profile'
+                              ? true
+                              : false
+                        }
+                     >
+                        <span className="menu-item-title">Profile</span>
+                     </MenuItem>
+
+
+
+
+
+
+
+                     <MenuItem
+                        className="menu-item"
+                        icon={
+                           <MdInsertChartOutlined className="sidebar-icon" />
+                        }
+                        onClick={() => {
+                           navigate('/analytics')
+                        }}
+                        active={
+                           window.location.pathname === '/analytics'
+                              ? true
+                              : false
+                        }
+                     >
+                        <span className="menu-item-title">Analytics</span>
+                     </MenuItem>
+
+
+
+
+
+
+
+                     {/* <MenuItem
+                        className="menu-item"
                         icon={<AiOutlineSetting className="sidebar-icon" />}
                      >
                         <span className="menu-item-title">Settings</span>
-                     </MenuItem>
+                     </MenuItem> */}
                      <MenuItem
                         className="menu-item"
                         icon={
@@ -124,6 +172,7 @@ const Sidebar = ({ menuCollapse }) => {
                         icon={<FiLogOut className="sidebar-icon" />}
                         onClick={() => {
                            window.localStorage.removeItem('authData')
+                           window.localStorage.removeItem('token')
                            navigate('/')
                         }}
                      >
