@@ -17,7 +17,7 @@ const Login = () => {
   }
 
   const onSuccess = (response) => {
-    // navigate('/home')
+    navigate('/home')
     googleResponse(response);
   };
 

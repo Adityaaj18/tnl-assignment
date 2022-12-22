@@ -61,7 +61,7 @@ const Header = ({ menuIconClick }) => {
                   <>
 
                     <p style={{ color: "#962E40" }}>Balance</p>
-                    <h6>₹320.83</h6>
+                    <h6>₹1M</h6>
                   </>
                 )
 
